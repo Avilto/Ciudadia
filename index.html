@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ciudadia — Encuentra tu hogar ideal. Plataforma premium de búsqueda y oferta de inmuebles: casas, departamentos, terrenos y locales comerciales.">
+  <meta name="keywords" content="inmuebles, bienes raíces, casas, departamentos, terrenos, comprar casa, México">
+  <meta name="author" content="Ciudadia">
+  <meta name="theme-color" content="#0a0a1a">
+  <title>Ciudadia — Encuentra tu Hogar Ideal</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="navbar__logo">
+        <span class="navbar__logo-icon">🏠</span>
+        <span>Ciuda<span class="text-gradient">dia</span></span>
+      </a>
+
+      <div class="navbar__links" id="navLinks">
+        <a href="#properties" class="navbar__link">Inmuebles</a>
+        <a href="#categories" class="navbar__link">Categorías</a>
+        <a href="#stats" class="navbar__link">Nosotros</a>
+        <a href="#cta" class="navbar__link">Contacto</a>
+        <a href="#cta" class="navbar__cta" id="navCta">Publicar Inmueble</a>
+      </div>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__bg-grid"></div>
+      <div class="hero__orb hero__orb--1"></div>
+      <div class="hero__orb hero__orb--2"></div>
+      <div class="hero__orb hero__orb--3"></div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        Plataforma #1 en Inmuebles
+      </div>
+
+      <h1 class="hero__title">
+        Encuentra tu <span class="text-gradient">hogar ideal</span> hoy
+      </h1>
+
+      <p class="hero__subtitle">
+        Explora miles de propiedades exclusivas en las mejores ubicaciones. Casas, departamentos, terrenos y locales comerciales a tu alcance.
+      </p>
+
+      <!-- Search Bar -->
+      <div class="search-bar" id="searchBar">
+        <div class="search-bar__input-group">
+          <span class="search-bar__icon">🔍</span>
+          <input
+            type="text"
+            class="search-bar__input"
+            id="heroSearch"
+            placeholder="Busca por ciudad, colonia o nombre..."
+            aria-label="Buscar inmuebles"
+          >
+        </div>
+
+        <span class="search-bar__divider"></span>
+
+        <select class="search-bar__select" id="heroSearchType" aria-label="Tipo de inmueble">
+          <option value="todos">Todos los tipos</option>
+          <option value="casa">🏠 Casas</option>
+          <option value="departamento">🏢 Departamentos</option>
+          <option value="terreno">🌳 Terrenos</option>
+          <option value="local">🏪 Locales</option>
+        </select>
+
+        <button class="search-bar__btn" id="heroSearchBtn">Buscar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS ========== -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stats__item reveal">
+          <span class="stats__number" data-target="2500" data-suffix="+">0</span>
+          <span class="stats__label">Inmuebles</span>
+        </div>
+        <div class="stats__item reveal reveal-delay-1">
+          <span class="stats__number" data-target="180" data-suffix="+">0</span>
+          <span class="stats__label">Ciudades</span>
+        </div>
+        <div class="stats__item reveal reveal-delay-2">
+          <span class="stats__number" data-target="12000" data-suffix="+">0</span>
+          <span class="stats__label">Clientes</span>
+        </div>
+        <div class="stats__item reveal reveal-delay-3">
+          <span class="stats__number" data-target="98" data-suffix="%">0</span>
+          <span class="stats__label">Satisfacción</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CATEGORIES ========== -->
+  <section class="categories section" id="categories">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">Explora</span>
+        <h2 class="section__title">Busca por categoría</h2>
+        <p class="section__subtitle">Encuentra el tipo de inmueble perfecto para ti</p>
+      </div>
+
+      <div class="categories__grid" id="categoriesGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROPERTIES ========== -->
+  <section class="section" id="properties">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">Propiedades</span>
+        <h2 class="section__title">Inmuebles destacados</h2>
+        <p class="section__subtitle">Las mejores opciones seleccionadas para ti</p>
+      </div>
+
+      <!-- Filters Bar -->
+      <div class="filters reveal">
+        <div class="filters__tabs">
+          <button class="filters__tab active" data-filter="todos">Todos</button>
+          <button class="filters__tab" data-filter="casa">🏠 Casas</button>
+          <button class="filters__tab" data-filter="departamento">🏢 Deptos</button>
+          <button class="filters__tab" data-filter="terreno">🌳 Terrenos</button>
+          <button class="filters__tab" data-filter="local">🏪 Locales</button>
+        </div>
+
+        <div class="filters__controls">
+          <span class="filters__count" id="propertiesCount">12 inmuebles encontrados</span>
+          <select class="filters__select" id="sortSelect" aria-label="Ordenar por">
+            <option value="default">Destacados</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="area-desc">Mayor superficie</option>
+            <option value="newest">Más recientes</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Property Cards Grid -->
+      <div class="properties__grid" id="propertiesGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta-section section" id="cta">
+    <div class="container">
+      <div class="cta-card reveal">
+        <h2 class="cta-card__title">¿Tienes un inmueble que <span class="text-gradient">quieres vender</span>?</h2>
+        <p class="cta-card__text">Publica tu propiedad en Ciudadia y llega a miles de compradores potenciales. Es rápido, sencillo y efectivo.</p>
+        <button class="cta-card__btn">
+          Publicar Inmueble →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="#" class="navbar__logo">
+            <span class="navbar__logo-icon">🏠</span>
+            <span>Ciuda<span class="text-gradient">dia</span></span>
+          </a>
+          <p class="footer__brand-desc">
+            La plataforma líder en oferta de inmuebles. Conectamos a compradores y vendedores con la mejor tecnología.
+          </p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social" aria-label="Facebook">f</a>
+            <a href="#" class="footer__social" aria-label="Instagram">ig</a>
+            <a href="#" class="footer__social" aria-label="Twitter">𝕏</a>
+            <a href="#" class="footer__social" aria-label="LinkedIn">in</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer__title">Inmuebles</h4>
+          <a href="#" class="footer__link">Casas en venta</a>
+          <a href="#" class="footer__link">Departamentos</a>
+          <a href="#" class="footer__link">Terrenos</a>
+          <a href="#" class="footer__link">Locales comerciales</a>
+          <a href="#" class="footer__link">Nuevos desarrollos</a>
+        </div>
+
+        <div>
+          <h4 class="footer__title">Compañía</h4>
+          <a href="#" class="footer__link">Sobre nosotros</a>
+          <a href="#" class="footer__link">Cómo funciona</a>
+          <a href="#" class="footer__link">Blog</a>
+          <a href="#" class="footer__link">Prensa</a>
+          <a href="#" class="footer__link">Carreras</a>
+        </div>
+
+        <div>
+          <h4 class="footer__title">Soporte</h4>
+          <a href="#" class="footer__link">Centro de ayuda</a>
+          <a href="#" class="footer__link">Contacto</a>
+          <a href="#" class="footer__link">Términos de uso</a>
+          <a href="#" class="footer__link">Privacidad</a>
+          <a href="#" class="footer__link">Cookies</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 Ciudadia. Todos los derechos reservados.</p>
+        <p>Hecho con ♥ en México</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== MODAL ========== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modalContent">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
