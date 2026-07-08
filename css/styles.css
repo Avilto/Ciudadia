@@ -182,18 +182,18 @@ input, select {
   top: 0;
   left: 0;
   right: 0;
-  height: var(--nav-height);
+  height: 12vh;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  transition: background var(--transition-base), box-shadow var(--transition-base);
+  background: #ffffff;
+  transition: height var(--transition-base), background var(--transition-base), box-shadow var(--transition-base);
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  height: 72px;
+  background: #ffffff;
   box-shadow: 0 1px 0 var(--border-subtle), var(--shadow-sm);
 }
 
@@ -259,8 +259,8 @@ input, select {
 }
 
 .navbar__link {
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--text-secondary);
   transition: color var(--transition-fast);
   position: relative;
@@ -287,11 +287,11 @@ input, select {
 }
 
 .navbar__cta {
-  padding: 10px 24px;
+  padding: 12px 28px;
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: #ffffff;
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 1.02rem;
   border-radius: var(--radius-sm);
   transition: transform var(--transition-spring), box-shadow var(--transition-base);
 }
@@ -345,7 +345,13 @@ input, select {
 .hero__bg {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
+  background-image: url('../assets/images/sky-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero__bg::before {
@@ -353,55 +359,42 @@ input, select {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(14, 165, 233, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(37, 99, 235, 0.06) 0%, transparent 50%);
+    radial-gradient(circle at 15% 25%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 85% 75%, rgba(96, 165, 250, 0.04) 0%, transparent 50%);
   z-index: 1;
 }
 
 .hero__bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  z-index: 0;
+  display: none;
 }
 
 .hero__orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  animation: float 8s ease-in-out infinite;
+  filter: blur(120px);
+  animation: float 12s ease-in-out infinite;
 }
 
 .hero__orb--1 {
-  width: 400px;
-  height: 400px;
-  background: rgba(59, 130, 246, 0.1);
+  width: 500px;
+  height: 500px;
+  background: rgba(96, 165, 250, 0.04);
   top: 10%;
-  left: -5%;
+  left: -10%;
   animation-delay: 0s;
 }
 
 .hero__orb--2 {
-  width: 300px;
-  height: 300px;
-  background: rgba(14, 165, 233, 0.08);
-  bottom: 10%;
+  width: 400px;
+  height: 400px;
+  background: rgba(37, 99, 235, 0.03);
+  bottom: 5%;
   right: -5%;
-  animation-delay: -4s;
+  animation-delay: -6s;
 }
 
 .hero__orb--3 {
-  width: 200px;
-  height: 200px;
-  background: rgba(96, 165, 250, 0.07);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: -2s;
+  display: none;
 }
 
 @keyframes float {
@@ -1330,6 +1323,11 @@ input, select {
 
   .navbar__toggle {
     display: flex;
+  }
+
+  .hero__bg {
+    background-size: cover, cover;
+    background-position: center, center;
   }
 
   .hero__title {

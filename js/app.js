@@ -71,7 +71,7 @@ function renderCategories() {
     { type: 'casa', icon: '🏠', title: 'Casas', count: counts.casa || 0 },
     { type: 'departamento', icon: '🏢', title: 'Departamentos', count: counts.departamento || 0 },
     { type: 'terreno', icon: '🌳', title: 'Terrenos', count: counts.terreno || 0 },
-    { type: 'local', icon: '🏪', title: 'Locales', count: counts.local || 0 }
+    { type: 'local', icon: '🏪', title: 'Proyectos', count: counts.local || 0 }
   ];
 
   grid.innerHTML = categories.map((cat, i) => `
@@ -291,44 +291,3 @@ function initScrollAnimations() {
   });
 }
 
-/* ---------- Animated Counter ---------- */
-function animateCounters() {
-  const counters = document.querySelectorAll('.stats__number');
-  counters.forEach(counter => {
-    const target = parseInt(counter.dataset.target);
-    const suffix = counter.dataset.suffix || '';
-    const duration = 2000;
-    const start = 0;
-    const startTime = performance.now();
-
-    function update(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-      const value = Math.floor(eased * target);
-
-      counter.textContent = value.toLocaleString('es-MX') + suffix;
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
-    }
-
-    requestAnimationFrame(update);
-  });
-}
-
-// Trigger counter animation when stats section is visible
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateCounters();
-      statsObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.3 });
-
-const statsSection = document.getElementById('stats');
-if (statsSection) {
-  statsObserver.observe(statsSection);
-}
