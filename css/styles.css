@@ -252,6 +252,60 @@ input, select {
   font-size: 1.1rem;
 }
 
+
+.logo-text__capital-c {
+  font-size: 1.12em;
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: 0.9;
+}
+
+.logo-text__special-i {
+  position: relative;
+  display: inline-block;
+  width: 0.16em;
+  height: 0.72em;
+  vertical-align: baseline;
+  -webkit-text-fill-color: initial;
+  margin: 0 0.03em;
+}
+
+.i-stem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.12em;
+  height: 0.52em;
+  background: #2563eb;
+  border-radius: 1px;
+  box-shadow: 
+    1px 1px 0px #1d4ed8,
+    2px 2px 0px #1d4ed8,
+    3px 3px 0px #1e40af,
+    4px 4px 0px #1e40af,
+    5px 5px 0px #172554;
+}
+
+.logo-text__pin {
+  position: absolute;
+  width: 0.54em;
+  height: 0.54em;
+  left: 50%;
+  transform: translateX(-50%) rotate(12deg);
+  transform-origin: bottom center;
+  bottom: 0.54em;
+  -webkit-text-fill-color: initial;
+  z-index: 10;
+  filter: 
+    drop-shadow(1px 1px 0px #1d4ed8)
+    drop-shadow(1px 1px 0px #1d4ed8)
+    drop-shadow(1px 1px 0px #1e40af)
+    drop-shadow(1px 1px 0px #1e40af)
+    drop-shadow(1px 1px 0px #172554)
+    drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.18));
+}
+
 .navbar__links {
   display: flex;
   align-items: center;
