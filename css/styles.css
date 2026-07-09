@@ -205,12 +205,21 @@ input, select {
 
 .navbar__logo {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.5px;
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  color: var(--accent-gold);
+}
+
+.navbar__logo:hover {
+  color: var(--accent-blue);
+  background: rgba(37, 99, 235, 0.08);
 }
 
 .navbar__logo-text {
@@ -316,28 +325,15 @@ input, select {
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--accent-blue);
-  transition: color var(--transition-fast);
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
   position: relative;
-}
-
-.navbar__link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent-gold);
-  transition: width var(--transition-base);
-  border-radius: 1px;
 }
 
 .navbar__link:hover {
   color: var(--accent-gold);
-}
-
-.navbar__link:hover::after {
-  width: 100%;
+  background: rgba(37, 99, 235, 0.08);
 }
 
 .navbar__cta {
@@ -411,7 +407,7 @@ input, select {
 .hero__logo-text {
   font-family: var(--font-heading);
   font-size: clamp(4.5rem, 14vw, 8.8rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.5px;
   color: #2563eb;
   text-shadow: 
@@ -1303,4 +1299,188 @@ input, select {
   .cta-card {
     padding: var(--space-2xl) var(--space-lg);
   }
+}
+
+/* ============================================
+   SUBPAGES (Nosotros & Servicios)
+   ============================================ */
+
+.subpage-hero {
+  padding: 140px 0 80px;
+  background: linear-gradient(135deg, #f0f6ff 0%, #e3eefb 100%);
+  text-align: center;
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.subpage-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.subpage-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: #0e2f76;
+  margin-bottom: var(--space-md);
+  letter-spacing: -1px;
+}
+
+.subpage-hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* About Us Layout */
+.subpage-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  margin-bottom: var(--space-4xl);
+}
+
+@media (max-width: 768px) {
+  .subpage-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+.subpage-content__title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: #0e2f76;
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+}
+
+.subpage-content__paragraph {
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--space-md);
+}
+
+.subpage-img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+}
+
+/* Mission & Vision Cards */
+.mission-vision {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2xl);
+  margin-top: var(--space-4xl);
+}
+
+@media (max-width: 768px) {
+  .mission-vision {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+.mission-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3xl) var(--space-2xl);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-spring), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-card);
+}
+
+.mission-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-lg);
+}
+
+.mission-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: #0e2f76;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.mission-card__text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Services Grid Layout */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2xl);
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3xl) var(--space-2xl);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-spring), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-card);
+}
+
+.service-card__icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: rgba(37, 99, 235, 0.06);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+}
+
+.service-card__icon {
+  font-size: 1.8rem;
+}
+
+.service-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: #0e2f76;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.service-card__text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
 }

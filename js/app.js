@@ -40,6 +40,7 @@ function initNavbar() {
 /* ---------- Categories ---------- */
 function renderCategories() {
   const grid = document.getElementById('categoriesGrid');
+  if (!grid) return;
   const counts = Filters.getCounts(properties);
 
   const categories = [
@@ -72,6 +73,7 @@ function renderCategories() {
 /* ---------- Properties Grid ---------- */
 function renderProperties() {
   const grid = document.getElementById('propertiesGrid');
+  if (!grid) return;
   const countEl = document.getElementById('propertiesCount');
   const filtered = Filters.apply(properties);
 
@@ -143,6 +145,8 @@ function renderProperties() {
 /* ---------- Filters UI ---------- */
 function initFilters() {
   // Type tabs
+  const sortSelect = document.getElementById('sortSelect');
+  if (!sortSelect) return;
   document.querySelectorAll('.filters__tab').forEach(tab => {
     tab.addEventListener('click', () => {
       const type = tab.dataset.filter;
@@ -169,6 +173,7 @@ function updateActiveTab(type) {
 /* ---------- Modal ---------- */
 function initModal() {
   const overlay = document.getElementById('modalOverlay');
+  if (!overlay) return;
 
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeModal();
