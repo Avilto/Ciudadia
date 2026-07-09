@@ -188,6 +188,7 @@ input, select {
   justify-content: center;
   z-index: 1000;
   background: #ffffff;
+  box-shadow: 0 4px 20px rgba(186, 219, 254, 0.6);
   transition: height var(--transition-base), background var(--transition-base), box-shadow var(--transition-base);
 }
 
