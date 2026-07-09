@@ -430,9 +430,9 @@ input, select {
 .hero__slogan {
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  font-size: clamp(1.05rem, 2.1vw, 1.45rem);
   font-weight: 600;
-  color: #1e3a8a;
+  color: #0f172a;
   max-width: 820px;
   margin: 0 auto;
   line-height: 1.6;
