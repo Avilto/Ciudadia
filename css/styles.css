@@ -194,7 +194,7 @@ input, select {
 .navbar.scrolled {
   height: 72px;
   background: #ffffff;
-  box-shadow: 0 1px 0 var(--border-subtle), var(--shadow-sm);
+  box-shadow: 0 4px 20px rgba(186, 219, 254, 0.6);
 }
 
 .navbar .container {
