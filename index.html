@@ -48,6 +48,110 @@
       <div class="hero__orb hero__orb--3"></div>
     </div>
 
+    <div class="hero__content">
+      <!-- Title -->
+      <h2 class="search-panel__main-title">¿Qué tipo de propiedad buscas en Ciudadia?</h2>
+
+      <!-- Tab Buttons -->
+      <div class="search-panel__tabs">
+        <button class="search-panel__tab active" id="tabBuy">
+          <span class="tab-icon">🏠</span> Quiero Comprar
+        </button>
+        <button class="search-panel__tab" id="tabRent">
+          <span class="tab-icon">🏢</span> Quiero Alquilar
+        </button>
+      </div>
+
+      <!-- Main Panel Card -->
+      <div class="search-panel__card">
+        <h3 class="search-panel__card-title">Afina tu búsqueda en Piura</h3>
+
+        <form class="search-panel__form" id="searchPanelForm">
+          <!-- Location field -->
+          <div class="search-panel__field field-location">
+            <label for="searchLocation" class="search-panel__label">Ubicación</label>
+            <div class="search-panel__input-wrapper">
+              <span class="field-icon">📍</span>
+              <input type="text" id="searchLocation" class="search-panel__input" placeholder="Piura" value="Piura">
+            </div>
+          </div>
+
+          <!-- Property Type field -->
+          <div class="search-panel__field field-type">
+            <label for="searchPropType" class="search-panel__label">Tipo de Propiedad</label>
+            <div class="search-panel__input-wrapper">
+              <select id="searchPropType" class="search-panel__select">
+                <option value="todos">Casas, Apartamentos</option>
+                <option value="casa">🏠 Casas</option>
+                <option value="departamento">🏢 Departamentos</option>
+                <option value="terreno">🌳 Terrenos</option>
+                <option value="local">🏪 Locales</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Price Range field -->
+          <div class="search-panel__field field-price">
+            <label class="search-panel__label">Rango de Precio</label>
+            <div class="search-panel__slider-container">
+              <div class="slider-track"></div>
+              <div class="slider-range"></div>
+              <div class="slider-handle left"></div>
+              <div class="slider-handle right"></div>
+            </div>
+            <div class="slider-labels">
+              <span>$500,000 - $15,000,000</span>
+            </div>
+          </div>
+
+          <!-- Bedrooms field -->
+          <div class="search-panel__field field-rooms">
+            <label class="search-panel__label">Habitaciones</label>
+            <div class="segmented-control" id="bedroomsControl">
+              <button type="button" class="segmented-btn active" data-val="any">Any</button>
+              <button type="button" class="segmented-btn" data-val="1">1+</button>
+              <button type="button" class="segmented-btn" data-val="2">2+</button>
+              <button type="button" class="segmented-btn" data-val="3">3+</button>
+            </div>
+          </div>
+
+          <!-- Bathrooms field -->
+          <div class="search-panel__field field-bathrooms">
+            <label class="search-panel__label">Baños</label>
+            <div class="segmented-control" id="bathroomsControl">
+              <button type="button" class="segmented-btn active" data-val="any">Any</button>
+              <button type="button" class="segmented-btn" data-val="1">1+</button>
+              <button type="button" class="segmented-btn" data-val="2">2+</button>
+              <button type="button" class="segmented-btn" data-val="3">3+</button>
+            </div>
+          </div>
+
+          <!-- Advanced Filters Button -->
+          <div class="action-advanced">
+            <button type="button" class="btn-advanced" id="btnAdvancedFilters">
+              Más Filtros Avanzados
+            </button>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="action-submit">
+            <button type="submit" class="btn-submit" id="btnApplyFilters">
+              Aplicar Filtros
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Categories Helper Footer -->
+      <div class="search-panel__footer">
+        <span>O navega por categorías populares:</span>
+        <a href="#properties" class="pop-cat-link" data-cat="departamento">🏢 Departamentos</a>
+        <a href="#properties" class="pop-cat-link" data-cat="casa">🏠 Casas</a>
+        <a href="#properties" class="pop-cat-link" data-cat="local">🏪 Oficinas</a>
+        <a href="#properties" class="pop-cat-link" data-cat="terreno">✏️ Terrenos</a>
+      </div>
+    </div>
+
   </section>
 
 

@@ -40,25 +40,135 @@ function initNavbar() {
 
 /* ---------- Hero Search ---------- */
 function initHeroSearch() {
-  const searchInput = document.getElementById('heroSearch');
-  const searchType = document.getElementById('heroSearchType');
-  const searchBtn = document.getElementById('heroSearchBtn');
+  const searchInput = document.getElementById('searchLocation');
+  const searchType = document.getElementById('searchPropType');
+  const searchBtn = document.getElementById('btnApplyFilters');
 
-  searchBtn.addEventListener('click', () => {
-    const query = searchInput.value.trim();
-    const type = searchType.value;
+  if (!searchBtn) return;
 
-    // Set filters and scroll to properties
-    Filters.set('search', query);
+  // Tabs (Buy/Rent)
+  const tabBuy = document.getElementById('tabBuy');
+  const tabRent = document.getElementById('tabRent');
+  if (tabBuy && tabRent) {
+    tabBuy.addEventListener('click', () => {
+      tabBuy.classList.add('active');
+      tabRent.classList.remove('active');
+    });
+    tabRent.addEventListener('click', () => {
+      tabRent.classList.add('active');
+      tabBuy.classList.remove('active');
+    });
+  }
+
+  // Segmented Controls (Habitaciones, Baños)
+  document.querySelectorAll('.segmented-control').forEach(control => {
+    control.querySelectorAll('.segmented-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        control.querySelectorAll('.segmented-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  });
+
+  // Range Slider Drag Logic
+  const sliderContainer = document.querySelector('.search-panel__slider-container');
+  if (sliderContainer) {
+    const handleLeft = sliderContainer.querySelector('.slider-handle.left');
+    const handleRight = sliderContainer.querySelector('.slider-handle.right');
+    const rangeBar = sliderContainer.querySelector('.slider-range');
+    const labels = document.querySelector('.slider-labels span');
+
+    let minPercent = 0;
+    let maxPercent = 100;
+
+    const minPrice = 500000;
+    const maxPrice = 15000000;
+
+    function updateSlider() {
+      handleLeft.style.left = minPercent + '%';
+      handleRight.style.left = maxPercent + '%';
+      rangeBar.style.left = minPercent + '%';
+      rangeBar.style.right = (100 - maxPercent) + '%';
+
+      const currentMin = Math.round(minPrice + (maxPrice - minPrice) * (minPercent / 100));
+      const currentMax = Math.round(minPrice + (maxPrice - minPrice) * (maxPercent / 100));
+
+      labels.textContent = `$${currentMin.toLocaleString()} - $${currentMax.toLocaleString()}`;
+      
+      Filters.set('priceMin', currentMin);
+      Filters.set('priceMax', currentMax);
+    }
+
+    function onDrag(e, handle, isLeft) {
+      e.preventDefault();
+      const rect = sliderContainer.getBoundingClientRect();
+      
+      const onMove = (moveEvent) => {
+        const clientX = moveEvent.touches ? moveEvent.touches[0].clientX : moveEvent.clientX;
+        let pct = ((clientX - rect.left) / rect.width) * 100;
+        pct = Math.max(0, Math.min(100, pct));
+
+        if (isLeft) {
+          minPercent = Math.min(pct, maxPercent - 5);
+        } else {
+          maxPercent = Math.max(pct, minPercent + 5);
+        }
+        updateSlider();
+      };
+
+      const onUp = () => {
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+        document.removeEventListener('touchmove', onMove);
+        document.removeEventListener('touchend', onUp);
+      };
+
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+      document.addEventListener('touchmove', onMove, { passive: true });
+      document.addEventListener('touchend', onUp);
+    }
+
+    handleLeft.addEventListener('mousedown', (e) => onDrag(e, handleLeft, true));
+    handleRight.addEventListener('mousedown', (e) => onDrag(e, handleRight, false));
+    handleLeft.addEventListener('touchstart', (e) => onDrag(e, handleLeft, true), { passive: true });
+    handleRight.addEventListener('touchstart', (e) => onDrag(e, handleRight, false), { passive: true });
+
+    updateSlider();
+  }
+
+  // Apply filters button
+  searchBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const query = searchInput ? searchInput.value.trim() : '';
+    const type = searchType ? searchType.value : 'todos';
+
+    Filters.set('search', query === 'Piura' ? '' : query);
     Filters.set('type', type);
+    
     renderProperties();
-    updateActiveTab(type);
-
     document.getElementById('properties').scrollIntoView({ behavior: 'smooth' });
   });
 
-  searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') searchBtn.click();
+  if (searchInput) {
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        searchBtn.click();
+      }
+    });
+  }
+
+  // Popular categories links
+  document.querySelectorAll('.pop-cat-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const cat = link.dataset.cat;
+      Filters.set('type', cat);
+      renderProperties();
+      updateActiveTab(cat);
+      document.getElementById('properties').scrollIntoView({ behavior: 'smooth' });
+    });
   });
 }
 
