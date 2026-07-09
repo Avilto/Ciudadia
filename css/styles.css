@@ -188,14 +188,16 @@ input, select {
   justify-content: center;
   z-index: 1000;
   background: #ffffff;
-  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
+  border-bottom: 3px solid #cce2ff;
+  box-shadow: 0 4px 20px rgba(204, 226, 255, 0.8);
   transition: height var(--transition-base), background var(--transition-base), box-shadow var(--transition-base);
 }
 
 .navbar.scrolled {
   height: 72px;
   background: #ffffff;
-  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
+  border-bottom: 3px solid #cce2ff;
+  box-shadow: 0 4px 20px rgba(204, 226, 255, 0.8);
 }
 
 .navbar .container {
