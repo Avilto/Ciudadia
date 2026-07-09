@@ -315,7 +315,7 @@ input, select {
 .navbar__link {
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--accent-blue);
   transition: color var(--transition-fast);
   position: relative;
 }
@@ -333,7 +333,7 @@ input, select {
 }
 
 .navbar__link:hover {
-  color: var(--text-primary);
+  color: var(--accent-gold);
 }
 
 .navbar__link:hover::after {
@@ -668,9 +668,9 @@ input, select {
   padding: 10px 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--text-secondary);
-  background: var(--bg-glass);
-  border: 1px solid var(--border-subtle);
+  color: var(--accent-blue);
+  background: rgba(37, 99, 235, 0.04);
+  border: 1px solid rgba(37, 99, 235, 0.15);
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -1155,12 +1155,13 @@ input, select {
 }
 
 .modal__contact-btn--secondary {
-  background: var(--bg-glass);
-  border: 1px solid var(--border-light);
-  color: var(--text-primary);
+  background: rgba(37, 99, 235, 0.04);
+  border: 1px solid rgba(37, 99, 235, 0.20);
+  color: var(--accent-blue);
 }
 
 .modal__contact-btn--secondary:hover {
+  background: rgba(37, 99, 235, 0.08);
   border-color: var(--accent-gold);
   color: var(--accent-gold);
 }
