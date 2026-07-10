@@ -1523,10 +1523,14 @@ input, select {
   min-height: 100vh;
 }
 
+.buy-section .container {
+  max-width: 1400px;
+}
+
 .buy-cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: var(--space-md);
+  gap: var(--space-lg);
   margin-top: var(--space-xl);
 }
 
