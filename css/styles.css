@@ -1518,13 +1518,17 @@ input, select {
 
 /* ---------- Buy Section ---------- */
 .buy-section {
-  padding: 110px 0 100px;
+  padding: 80px 0 100px;
   background: var(--bg-color);
   min-height: 100vh;
 }
 
 .buy-section .container {
   max-width: 1400px;
+}
+
+.buy-section .section__header {
+  margin-bottom: var(--space-md);
 }
 
 .buy-cards {
