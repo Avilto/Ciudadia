@@ -105,22 +105,22 @@ function renderProperties() {
         <div class="property-card__features">
           ${prop.bedrooms > 0 ? `
             <span class="property-card__feature" title="Habitaciones">
-              <span class="property-card__feature-icon">🛏️</span> ${prop.bedrooms} hab.
+              <span class="property-card__feature-icon">🛏️</span> ${prop.bedrooms} ${prop.bedrooms === 1 ? 'Habitación' : 'Habitaciones'}
             </span>
           ` : ''}
           ${prop.bathrooms > 0 ? `
             <span class="property-card__feature" title="Baños">
-              <span class="property-card__feature-icon">🚿</span> ${prop.bathrooms} bañ.
+              <span class="property-card__feature-icon">🚿</span> ${prop.bathrooms} ${prop.bathrooms === 1 ? 'Baño' : 'Baños'}
             </span>
           ` : ''}
           ${prop.builtArea > 0 ? `
             <span class="property-card__feature" title="Área Construida">
-              <span class="property-card__feature-icon">📐</span> ${prop.builtArea} m² const.
+              <span class="property-card__feature-icon">📐</span> ${prop.builtArea} m² Construidos
             </span>
           ` : ''}
           ${prop.landArea > 0 ? `
             <span class="property-card__feature" title="Área de Terreno">
-              <span class="property-card__feature-icon">🌳</span> ${prop.landArea} m² terr.
+              <span class="property-card__feature-icon">🌳</span> ${prop.landArea} m² de Terreno
             </span>
           ` : ''}
         </div>
