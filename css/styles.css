@@ -1518,7 +1518,7 @@ input, select {
 
 /* ---------- Buy Section ---------- */
 .buy-section {
-  padding: 160px 0 100px;
+  padding: 110px 0 100px;
   background: var(--bg-color);
   min-height: 100vh;
 }
