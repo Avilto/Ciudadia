@@ -1531,7 +1531,7 @@ input, select {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: var(--space-lg);
-  margin-top: var(--space-xl);
+  margin-top: var(--space-sm);
 }
 
 .buy-card {
