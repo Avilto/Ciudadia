@@ -123,11 +123,6 @@ function renderProperties() {
               <span class="property-card__feature-icon">🌳</span> ${prop.landArea} m² terr.
             </span>
           ` : ''}
-          ${prop.parking > 0 ? `
-            <span class="property-card__feature" title="Estacionamientos / Cochera">
-              <span class="property-card__feature-icon">🚗</span> ${prop.parking} est.
-            </span>
-          ` : ''}
         </div>
       </div>
     </article>
