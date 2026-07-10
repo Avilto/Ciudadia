@@ -1528,7 +1528,7 @@ input, select {
 }
 
 .buy-section .section__header {
-  margin-bottom: var(--space-lg);
+  margin-bottom: 36px;
 }
 
 .buy-cards {
