@@ -336,9 +336,15 @@ function initBuyPage() {
 
         renderProperties();
         
-        // Scroll smoothly to properties section
+        // Scroll smoothly to properties section, taking fixed navbar into account
         setTimeout(() => {
-          propertiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const navbar = document.getElementById('navbar');
+          const navbarHeight = navbar ? navbar.offsetHeight : 60;
+          const targetOffset = propertiesSection.getBoundingClientRect().top + window.scrollY - navbarHeight - 20;
+          window.scrollTo({
+            top: targetOffset,
+            behavior: 'smooth'
+          });
         }, 100);
       }
     });
