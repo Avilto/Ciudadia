@@ -14,7 +14,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=24">
+  <link rel="stylesheet" href="css/styles.css?v=25">
 </head>
 <body data-page="alquilar">
 
@@ -41,69 +41,52 @@
     </div>
   </nav>
 
-  <!-- ========== HERO SECTION ========== -->
-  <header class="buy-hero">
-    <div class="container text-center">
-      <h1 class="buy-hero__title">¿Qué deseas alquilar?</h1>
-    </div>
-  </header>
-
-  <!-- ========== CATEGORY CARDS ========== -->
-  <section class="buy-cards-section">
+  <!-- ========== BUY SECTION ========== -->
+  <section class="buy-section section">
     <div class="container">
+      <div class="section__header reveal">
+        <h2 class="section__title">¿Qué deseas alquilar?</h2>
+      </div>
+
       <div class="buy-cards">
-        <!-- Casa -->
-        <a href="#" class="buy-card reveal" data-type="casa">
-          <div class="buy-card__icon-wrapper">
-            <span class="buy-card__icon">🏠</span>
+        <a href="#" class="buy-card reveal reveal-delay-1" data-type="casa" style="background-image: url('assets/images/card_casa.png');">
+          <div class="buy-card__overlay"></div>
+          <div class="buy-card__content">
+            <h3 class="buy-card__title">Casas</h3>
           </div>
-          <h3 class="buy-card__title">Casas</h3>
-          <p class="buy-card__desc">Amplias y cómodas residencias familiares.</p>
         </a>
-
-        <!-- Departamento -->
-        <a href="#" class="buy-card reveal" data-type="departamento">
-          <div class="buy-card__icon-wrapper">
-            <span class="buy-card__icon">🏢</span>
+        <a href="#" class="buy-card reveal reveal-delay-2" data-type="departamento" style="background-image: url('assets/images/card_depto.jpg'); background-position: right center;">
+          <div class="buy-card__overlay"></div>
+          <div class="buy-card__content">
+            <h3 class="buy-card__title">Departamentos</h3>
           </div>
-          <h3 class="buy-card__title">Departamentos</h3>
-          <p class="buy-card__desc">Luminosos departamentos con excelente ubicación.</p>
         </a>
-
-        <!-- Terreno -->
-        <a href="#" class="buy-card reveal" data-type="terreno">
-          <div class="buy-card__icon-wrapper">
-            <span class="buy-card__icon">🌳</span>
+        <a href="#" class="buy-card reveal reveal-delay-3" data-type="local" style="background-image: url('assets/images/card_local.png');">
+          <div class="buy-card__overlay"></div>
+          <div class="buy-card__content">
+            <h3 class="buy-card__title">Locales Comerciales</h3>
           </div>
-          <h3 class="buy-card__title">Terrenos</h3>
-          <p class="buy-card__desc">Lotes listos para construir el hogar de tus sueños.</p>
         </a>
-
-        <!-- Local -->
-        <a href="#" class="buy-card reveal" data-type="local">
-          <div class="buy-card__icon-wrapper">
-            <span class="buy-card__icon">🏪</span>
+        <a href="#" class="buy-card reveal reveal-delay-4" data-type="terreno" style="background-image: url('assets/images/card_terreno.png');">
+          <div class="buy-card__overlay"></div>
+          <div class="buy-card__content">
+            <h3 class="buy-card__title">Terrenos</h3>
           </div>
-          <h3 class="buy-card__title">Locales</h3>
-          <p class="buy-card__desc">Espacios comerciales ideales para tu negocio o marca.</p>
         </a>
-
-        <!-- Proyecto -->
-        <a href="#" class="buy-card reveal" data-type="proyecto">
-          <div class="buy-card__icon-wrapper">
-            <span class="buy-card__icon">🏗️</span>
+        <a href="#" class="buy-card reveal reveal-delay-5" data-type="proyecto" style="background-image: url('assets/images/card_proyecto.jpg');">
+          <div class="buy-card__overlay"></div>
+          <div class="buy-card__content">
+            <h3 class="buy-card__title">Proyectos</h3>
           </div>
-          <h3 class="buy-card__title">Proyectos</h3>
-          <p class="buy-card__desc">Desarrollos nuevos y condominios en preventa.</p>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ========== PROPERTIES LIST ========== -->
-  <section class="properties-section" id="properties" style="display: none; padding-top: var(--space-xl);">
-    <div class="container text-center">
-      <div class="properties__header reveal" style="margin-bottom: var(--space-lg);">
+  <!-- ========== PROPERTIES SECTION ========== -->
+  <section class="section" id="properties" style="display: none; padding-top: 0; padding-bottom: 80px;">
+    <div class="container">
+      <div class="section__header reveal" style="margin-bottom: 28px; text-align: center;">
         <h2 class="section__title" id="propertiesTitle">Propiedades Disponibles</h2>
       </div>
 
