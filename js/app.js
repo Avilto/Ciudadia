@@ -305,6 +305,28 @@ function initScrollAnimations() {
   });
 }
 
+/* ---------- Buy Page Districts Helper ---------- */
+const districtsByDepartment = {
+  todos: [
+    "San Isidro", "La Molina", "Barranco", "Máncora", "Surco", 
+    "Pueblo Libre", "Cusco", "Asia", "Arequipa", "Lunahuaná"
+  ],
+  Lima: ["San Isidro", "La Molina", "Barranco", "Surco", "Pueblo Libre", "Asia", "Lunahuaná"],
+  Arequipa: ["Arequipa"],
+  Cusco: ["Cusco"],
+  Piura: ["Máncora"]
+};
+
+function updateDistritoDropdown(selectedDept) {
+  const distritoSelect = document.getElementById('distritoSelect');
+  if (!distritoSelect) return;
+
+  const districts = districtsByDepartment[selectedDept] || districtsByDepartment.todos;
+  
+  distritoSelect.innerHTML = `<option value="todos">Todos</option>` + 
+    districts.map(d => `<option value="${d}">${d}</option>`).join('');
+}
+
 /* ---------- Buy Page Integration ---------- */
 function initBuyPage() {
   const buyCardsContainer = document.querySelector('.buy-cards');
@@ -315,6 +337,8 @@ function initBuyPage() {
 
   // Input elements
   const searchInput = document.getElementById('searchInput');
+  const departamentoSelect = document.getElementById('departamentoSelect');
+  const distritoSelect = document.getElementById('distritoSelect');
   const priceMaxSelect = document.getElementById('priceMaxSelect');
   const bedroomsSelect = document.getElementById('bedroomsSelect');
   const bathroomsSelect = document.getElementById('bathroomsSelect');
@@ -322,6 +346,9 @@ function initBuyPage() {
   const builtAreaSelect = document.getElementById('builtAreaSelect');
   const landAreaSelect = document.getElementById('landAreaSelect');
   const amenitySelect = document.getElementById('amenitySelect');
+
+  // Initial districts loading
+  updateDistritoDropdown('todos');
 
   // Helper to bind a select element to a filter key
   function bindSelectFilter(element, filterKey, isNumeric = true) {
@@ -346,6 +373,30 @@ function initBuyPage() {
       renderProperties();
     });
   }
+
+  if (departamentoSelect) {
+    departamentoSelect.addEventListener('change', () => {
+      const deptVal = departamentoSelect.value;
+      Filters.set('departamento', deptVal);
+      
+      // Update districts dropdown dynamically
+      updateDistritoDropdown(deptVal);
+      
+      // Reset active distrito filter to 'todos' when department changes
+      Filters.set('distrito', 'todos');
+      if (distritoSelect) distritoSelect.value = 'todos';
+      
+      renderProperties();
+    });
+  }
+
+  if (distritoSelect) {
+    distritoSelect.addEventListener('change', () => {
+      Filters.set('distrito', distritoSelect.value);
+      renderProperties();
+    });
+  }
+
   bindSelectFilter(priceMaxSelect, 'priceMax', true);
   bindSelectFilter(bedroomsSelect, 'bedrooms', true);
   bindSelectFilter(bathroomsSelect, 'bathrooms', true);
@@ -371,6 +422,9 @@ function initBuyPage() {
       
       // Reset all UI elements
       if (searchInput) searchInput.value = '';
+      if (departamentoSelect) departamentoSelect.value = 'todos';
+      updateDistritoDropdown('todos');
+      if (distritoSelect) distritoSelect.value = 'todos';
       if (priceMaxSelect) priceMaxSelect.value = 'Infinity';
       if (bedroomsSelect) bedroomsSelect.value = '0';
       if (bathroomsSelect) bathroomsSelect.value = '0';

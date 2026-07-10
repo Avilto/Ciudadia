@@ -10,7 +10,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=18">
+  <link rel="stylesheet" href="css/styles.css?v=19">
 </head>
 <body>
 
@@ -94,6 +94,26 @@
             <span class="filters-bar__icon">🔍</span>
             <input type="text" id="searchInput" class="filters-bar__input" placeholder="Buscar por ubicación o título...">
           </div>
+        </div>
+
+        <!-- Departamento -->
+        <div class="filters-bar__group">
+          <label for="departamentoSelect" class="filters-bar__label">Departamento</label>
+          <select id="departamentoSelect" class="filters-bar__select">
+            <option value="todos">Todos</option>
+            <option value="Lima">Lima</option>
+            <option value="Arequipa">Arequipa</option>
+            <option value="Cusco">Cusco</option>
+            <option value="Piura">Piura</option>
+          </select>
+        </div>
+
+        <!-- Distrito -->
+        <div class="filters-bar__group">
+          <label for="distritoSelect" class="filters-bar__label">Distrito</label>
+          <select id="distritoSelect" class="filters-bar__select">
+            <option value="todos">Todos</option>
+          </select>
         </div>
 
         <!-- Precio Máximo -->

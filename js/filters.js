@@ -14,7 +14,9 @@ const Filters = (() => {
     parking: 0,
     builtAreaMin: 0,
     landAreaMin: 0,
-    amenity: 'todos'
+    amenity: 'todos',
+    departamento: 'todos',
+    distrito: 'todos'
   };
 
   /**
@@ -80,6 +82,16 @@ const Filters = (() => {
       results = results.filter(p => p.amenities && p.amenities.includes(currentFilters.amenity));
     }
 
+    // Filter by departamento
+    if (currentFilters.departamento !== 'todos') {
+      results = results.filter(p => p.departamento === currentFilters.departamento);
+    }
+
+    // Filter by distrito
+    if (currentFilters.distrito !== 'todos') {
+      results = results.filter(p => p.distrito === currentFilters.distrito);
+    }
+
     // Sort
     switch (currentFilters.sort) {
       case 'price-asc':
@@ -137,7 +149,9 @@ const Filters = (() => {
       parking: 0,
       builtAreaMin: 0,
       landAreaMin: 0,
-      amenity: 'todos'
+      amenity: 'todos',
+      departamento: 'todos',
+      distrito: 'todos'
     };
   }
 
