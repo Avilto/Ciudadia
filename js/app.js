@@ -280,6 +280,24 @@ function initBuyPage() {
   const cards = buyCardsContainer.querySelectorAll('.buy-card');
   const propertiesSection = document.getElementById('properties');
 
+  // Input listeners
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      Filters.set('search', searchInput.value);
+      renderProperties();
+    });
+  }
+
+  const priceMaxSelect = document.getElementById('priceMaxSelect');
+  if (priceMaxSelect) {
+    priceMaxSelect.addEventListener('change', () => {
+      const val = priceMaxSelect.value === 'Infinity' ? Infinity : parseFloat(priceMaxSelect.value);
+      Filters.set('priceMax', val);
+      renderProperties();
+    });
+  }
+
   cards.forEach(card => {
     card.addEventListener('click', (e) => {
       e.preventDefault();
@@ -290,7 +308,14 @@ function initBuyPage() {
       card.classList.add('active-card');
 
       const type = card.dataset.type;
+      
+      // Reset search filters when switching category
       Filters.set('type', type);
+      Filters.set('search', '');
+      Filters.set('priceMax', Infinity);
+      
+      if (searchInput) searchInput.value = '';
+      if (priceMaxSelect) priceMaxSelect.value = 'Infinity';
       
       // Show properties section
       if (propertiesSection) {

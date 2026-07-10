@@ -10,7 +10,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=15">
+  <link rel="stylesheet" href="css/styles.css?v=16">
 </head>
 <body>
 
@@ -81,16 +81,34 @@
   <!-- ========== PROPERTIES SECTION ========== -->
   <section class="section" id="properties" style="display: none; padding-top: 0; padding-bottom: 80px;">
     <div class="container">
-      <div class="section__header reveal" style="margin-bottom: 24px;">
-        <span class="section__tag">Búsqueda</span>
+      <div class="section__header reveal" style="margin-bottom: 28px; text-align: center;">
         <h2 class="section__title" id="propertiesTitle">Propiedades Disponibles</h2>
       </div>
 
-      <!-- Filters Bar -->
-      <div class="filters reveal" style="margin-bottom: var(--space-lg); padding-bottom: 12px; border-bottom: 1px solid var(--border-light);">
-        <div class="filters__controls" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-          <span class="filters__count" id="propertiesCount">0 inmuebles encontrados</span>
-          <select class="filters__select" id="sortSelect" aria-label="Ordenar por">
+      <!-- Horizontal Filter Bar -->
+      <div class="filters-bar reveal" style="margin-bottom: var(--space-xl);">
+        <div class="filters-bar__group filters-bar__group--search">
+          <label for="searchInput" class="filters-bar__label">Buscar</label>
+          <div class="filters-bar__input-wrapper">
+            <span class="filters-bar__icon">🔍</span>
+            <input type="text" id="searchInput" class="filters-bar__input" placeholder="Buscar por ubicación o título...">
+          </div>
+        </div>
+
+        <div class="filters-bar__group">
+          <label for="priceMaxSelect" class="filters-bar__label">Precio Máximo</label>
+          <select id="priceMaxSelect" class="filters-bar__select">
+            <option value="Infinity">Cualquier precio</option>
+            <option value="1500000">$1.5M MXN</option>
+            <option value="3000000">$3.0M MXN</option>
+            <option value="6000000">$6.0M MXN</option>
+            <option value="10000000">$10.0M MXN</option>
+          </select>
+        </div>
+
+        <div class="filters-bar__group">
+          <label for="sortSelect" class="filters-bar__label">Ordenar por</label>
+          <select id="sortSelect" class="filters-bar__select">
             <option value="default">Destacados</option>
             <option value="price-asc">Precio: menor a mayor</option>
             <option value="price-desc">Precio: mayor a menor</option>
@@ -98,6 +116,11 @@
             <option value="newest">Más recientes</option>
           </select>
         </div>
+      </div>
+
+      <!-- Properties Count -->
+      <div class="filters__count-wrapper reveal" style="margin-bottom: var(--space-md); text-align: left;">
+        <span class="filters__count" id="propertiesCount" style="font-weight: 600; color: var(--text-secondary);">0 inmuebles encontrados</span>
       </div>
 
       <!-- Property Cards Grid -->
