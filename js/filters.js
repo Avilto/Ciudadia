@@ -21,7 +21,11 @@ const Filters = (() => {
 
     // Filter by type
     if (currentFilters.type !== 'todos') {
-      results = results.filter(p => p.type === currentFilters.type);
+      if (currentFilters.type === 'proyecto') {
+        results = results.filter(p => p.isNew === true);
+      } else {
+        results = results.filter(p => p.type === currentFilters.type);
+      }
     }
 
     // Filter by search text
@@ -101,9 +105,12 @@ const Filters = (() => {
    * @returns {Object} Counts per type
    */
   function getCounts(data) {
-    const counts = { todos: data.length };
+    const counts = { todos: data.length, proyecto: 0 };
     data.forEach(p => {
       counts[p.type] = (counts[p.type] || 0) + 1;
+      if (p.isNew) {
+        counts['proyecto']++;
+      }
     });
     return counts;
   }

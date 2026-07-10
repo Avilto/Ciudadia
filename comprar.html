@@ -10,7 +10,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=14">
+  <link rel="stylesheet" href="css/styles.css?v=15">
 </head>
 <body>
 
@@ -44,31 +44,31 @@
       </div>
 
       <div class="buy-cards">
-        <a href="#" class="buy-card reveal reveal-delay-1" style="background-image: url('assets/images/card_casa.png');">
+        <a href="#" class="buy-card reveal reveal-delay-1" data-type="casa" style="background-image: url('assets/images/card_casa.png');">
           <div class="buy-card__overlay"></div>
           <div class="buy-card__content">
             <h3 class="buy-card__title">Casas</h3>
           </div>
         </a>
-        <a href="#" class="buy-card reveal reveal-delay-2" style="background-image: url('assets/images/card_depto.jpg'); background-position: right center;">
+        <a href="#" class="buy-card reveal reveal-delay-2" data-type="departamento" style="background-image: url('assets/images/card_depto.jpg'); background-position: right center;">
           <div class="buy-card__overlay"></div>
           <div class="buy-card__content">
             <h3 class="buy-card__title">Departamentos</h3>
           </div>
         </a>
-        <a href="#" class="buy-card reveal reveal-delay-3" style="background-image: url('assets/images/card_local.png');">
+        <a href="#" class="buy-card reveal reveal-delay-3" data-type="local" style="background-image: url('assets/images/card_local.png');">
           <div class="buy-card__overlay"></div>
           <div class="buy-card__content">
             <h3 class="buy-card__title">Locales Comerciales</h3>
           </div>
         </a>
-        <a href="#" class="buy-card reveal reveal-delay-4" style="background-image: url('assets/images/card_terreno.png');">
+        <a href="#" class="buy-card reveal reveal-delay-4" data-type="terreno" style="background-image: url('assets/images/card_terreno.png');">
           <div class="buy-card__overlay"></div>
           <div class="buy-card__content">
             <h3 class="buy-card__title">Terrenos</h3>
           </div>
         </a>
-        <a href="#" class="buy-card reveal reveal-delay-5" style="background-image: url('assets/images/card_proyecto.jpg');">
+        <a href="#" class="buy-card reveal reveal-delay-5" data-type="proyecto" style="background-image: url('assets/images/card_proyecto.jpg');">
           <div class="buy-card__overlay"></div>
           <div class="buy-card__content">
             <h3 class="buy-card__title">Proyectos</h3>
@@ -77,6 +77,42 @@
       </div>
     </div>
   </section>
+
+  <!-- ========== PROPERTIES SECTION ========== -->
+  <section class="section" id="properties" style="display: none; padding-top: 0; padding-bottom: 80px;">
+    <div class="container">
+      <div class="section__header reveal" style="margin-bottom: 24px;">
+        <span class="section__tag">Búsqueda</span>
+        <h2 class="section__title" id="propertiesTitle">Propiedades Disponibles</h2>
+      </div>
+
+      <!-- Filters Bar -->
+      <div class="filters reveal" style="margin-bottom: var(--space-lg); padding-bottom: 12px; border-bottom: 1px solid var(--border-light);">
+        <div class="filters__controls" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <span class="filters__count" id="propertiesCount">0 inmuebles encontrados</span>
+          <select class="filters__select" id="sortSelect" aria-label="Ordenar por">
+            <option value="default">Destacados</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="area-desc">Mayor superficie</option>
+            <option value="newest">Más recientes</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Property Cards Grid -->
+      <div class="properties__grid" id="propertiesGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MODAL ========== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modalContent">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
 
   <!-- ========== FOOTER ========== -->
   <footer class="footer" id="footer">

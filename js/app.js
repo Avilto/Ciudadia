@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFilters();
   initScrollAnimations();
   initModal();
+  initBuyPage();
 });
 
 /* ---------- Navbar ---------- */
@@ -268,6 +269,54 @@ function initScrollAnimations() {
 
   document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
     observer.observe(el);
+  });
+}
+
+/* ---------- Buy Page Integration ---------- */
+function initBuyPage() {
+  const buyCardsContainer = document.querySelector('.buy-cards');
+  if (!buyCardsContainer) return;
+
+  const cards = buyCardsContainer.querySelectorAll('.buy-card');
+  const propertiesSection = document.getElementById('properties');
+
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Remove active class from all cards
+      cards.forEach(c => c.classList.remove('active-card'));
+      // Add active class to clicked card
+      card.classList.add('active-card');
+
+      const type = card.dataset.type;
+      Filters.set('type', type);
+      
+      // Show properties section
+      if (propertiesSection) {
+        propertiesSection.style.display = 'block';
+        
+        // Update section title depending on type
+        const titleEl = document.getElementById('propertiesTitle');
+        if (titleEl) {
+          const typeNames = {
+            casa: 'Casas Disponibles',
+            departamento: 'Departamentos Disponibles',
+            local: 'Locales Comerciales Disponibles',
+            terreno: 'Terrenos Disponibles',
+            proyecto: 'Proyectos y Desarrollos'
+          };
+          titleEl.textContent = typeNames[type] || 'Propiedades Disponibles';
+        }
+
+        renderProperties();
+        
+        // Scroll smoothly to properties section
+        setTimeout(() => {
+          propertiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    });
   });
 }
 

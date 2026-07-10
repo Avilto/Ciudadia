@@ -1613,6 +1613,17 @@ input, select {
   transform: translateX(4px);
 }
 
+.buy-card.active-card {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-glow);
+  border-color: #2563eb;
+  border-width: 2px;
+}
+
+.buy-card.active-card .buy-card__overlay {
+  background: linear-gradient(180deg, rgba(10, 25, 47, 0.2) 20%, rgba(10, 25, 47, 0.95) 100%);
+}
+
 .reveal-delay-5 { transition-delay: 0.5s; }
 
 /* Responsive layout for buy cards */
