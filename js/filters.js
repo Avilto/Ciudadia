@@ -8,7 +8,13 @@ const Filters = (() => {
     search: '',
     sort: 'default',
     priceMin: 0,
-    priceMax: Infinity
+    priceMax: Infinity,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    builtAreaMin: 0,
+    landAreaMin: 0,
+    amenity: 'todos'
   };
 
   /**
@@ -43,6 +49,36 @@ const Filters = (() => {
       p.price >= currentFilters.priceMin &&
       p.price <= currentFilters.priceMax
     );
+
+    // Filter by bedrooms
+    if (currentFilters.bedrooms > 0) {
+      results = results.filter(p => p.bedrooms >= currentFilters.bedrooms);
+    }
+
+    // Filter by bathrooms
+    if (currentFilters.bathrooms > 0) {
+      results = results.filter(p => p.bathrooms >= currentFilters.bathrooms);
+    }
+
+    // Filter by parking (cochera)
+    if (currentFilters.parking > 0) {
+      results = results.filter(p => p.parking >= currentFilters.parking);
+    }
+
+    // Filter by built area
+    if (currentFilters.builtAreaMin > 0) {
+      results = results.filter(p => (p.builtArea || p.area || 0) >= currentFilters.builtAreaMin);
+    }
+
+    // Filter by land area
+    if (currentFilters.landAreaMin > 0) {
+      results = results.filter(p => (p.landArea || p.area || 0) >= currentFilters.landAreaMin);
+    }
+
+    // Filter by amenity
+    if (currentFilters.amenity !== 'todos') {
+      results = results.filter(p => p.amenities && p.amenities.includes(currentFilters.amenity));
+    }
 
     // Sort
     switch (currentFilters.sort) {
@@ -95,7 +131,13 @@ const Filters = (() => {
       search: '',
       sort: 'default',
       priceMin: 0,
-      priceMax: Infinity
+      priceMax: Infinity,
+      bedrooms: 0,
+      bathrooms: 0,
+      parking: 0,
+      builtAreaMin: 0,
+      landAreaMin: 0,
+      amenity: 'todos'
     };
   }
 

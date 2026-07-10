@@ -1119,7 +1119,7 @@ input, select {
 
 .modal__features {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: var(--space-md);
   padding: var(--space-lg);
   background: var(--bg-glass);

@@ -104,18 +104,30 @@ function renderProperties() {
         <p class="property-card__location">📍 ${prop.location}</p>
         <div class="property-card__features">
           ${prop.bedrooms > 0 ? `
-            <span class="property-card__feature">
+            <span class="property-card__feature" title="Habitaciones">
               <span class="property-card__feature-icon">🛏️</span> ${prop.bedrooms} hab.
             </span>
           ` : ''}
           ${prop.bathrooms > 0 ? `
-            <span class="property-card__feature">
-              <span class="property-card__feature-icon">🚿</span> ${prop.bathrooms} baño${prop.bathrooms > 1 ? 's' : ''}
+            <span class="property-card__feature" title="Baños">
+              <span class="property-card__feature-icon">🚿</span> ${prop.bathrooms} bañ.
             </span>
           ` : ''}
-          <span class="property-card__feature">
-            <span class="property-card__feature-icon">📐</span> ${prop.area} m²
-          </span>
+          ${prop.builtArea > 0 ? `
+            <span class="property-card__feature" title="Área Construida">
+              <span class="property-card__feature-icon">📐</span> ${prop.builtArea} m² const.
+            </span>
+          ` : ''}
+          ${prop.landArea > 0 ? `
+            <span class="property-card__feature" title="Área de Terreno">
+              <span class="property-card__feature-icon">🌳</span> ${prop.landArea} m² terr.
+            </span>
+          ` : ''}
+          ${prop.parking > 0 ? `
+            <span class="property-card__feature" title="Estacionamientos / Cochera">
+              <span class="property-card__feature-icon">🚗</span> ${prop.parking} est.
+            </span>
+          ` : ''}
         </div>
       </div>
     </article>
@@ -215,14 +227,22 @@ function openModal(id) {
             <p class="modal__feature-label">Baños</p>
           </div>
         ` : ''}
-        <div class="modal__feature">
-          <p class="modal__feature-value">${prop.area}</p>
-          <p class="modal__feature-label">m²</p>
-        </div>
+        ${prop.builtArea > 0 ? `
+          <div class="modal__feature">
+            <p class="modal__feature-value">${prop.builtArea} m²</p>
+            <p class="modal__feature-label">Área Const.</p>
+          </div>
+        ` : ''}
+        ${prop.landArea > 0 ? `
+          <div class="modal__feature">
+            <p class="modal__feature-value">${prop.landArea} m²</p>
+            <p class="modal__feature-label">Área Terreno</p>
+          </div>
+        ` : ''}
         ${prop.parking > 0 ? `
           <div class="modal__feature">
             <p class="modal__feature-value">${prop.parking}</p>
-            <p class="modal__feature-label">Estacionamientos</p>
+            <p class="modal__feature-label">Cochera (Autos)</p>
           </div>
         ` : ''}
       </div>
@@ -231,6 +251,19 @@ function openModal(id) {
         <h3>Descripción</h3>
         <p>${prop.description}</p>
       </div>
+
+      ${prop.amenities && prop.amenities.length > 0 ? `
+        <div class="modal__amenities" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+          <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-primary);">Amenidades</h3>
+          <div class="modal__amenities-list" style="display: flex; flex-wrap: wrap; gap: 8px;">
+            ${prop.amenities.map(amenity => `
+              <span class="modal__amenity-tag" style="background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 20px; padding: 4px 12px; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">
+                ✨ ${amenity}
+              </span>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
 
       <div class="modal__contact">
         <button class="modal__contact-btn modal__contact-btn--primary">
@@ -280,23 +313,46 @@ function initBuyPage() {
   const cards = buyCardsContainer.querySelectorAll('.buy-card');
   const propertiesSection = document.getElementById('properties');
 
-  // Input listeners
+  // Input elements
   const searchInput = document.getElementById('searchInput');
+  const priceMaxSelect = document.getElementById('priceMaxSelect');
+  const bedroomsSelect = document.getElementById('bedroomsSelect');
+  const bathroomsSelect = document.getElementById('bathroomsSelect');
+  const parkingSelect = document.getElementById('parkingSelect');
+  const builtAreaSelect = document.getElementById('builtAreaSelect');
+  const landAreaSelect = document.getElementById('landAreaSelect');
+  const amenitySelect = document.getElementById('amenitySelect');
+
+  // Helper to bind a select element to a filter key
+  function bindSelectFilter(element, filterKey, isNumeric = true) {
+    if (element) {
+      element.addEventListener('change', () => {
+        let val;
+        if (isNumeric) {
+          val = element.value === 'Infinity' ? Infinity : parseFloat(element.value);
+        } else {
+          val = element.value;
+        }
+        Filters.set(filterKey, val);
+        renderProperties();
+      });
+    }
+  }
+
+  // Bind all filters
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       Filters.set('search', searchInput.value);
       renderProperties();
     });
   }
-
-  const priceMaxSelect = document.getElementById('priceMaxSelect');
-  if (priceMaxSelect) {
-    priceMaxSelect.addEventListener('change', () => {
-      const val = priceMaxSelect.value === 'Infinity' ? Infinity : parseFloat(priceMaxSelect.value);
-      Filters.set('priceMax', val);
-      renderProperties();
-    });
-  }
+  bindSelectFilter(priceMaxSelect, 'priceMax', true);
+  bindSelectFilter(bedroomsSelect, 'bedrooms', true);
+  bindSelectFilter(bathroomsSelect, 'bathrooms', true);
+  bindSelectFilter(parkingSelect, 'parking', true);
+  bindSelectFilter(builtAreaSelect, 'builtAreaMin', true);
+  bindSelectFilter(landAreaSelect, 'landAreaMin', true);
+  bindSelectFilter(amenitySelect, 'amenity', false);
 
   cards.forEach(card => {
     card.addEventListener('click', (e) => {
@@ -310,12 +366,18 @@ function initBuyPage() {
       const type = card.dataset.type;
       
       // Reset search filters when switching category
+      Filters.reset();
       Filters.set('type', type);
-      Filters.set('search', '');
-      Filters.set('priceMax', Infinity);
       
+      // Reset all UI elements
       if (searchInput) searchInput.value = '';
       if (priceMaxSelect) priceMaxSelect.value = 'Infinity';
+      if (bedroomsSelect) bedroomsSelect.value = '0';
+      if (bathroomsSelect) bathroomsSelect.value = '0';
+      if (parkingSelect) parkingSelect.value = '0';
+      if (builtAreaSelect) builtAreaSelect.value = '0';
+      if (landAreaSelect) landAreaSelect.value = '0';
+      if (amenitySelect) amenitySelect.value = 'todos';
       
       // Show properties section
       if (propertiesSection) {

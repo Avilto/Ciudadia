@@ -10,7 +10,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=16">
+  <link rel="stylesheet" href="css/styles.css?v=17">
 </head>
 <body>
 
@@ -87,6 +87,7 @@
 
       <!-- Horizontal Filter Bar -->
       <div class="filters-bar reveal" style="margin-bottom: var(--space-xl);">
+        <!-- Buscar -->
         <div class="filters-bar__group filters-bar__group--search">
           <label for="searchInput" class="filters-bar__label">Buscar</label>
           <div class="filters-bar__input-wrapper">
@@ -95,6 +96,7 @@
           </div>
         </div>
 
+        <!-- Precio Máximo -->
         <div class="filters-bar__group">
           <label for="priceMaxSelect" class="filters-bar__label">Precio Máximo</label>
           <select id="priceMaxSelect" class="filters-bar__select">
@@ -106,6 +108,7 @@
           </select>
         </div>
 
+        <!-- Ordenar por -->
         <div class="filters-bar__group">
           <label for="sortSelect" class="filters-bar__label">Ordenar por</label>
           <select id="sortSelect" class="filters-bar__select">
@@ -114,6 +117,81 @@
             <option value="price-desc">Precio: mayor a menor</option>
             <option value="area-desc">Mayor superficie</option>
             <option value="newest">Más recientes</option>
+          </select>
+        </div>
+
+        <!-- Habitaciones -->
+        <div class="filters-bar__group">
+          <label for="bedroomsSelect" class="filters-bar__label">Habitaciones</label>
+          <select id="bedroomsSelect" class="filters-bar__select">
+            <option value="0">Cualquier número</option>
+            <option value="1">1+ hab</option>
+            <option value="2">2+ hab</option>
+            <option value="3">3+ hab</option>
+            <option value="4">4+ hab</option>
+          </select>
+        </div>
+
+        <!-- Baños -->
+        <div class="filters-bar__group">
+          <label for="bathroomsSelect" class="filters-bar__label">Baños</label>
+          <select id="bathroomsSelect" class="filters-bar__select">
+            <option value="0">Cualquier número</option>
+            <option value="1">1+ baño</option>
+            <option value="2">2+ baños</option>
+            <option value="3">3+ baños</option>
+            <option value="4">4+ baños</option>
+          </select>
+        </div>
+
+        <!-- Cochera -->
+        <div class="filters-bar__group">
+          <label for="parkingSelect" class="filters-bar__label">Cochera</label>
+          <select id="parkingSelect" class="filters-bar__select">
+            <option value="0">Cualquier número</option>
+            <option value="1">1+ auto</option>
+            <option value="2">2+ autos</option>
+            <option value="3">3+ autos</option>
+          </select>
+        </div>
+
+        <!-- Área Construida -->
+        <div class="filters-bar__group">
+          <label for="builtAreaSelect" class="filters-bar__label">Área Const.</label>
+          <select id="builtAreaSelect" class="filters-bar__select">
+            <option value="0">Cualquier área</option>
+            <option value="50">50+ m²</option>
+            <option value="100">100+ m²</option>
+            <option value="200">200+ m²</option>
+            <option value="300">300+ m²</option>
+          </select>
+        </div>
+
+        <!-- Área Terreno -->
+        <div class="filters-bar__group">
+          <label for="landAreaSelect" class="filters-bar__label">Área Terreno</label>
+          <select id="landAreaSelect" class="filters-bar__select">
+            <option value="0">Cualquier área</option>
+            <option value="100">100+ m²</option>
+            <option value="300">300+ m²</option>
+            <option value="500">500+ m²</option>
+            <option value="1000">1000+ m²</option>
+          </select>
+        </div>
+
+        <!-- Amenidades -->
+        <div class="filters-bar__group">
+          <label for="amenitySelect" class="filters-bar__label">Amenidades</label>
+          <select id="amenitySelect" class="filters-bar__select">
+            <option value="todos">Todas</option>
+            <option value="Alberca">Alberca</option>
+            <option value="Gimnasio">Gimnasio</option>
+            <option value="Seguridad 24/7">Seguridad 24/7</option>
+            <option value="Jardín">Jardín</option>
+            <option value="Terraza privada">Terraza privada</option>
+            <option value="Roof garden">Roof garden</option>
+            <option value="Balcón">Balcón</option>
+            <option value="Chimenea">Chimenea</option>
           </select>
         </div>
       </div>
