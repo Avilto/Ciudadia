@@ -1539,6 +1539,24 @@ input, select {
   margin-top: var(--space-sm);
 }
 
+.buy-cards--rent {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 960px;
+  margin: var(--space-sm) auto 0;
+}
+
+@media (max-width: 768px) {
+  .buy-cards--rent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .buy-cards--rent {
+    grid-template-columns: 1fr;
+  }
+}
+
 .buy-card {
   position: relative;
   height: 450px;
