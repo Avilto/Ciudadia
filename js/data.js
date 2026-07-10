@@ -19,8 +19,13 @@ const properties = [
     builtArea: 210,
     landArea: 0,
     amenities: ["Gimnasio", "Seguridad 24/7", "Roof garden", "Terraza privada"],
-    description: "Espectacular penthouse en la zona más exclusiva de San Isidro. Cuenta con acabados de lujo, pisos de mármol italiano, cocina integral equipada con electrodomésticos de alta gama y terraza privada con vista panorámica a la ciudad. Amenidades del edificio incluyen gimnasio, roof garden y seguridad 24/7.",
+    description: "Espectacular penthouse en la zona más exclusiva de San Isidro. Cuenta con acabados de lujo, pisos de marcol italiano, cocina integral equipada con electrodomésticos de alta gama y terraza privada con vista panorámica a la ciudad. Amenidades del edificio incluyen gimnasio, roof garden y seguridad 24/7.",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop"
+    ],
     featured: true,
     isNew: true,
     operation: "comprar"
@@ -43,6 +48,11 @@ const properties = [
     amenities: ["Alberca", "Jardín", "Seguridad 24/7", "Casa club", "Campo de golf"],
     description: "Hermosa casa moderna con diseño arquitectónico de vanguardia. Amplios espacios, jardín con alberca, cocina gourmet, sala de TV, estudio y cuarto de servicio. Ubicada en fraccionamiento privado con campo de golf, casa club y vigilancia.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=400&fit=crop"
+    ],
     featured: true,
     isNew: false,
     operation: "comprar"
@@ -65,6 +75,11 @@ const properties = [
     amenities: ["Seguridad 24/7", "Techos de doble altura", "Balcón"],
     description: "Loft de diseño industrial con techos altos de doble altura, muros de ladrillo expuesto y grandes ventanales. Ubicado en el corazón del distrito de Barranco, a pasos de restaurantes, galerías y vida cultural. Ideal para jóvenes profesionales.",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: true,
     operation: "comprar"
@@ -87,6 +102,11 @@ const properties = [
     amenities: ["Acceso a playa", "Seguridad 24/7", "Servicios subterráneos"],
     description: "Terreno premium con frente de playa de 25 metros lineales. Ubicación privilegiada en zona de alto crecimiento turístico en Máncora. Ideal para desarrollo residencial o boutique hotel. Cuenta con todos los servicios y acceso pavimentado.",
     image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: false,
     operation: "comprar"
@@ -109,6 +129,11 @@ const properties = [
     amenities: ["Seguridad 24/7", "Aire acondicionado", "Estacionamiento de clientes"],
     description: "Local comercial en planta baja de plaza comercial de alto tráfico en San Isidro. Excelente visibilidad, acabados de primera, aire acondicionado central y estacionamiento para clientes. Ideal para restaurante, boutique o showroom.",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: false,
     operation: "comprar"
@@ -131,6 +156,11 @@ const properties = [
     amenities: ["Alberca", "Jardín", "Seguridad 24/7", "Gimnasio", "Sala de cine", "Terraza privada"],
     description: "Impresionante villa de lujo en la zona más exclusiva de Surco. Diseño contemporáneo con materiales de importación, alberca infinity, jardín con áreas lounge, cava de vinos, sala de cine y sistema domótico integral. Vista espectacular a la ciudad de Lima.",
     image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=400&fit=crop"
+    ],
     featured: true,
     isNew: false,
     operation: "comprar"
@@ -153,6 +183,11 @@ const properties = [
     amenities: ["Jardín común", "Seguridad 24/7", "Balcón"],
     description: "Acogedor departamento cerca de la Universidad Católica. Remodelado con diseño moderno, excelente iluminación natural y balcón con vista a áreas verdes. Cerca de transporte público, centros comerciales y áreas culturales.",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: true,
     operation: "comprar"
@@ -175,6 +210,11 @@ const properties = [
     amenities: ["Alberca", "Jardín", "Patio central"],
     description: "Magnífica casa colonial completamente restaurada con respeto a su arquitectura original en el Cusco. Altos techos con vigas de madera, patio central con pileta, y alberca en jardín trasero. Combinación perfecta de historia y confort moderno.",
     image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=400&fit=crop"
+    ],
     featured: true,
     isNew: false,
     operation: "comprar"
@@ -197,6 +237,11 @@ const properties = [
     amenities: ["Uso de suelo mixto", "Servicios a pie de lote"],
     description: "Gran terreno con uso de suelo mixto en zona de altísimo crecimiento. Ideal para desarrollo de condominios o casa de playa. Ubicación estratégica sobre avenida principal, a minutos del Boulevard de Asia y la playa.",
     image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=400&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: false,
     operation: "comprar"
@@ -219,6 +264,11 @@ const properties = [
     amenities: ["Alberca", "Gimnasio", "Seguridad 24/7", "Spa", "Business center", "Valet parking"],
     description: "Elegante suite ejecutiva en torre de lujo sobre Av. Javier Prado en San Isidro. Acabados de primer nivel, piso de madera, cocina italiana y vista icónica al centro financiero. Amenidades: alberca, gym, spa, business center, concierge y valet parking.",
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: true,
     operation: "comprar"
@@ -241,6 +291,11 @@ const properties = [
     amenities: ["Doble frente", "Seguridad 24/7"],
     description: "Excelente local esquinero con doble frente y alta visibilidad en avenida principal del centro de Arequipa. Zona de alto tráfico de peatones y vehículos. Ideal para sucursal bancaria, farmacia o tienda de conveniencia.",
     image: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: false,
     operation: "comprar"
@@ -263,6 +318,11 @@ const properties = [
     amenities: ["Jardín", "Terraza privada", "Chimenea", "Muelle privado", "Seguridad 24/7"],
     description: "Espectacular residencia de autor rodeada de naturaleza con vista al río en Lunahuaná. Arquitectura orgánica que integra espacios interiores y exteriores. Materiales nobles, chimenea, sala de estar con doble altura, terraza panorámica y muelle privado.",
     image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop"
+    ],
     featured: true,
     isNew: false,
     operation: "comprar"
@@ -287,6 +347,11 @@ const properties = [
     amenities: ["Gimnasio", "Seguridad 24/7", "Balcón", "Ascensor"],
     description: "Excelente departamento amoblado en el corazón de Miraflores. A pocas cuadras del Parque Kennedy y Larcomar. Sala comedor iluminada, cocina con línea blanca y cochera techada.",
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop"
+    ],
     featured: true,
     isNew: true,
     operation: "alquilar"
@@ -309,6 +374,11 @@ const properties = [
     amenities: ["Jardín", "Seguridad 24/7", "Terraza privada", "Cochera"],
     description: "Espaciosa casa en alquiler en zona tranquila de La Molina. Cuenta con amplio jardín, terraza ideal para parrilladas, sala de estar familiar y seguridad privada permanente.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=400&fit=crop"
+    ],
     featured: true,
     isNew: false,
     operation: "alquilar"
@@ -331,6 +401,11 @@ const properties = [
     amenities: ["Seguridad 24/7", "Roof garden", "Balcón", "Lavandería"],
     description: "Loft moderno de diseño artístico en Barranco. Totalmente amoblado y decorado. Ideal para solteros o parejas. Áreas comunes incluyen terraza panorámica, zona de parrilla y piscina.",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: true,
     operation: "alquilar"
@@ -353,6 +428,11 @@ const properties = [
     amenities: ["Seguridad 24/7", "Aire acondicionado", "Estacionamiento de visitas"],
     description: "Oficina implementada lista para mudarse en el centro financiero de San Isidro. Divisiones de vidrio templado, luminarias, aire acondicionado central, comedor y 2 cocheras en sótano.",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: false,
     operation: "alquilar"
@@ -375,6 +455,11 @@ const properties = [
     amenities: ["Seguridad 24/7", "Cerco perimétrico", "Portón de ingreso"],
     description: "Excelente terreno plano e independizado en alquiler sobre la Panamericana Sur en Asia. Ideal para depósito, taller mecánico, almacén de maquinarias o showroom comercial.",
     image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: false,
     operation: "alquilar"
@@ -397,6 +482,11 @@ const properties = [
     amenities: ["Seguridad 24/7", "Balcón", "Jardín común"],
     description: "Hermoso departamento de estreno con vista directa a parque en Surco. Acabados de primera, cocina tipo kitchenette con tablero de granito y dormitorios amplios con closets completos.",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: true,
     operation: "alquilar"
@@ -419,6 +509,11 @@ const properties = [
     amenities: ["Doble frente", "Seguridad 24/7", "Terraza delantera"],
     description: "Local esquinero de estreno ideal para restaurant o cafetería de marca en zona turística de Arequipa. Salón amplio de techos altos, dos baños independientes para clientes y cocina equipada.",
     image: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&h=400&fit=crop"
+    ],
     featured: false,
     isNew: false,
     operation: "alquilar"
@@ -441,6 +536,11 @@ const properties = [
     amenities: ["Alberca", "Jardín", "Chimenea", "Cochera"],
     description: "Bungalow amoblado en condominio privado de Lunahuaná. Clima sol todo el año, piscina compartida, terraza con BBQ y salida directa al río para deportes de aventura.",
     image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=400&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop"
+    ],
     featured: true,
     isNew: false,
     operation: "alquilar"

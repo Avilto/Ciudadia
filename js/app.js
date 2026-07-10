@@ -91,50 +91,131 @@ function renderProperties() {
     return;
   }
 
-  grid.innerHTML = filtered.map((prop, i) => `
-    <article class="property-card reveal reveal-delay-${(i % 4) + 1}" data-id="${prop.id}" id="property-${prop.id}">
-      <div class="property-card__image">
-        <img class="property-card__img" src="${prop.image}" alt="${prop.title}" loading="lazy">
-        <span class="property-card__badge">${getTypeLabel(prop.type)}</span>
-        <button class="property-card__favorite" aria-label="Agregar a favoritos" data-fav="${prop.id}">♡</button>
-      </div>
-      <div class="property-card__body">
-        <p class="property-card__price">${formatPrice(prop.price, prop.operation)}</p>
-        <h3 class="property-card__title">${prop.title}</h3>
-        <p class="property-card__location">📍 ${prop.location}</p>
-        <div class="property-card__features">
-          ${prop.bedrooms > 0 ? `
-            <span class="property-card__feature" title="Habitaciones">
-              <span class="property-card__feature-icon">🛏️</span> ${prop.bedrooms} ${prop.bedrooms === 1 ? 'Habitación' : 'Habitaciones'}
-            </span>
-          ` : ''}
-          ${prop.bathrooms > 0 ? `
-            <span class="property-card__feature" title="Baños">
-              <span class="property-card__feature-icon">🚿</span> ${prop.bathrooms} ${prop.bathrooms === 1 ? 'Baño' : 'Baños'}
-            </span>
-          ` : ''}
-          ${prop.builtArea > 0 ? `
-            <span class="property-card__feature" title="Área Construida">
-              <span class="property-card__feature-icon">📐</span> ${prop.builtArea} m² Construidos
-            </span>
-          ` : ''}
-          ${prop.landArea > 0 ? `
-            <span class="property-card__feature" title="Área de Terreno">
-              <span class="property-card__feature-icon">🌳</span> ${prop.landArea} m² de Terreno
-            </span>
-          ` : ''}
+  grid.innerHTML = filtered.map((prop, i) => {
+    // Generate carousel slides HTML
+    const slidesHtml = prop.images && prop.images.length > 0 
+      ? prop.images.map((imgUrl, index) => `
+          <img class="property-card__img ${index === 0 ? 'active' : ''}" src="${imgUrl}" alt="${prop.title}" loading="lazy">
+        `).join('')
+      : `<img class="property-card__img active" src="${prop.image}" alt="${prop.title}" loading="lazy">`;
+
+    // Generate carousel dots HTML
+    const dotsHtml = prop.images && prop.images.length > 1
+      ? `
+        <div class="property-card__carousel-dots">
+          ${prop.images.map((_, index) => `
+            <span class="property-card__carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></span>
+          `).join('')}
         </div>
-      </div>
-    </article>
-  `).join('');
+      `
+      : '';
+
+    // Prev / Next button HTML
+    const navButtonsHtml = prop.images && prop.images.length > 1
+      ? `
+        <button class="property-card__carousel-btn property-card__carousel-btn--prev" aria-label="Anterior">❮</button>
+        <button class="property-card__carousel-btn property-card__carousel-btn--next" aria-label="Siguiente">❯</button>
+      `
+      : '';
+
+    return `
+      <article class="property-card reveal reveal-delay-${(i % 4) + 1}" data-id="${prop.id}" id="property-${prop.id}">
+        <div class="property-card__image">
+          <div class="property-card__slides">
+            ${slidesHtml}
+          </div>
+          ${navButtonsHtml}
+          ${dotsHtml}
+          <span class="property-card__badge">${getTypeLabel(prop.type)}</span>
+          <button class="property-card__favorite" aria-label="Agregar a favoritos" data-fav="${prop.id}">♡</button>
+        </div>
+        <div class="property-card__body">
+          <p class="property-card__price">${formatPrice(prop.price, prop.operation)}</p>
+          <h3 class="property-card__title">${prop.title}</h3>
+          <p class="property-card__location">📍 ${prop.location}</p>
+          <div class="property-card__features">
+            ${prop.bedrooms > 0 ? `
+              <span class="property-card__feature" title="Habitaciones">
+                <span class="property-card__feature-icon">🛏️</span> ${prop.bedrooms} ${prop.bedrooms === 1 ? 'Habitación' : 'Habitaciones'}
+              </span>
+            ` : ''}
+            ${prop.bathrooms > 0 ? `
+              <span class="property-card__feature" title="Baños">
+                <span class="property-card__feature-icon">🚿</span> ${prop.bathrooms} ${prop.bathrooms === 1 ? 'Baño' : 'Baños'}
+              </span>
+            ` : ''}
+            ${prop.builtArea > 0 ? `
+              <span class="property-card__feature" title="Área Construida">
+                <span class="property-card__feature-icon">📐</span> ${prop.builtArea} m² Construidos
+              </span>
+            ` : ''}
+            ${prop.landArea > 0 ? `
+              <span class="property-card__feature" title="Área de Terreno">
+                <span class="property-card__feature-icon">🌳</span> ${prop.landArea} m² de Terreno
+              </span>
+            ` : ''}
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
 
   // Re-init scroll animations for new elements
   initScrollAnimations();
 
+  // Bind carousel events for each card
+  grid.querySelectorAll('.property-card').forEach(card => {
+    const images = card.querySelectorAll('.property-card__img');
+    const dots = card.querySelectorAll('.property-card__carousel-dot');
+    const prevBtn = card.querySelector('.property-card__carousel-btn--prev');
+    const nextBtn = card.querySelector('.property-card__carousel-btn--next');
+
+    if (images.length <= 1) return;
+
+    let currentIndex = 0;
+
+    const showSlide = (index) => {
+      images.forEach(img => img.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      images[index].classList.add('active');
+      if (dots[index]) dots[index].classList.add('active');
+    };
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent opening details modal or triggering card click!
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showSlide(currentIndex);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent opening details modal or triggering card click!
+        currentIndex = (currentIndex + 1) % images.length;
+        showSlide(currentIndex);
+      });
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent opening details modal or triggering card click!
+        const index = parseInt(dot.dataset.index);
+        currentIndex = index;
+        showSlide(currentIndex);
+      });
+    });
+  });
+
   // Card click → open modal
   grid.querySelectorAll('.property-card').forEach(card => {
     card.addEventListener('click', (e) => {
-      if (e.target.closest('.property-card__favorite')) return;
+      if (
+        e.target.closest('.property-card__favorite') ||
+        e.target.closest('.property-card__carousel-btn') ||
+        e.target.closest('.property-card__carousel-dot')
+      ) return;
       const id = parseInt(card.dataset.id);
       openModal(id);
     });

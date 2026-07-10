@@ -774,15 +774,99 @@ input, select {
   overflow: hidden;
 }
 
+.property-card__slides {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
 .property-card__img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow);
+  opacity: 0;
+  transition: opacity var(--transition-base), transform var(--transition-slow);
+  z-index: 1;
 }
 
-.property-card:hover .property-card__img {
+.property-card__img.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.property-card:hover .property-card__img.active {
   transform: scale(1.08);
+}
+
+/* Carousel Buttons */
+.property-card__carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-fast);
+  opacity: 0;
+}
+
+.property-card__image:hover .property-card__carousel-btn {
+  opacity: 1;
+}
+
+.property-card__carousel-btn:hover {
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+  border-color: var(--accent-gold);
+}
+
+.property-card__carousel-btn--prev {
+  left: 10px;
+}
+
+.property-card__carousel-btn--next {
+  right: 10px;
+}
+
+/* Carousel Dots */
+.property-card__carousel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+  background: rgba(15, 23, 42, 0.25);
+  backdrop-filter: blur(4px);
+  padding: 4px 8px;
+  border-radius: 10px;
+}
+
+.property-card__carousel-dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.property-card__carousel-dot.active {
+  background: #ffffff;
+  width: 14px;
 }
 
 .property-card__badge {
