@@ -322,6 +322,44 @@ function updateDistritoDropdown(selectedDept) {
     districts.map(d => `<option value="${d}">${d}</option>`).join('');
 }
 
+/* ---------- Adjust Filters For Category ---------- */
+function adjustFiltersForCategory(type) {
+  const groups = {
+    departamento: document.getElementById('group-departamento'),
+    distrito: document.getElementById('group-distrito'),
+    price: document.getElementById('group-price'),
+    sort: document.getElementById('group-sort'),
+    bedrooms: document.getElementById('group-bedrooms'),
+    bathrooms: document.getElementById('group-bathrooms'),
+    parking: document.getElementById('group-parking'),
+    builtArea: document.getElementById('group-builtArea'),
+    landArea: document.getElementById('group-landArea'),
+    amenities: document.getElementById('group-amenities')
+  };
+
+  // Helper to toggle visibility
+  const toggle = (el, show) => {
+    if (el) el.style.display = show ? 'flex' : 'none';
+  };
+
+  // Default: show all
+  Object.values(groups).forEach(el => toggle(el, true));
+
+  // Apply exceptions based on property type
+  if (type === 'departamento') {
+    toggle(groups.landArea, false);
+  } else if (type === 'terreno') {
+    toggle(groups.bedrooms, false);
+    toggle(groups.bathrooms, false);
+    toggle(groups.parking, false);
+    toggle(groups.builtArea, false);
+    toggle(groups.amenities, false);
+  } else if (type === 'local') {
+    toggle(groups.bedrooms, false);
+    toggle(groups.landArea, false);
+  }
+}
+
 /* ---------- Buy Page Integration ---------- */
 function initBuyPage() {
   const buyCardsContainer = document.querySelector('.buy-cards');
@@ -406,6 +444,9 @@ function initBuyPage() {
       // Reset search filters when switching category
       Filters.reset();
       Filters.set('type', type);
+      
+      // Adjust filters visibility dynamically based on category
+      adjustFiltersForCategory(type);
       
       // Reset all UI elements
       if (departamentoSelect) departamentoSelect.value = 'todos';
