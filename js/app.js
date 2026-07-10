@@ -336,7 +336,6 @@ function initBuyPage() {
   const propertiesSection = document.getElementById('properties');
 
   // Input elements
-  const searchInput = document.getElementById('searchInput');
   const departamentoSelect = document.getElementById('departamentoSelect');
   const distritoSelect = document.getElementById('distritoSelect');
   const priceMaxSelect = document.getElementById('priceMaxSelect');
@@ -367,13 +366,6 @@ function initBuyPage() {
   }
 
   // Bind all filters
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      Filters.set('search', searchInput.value);
-      renderProperties();
-    });
-  }
-
   if (departamentoSelect) {
     departamentoSelect.addEventListener('change', () => {
       const deptVal = departamentoSelect.value;
@@ -421,7 +413,6 @@ function initBuyPage() {
       Filters.set('type', type);
       
       // Reset all UI elements
-      if (searchInput) searchInput.value = '';
       if (departamentoSelect) departamentoSelect.value = 'todos';
       updateDistritoDropdown('todos');
       if (distritoSelect) distritoSelect.value = 'todos';
