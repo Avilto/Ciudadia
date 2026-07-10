@@ -157,7 +157,7 @@ function initFilters() {
   });
 
   // Sort select
-  const sortSelect = document.getElementById('sortSelect');
+
   sortSelect.addEventListener('change', () => {
     Filters.set('sort', sortSelect.value);
     renderProperties();

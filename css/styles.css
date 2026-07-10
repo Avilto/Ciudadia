@@ -182,22 +182,22 @@ input, select {
   top: 0;
   left: 0;
   right: 0;
-  height: 12vh;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  background: #ffffff;
-  border-bottom: 3px solid #cce2ff;
-  box-shadow: 0 4px 20px rgba(204, 226, 255, 0.8);
+  background: #0a192f;
+  border-bottom: 3px solid #1e3a8a;
+  box-shadow: 0 4px 20px rgba(10, 25, 47, 0.8);
   transition: height var(--transition-base), background var(--transition-base), box-shadow var(--transition-base);
 }
 
 .navbar.scrolled {
-  height: 72px;
-  background: #ffffff;
-  border-bottom: 3px solid #cce2ff;
-  box-shadow: 0 4px 20px rgba(204, 226, 255, 0.8);
+  height: 54px;
+  background: #0a192f;
+  border-bottom: 3px solid #1e3a8a;
+  box-shadow: 0 4px 20px rgba(10, 25, 47, 0.8);
 }
 
 .navbar .container {
@@ -208,7 +208,7 @@ input, select {
 
 .navbar__logo {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: -0.5px;
   display: flex;
@@ -217,26 +217,26 @@ input, select {
   padding: 6px 14px;
   border-radius: 8px;
   transition: all var(--transition-fast);
-  color: var(--accent-gold);
+  color: #ffffff;
 }
 
 .navbar__logo:hover {
-  color: var(--accent-blue);
-  background: rgba(37, 99, 235, 0.08);
+  color: #0a192f;
+  background: #ffffff;
 }
 
 .navbar__logo-text {
   font-family: var(--font-heading);
-  font-size: 1.95rem;
-  font-weight: 800;
+  font-size: 2.1rem;
+  font-weight: 700;
   letter-spacing: -0.5px;
-  color: #2563eb;
+  color: #ffffff;
   display: inline-block;
   line-height: 1;
   text-shadow: 
     0.5px 0.5px 0px #1d4ed8,
     1px 1px 0px #1e40af,
-    1.5px 1.5px 2px rgba(0, 0, 0, 0.15) !important;
+    1.5px 1.5px 2px rgba(0, 0, 0, 0.5) !important;
 }
 
 .navbar__logo-text .i-stem {
@@ -327,7 +327,7 @@ input, select {
 .navbar__link {
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--accent-blue);
+  color: #ffffff;
   padding: 6px 14px;
   border-radius: 8px;
   transition: all var(--transition-fast);
@@ -335,8 +335,8 @@ input, select {
 }
 
 .navbar__link:hover {
-  color: var(--accent-gold);
-  background: rgba(37, 99, 235, 0.08);
+  color: #0a192f;
+  background: #ffffff;
 }
 
 .navbar__cta {
@@ -346,12 +346,14 @@ input, select {
   font-weight: 600;
   font-size: 1.02rem;
   border-radius: var(--radius-sm);
-  transition: transform var(--transition-spring), box-shadow var(--transition-base);
+  transition: all var(--transition-base);
 }
 
 .navbar__cta:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-glow);
+  background: #ffffff;
+  color: #0a192f;
 }
 
 /* Mobile Menu Toggle */
@@ -398,7 +400,7 @@ input, select {
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  transform: translateY(-8vh);
+  transform: translateY(-12vh);
 }
 
 .hero__logo-container {
@@ -409,7 +411,7 @@ input, select {
 
 .hero__logo-text {
   font-family: var(--font-heading);
-  font-size: clamp(4.5rem, 14vw, 8.8rem);
+  font-size: clamp(4rem, 12vw, 7.5rem);
   font-weight: 700;
   letter-spacing: -0.5px;
   color: #2563eb;
@@ -437,6 +439,32 @@ input, select {
   line-height: 1.6;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
   opacity: 0.95;
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+
+.hero__btn {
+  padding: 14px 32px;
+  background: #0a192f;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+}
+
+.hero__btn:hover {
+  background: #ffffff;
+  color: #0a192f;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 
@@ -1486,4 +1514,114 @@ input, select {
   font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.7;
+}
+
+/* ---------- Buy Section ---------- */
+.buy-section {
+  padding: 160px 0 100px;
+  background: var(--bg-color);
+  min-height: 100vh;
+}
+
+.buy-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.buy-card {
+  position: relative;
+  height: 450px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-md);
+}
+
+.buy-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(10, 25, 47, 0.1) 40%, rgba(10, 25, 47, 0.85) 100%);
+  transition: all var(--transition-base);
+  z-index: 1;
+}
+
+.buy-card__content {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  align-items: flex-start;
+  text-align: left;
+}
+
+.buy-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.buy-card__action {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #60a5fa;
+  opacity: 0.85;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.buy-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.buy-card:hover .buy-card__overlay {
+  background: linear-gradient(180deg, rgba(10, 25, 47, 0.2) 20%, rgba(10, 25, 47, 0.95) 100%);
+}
+
+.buy-card:hover .buy-card__action {
+  opacity: 1;
+  color: #93c5fd;
+  transform: translateX(4px);
+}
+
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* Responsive layout for buy cards */
+@media (max-width: 1024px) {
+  .buy-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .buy-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .buy-cards {
+    grid-template-columns: 1fr;
+  }
 }
