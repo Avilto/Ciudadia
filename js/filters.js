@@ -5,6 +5,7 @@
 const Filters = (() => {
   let currentFilters = {
     type: 'todos',
+    operation: 'comprar',
     search: '',
     sort: 'default',
     priceMin: 0,
@@ -26,6 +27,11 @@ const Filters = (() => {
    */
   function apply(data) {
     let results = [...data];
+
+    // Filter by operation
+    if (currentFilters.operation) {
+      results = results.filter(p => p.operation === currentFilters.operation);
+    }
 
     // Filter by type
     if (currentFilters.type !== 'todos') {
@@ -139,7 +145,8 @@ const Filters = (() => {
    */
   function reset() {
     currentFilters = {
-      type: 'todos',
+      type: currentFilters.type,
+      operation: currentFilters.operation,
       search: '',
       sort: 'default',
       priceMin: 0,

@@ -99,7 +99,7 @@ function renderProperties() {
         <button class="property-card__favorite" aria-label="Agregar a favoritos" data-fav="${prop.id}">♡</button>
       </div>
       <div class="property-card__body">
-        <p class="property-card__price">${formatPrice(prop.price)}</p>
+        <p class="property-card__price">${formatPrice(prop.price, prop.operation)}</p>
         <h3 class="property-card__title">${prop.title}</h3>
         <p class="property-card__location">📍 ${prop.location}</p>
         <div class="property-card__features">
@@ -205,7 +205,7 @@ function openModal(id) {
       <button class="modal__close" onclick="closeModal()" aria-label="Cerrar">✕</button>
     </div>
     <div class="modal__body">
-      <p class="modal__price">${formatPrice(prop.price)}</p>
+      <p class="modal__price">${formatPrice(prop.price, prop.operation)}</p>
       <h2 class="modal__title">${prop.title}</h2>
       <p class="modal__location">📍 ${prop.location}</p>
 
@@ -364,6 +364,12 @@ function adjustFiltersForCategory(type) {
 function initBuyPage() {
   const buyCardsContainer = document.querySelector('.buy-cards');
   if (!buyCardsContainer) return;
+
+  // Set operation type from body tag
+  const pageType = document.body.dataset.page; // 'comprar' or 'alquilar'
+  if (pageType) {
+    Filters.set('operation', pageType);
+  }
 
   const cards = buyCardsContainer.querySelectorAll('.buy-card');
   const propertiesSection = document.getElementById('properties');

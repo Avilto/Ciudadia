@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ciudadia — ¿Qué deseas comprar? Encuentra tu hogar ideal.">
-  <title>Comprar — Ciudadia</title>
+  <meta name="description" content="Encuentra las mejores opciones para alquilar casas, departamentos, terrenos y locales comerciales en el Perú con Ciudadia.">
+  <title>Alquilar Propiedades — Ciudadia</title>
 
-  <!-- Favicon -->
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css?v=24">
 </head>
-<body data-page="comprar">
+<body data-page="alquilar">
 
-  <!-- ========== NAVBAR ========== -->
+  <!-- ========== HEADER / NAVBAR ========== -->
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="index.html" class="navbar__logo">
@@ -22,14 +26,14 @@
       </a>
 
       <div class="navbar__links" id="navLinks">
-        <a href="comprar.html" class="navbar__link active" style="background: rgba(37, 99, 235, 0.08); color: var(--accent-gold);">Comprar</a>
-        <a href="alquilar.html" class="navbar__link">Alquilar</a>
+        <a href="comprar.html" class="navbar__link">Comprar</a>
+        <a href="alquilar.html" class="navbar__link active" style="background: rgba(37, 99, 235, 0.08); color: var(--accent-gold);">Alquilar</a>
         <a href="about.html" class="navbar__link">Nosotros</a>
         <a href="services.html" class="navbar__link">Servicios</a>
         <a href="index.html#cta" class="navbar__cta" id="navCta">Cotizar</a>
       </div>
 
-      <button class="navbar__toggle" id="navToggle" aria-label="Menú">
+      <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation">
         <span></span>
         <span></span>
         <span></span>
@@ -37,58 +41,74 @@
     </div>
   </nav>
 
-  <!-- ========== BUY SECTION ========== -->
-  <section class="buy-section section">
-    <div class="container">
-      <div class="section__header reveal">
-        <h2 class="section__title">¿Qué deseas comprar?</h2>
-      </div>
+  <!-- ========== HERO SECTION ========== -->
+  <header class="buy-hero">
+    <div class="container text-center">
+      <h1 class="buy-hero__title">¿Qué deseas alquilar?</h1>
+    </div>
+  </header>
 
+  <!-- ========== CATEGORY CARDS ========== -->
+  <section class="buy-cards-section">
+    <div class="container">
       <div class="buy-cards">
-        <a href="#" class="buy-card reveal reveal-delay-1" data-type="casa" style="background-image: url('assets/images/card_casa.png');">
-          <div class="buy-card__overlay"></div>
-          <div class="buy-card__content">
-            <h3 class="buy-card__title">Casas</h3>
+        <!-- Casa -->
+        <a href="#" class="buy-card reveal" data-type="casa">
+          <div class="buy-card__icon-wrapper">
+            <span class="buy-card__icon">🏠</span>
           </div>
+          <h3 class="buy-card__title">Casas</h3>
+          <p class="buy-card__desc">Amplias y cómodas residencias familiares.</p>
         </a>
-        <a href="#" class="buy-card reveal reveal-delay-2" data-type="departamento" style="background-image: url('assets/images/card_depto.jpg'); background-position: right center;">
-          <div class="buy-card__overlay"></div>
-          <div class="buy-card__content">
-            <h3 class="buy-card__title">Departamentos</h3>
+
+        <!-- Departamento -->
+        <a href="#" class="buy-card reveal" data-type="departamento">
+          <div class="buy-card__icon-wrapper">
+            <span class="buy-card__icon">🏢</span>
           </div>
+          <h3 class="buy-card__title">Departamentos</h3>
+          <p class="buy-card__desc">Luminosos departamentos con excelente ubicación.</p>
         </a>
-        <a href="#" class="buy-card reveal reveal-delay-3" data-type="local" style="background-image: url('assets/images/card_local.png');">
-          <div class="buy-card__overlay"></div>
-          <div class="buy-card__content">
-            <h3 class="buy-card__title">Locales Comerciales</h3>
+
+        <!-- Terreno -->
+        <a href="#" class="buy-card reveal" data-type="terreno">
+          <div class="buy-card__icon-wrapper">
+            <span class="buy-card__icon">🌳</span>
           </div>
+          <h3 class="buy-card__title">Terrenos</h3>
+          <p class="buy-card__desc">Lotes listos para construir el hogar de tus sueños.</p>
         </a>
-        <a href="#" class="buy-card reveal reveal-delay-4" data-type="terreno" style="background-image: url('assets/images/card_terreno.png');">
-          <div class="buy-card__overlay"></div>
-          <div class="buy-card__content">
-            <h3 class="buy-card__title">Terrenos</h3>
+
+        <!-- Local -->
+        <a href="#" class="buy-card reveal" data-type="local">
+          <div class="buy-card__icon-wrapper">
+            <span class="buy-card__icon">🏪</span>
           </div>
+          <h3 class="buy-card__title">Locales</h3>
+          <p class="buy-card__desc">Espacios comerciales ideales para tu negocio o marca.</p>
         </a>
-        <a href="#" class="buy-card reveal reveal-delay-5" data-type="proyecto" style="background-image: url('assets/images/card_proyecto.jpg');">
-          <div class="buy-card__overlay"></div>
-          <div class="buy-card__content">
-            <h3 class="buy-card__title">Proyectos</h3>
+
+        <!-- Proyecto -->
+        <a href="#" class="buy-card reveal" data-type="proyecto">
+          <div class="buy-card__icon-wrapper">
+            <span class="buy-card__icon">🏗️</span>
           </div>
+          <h3 class="buy-card__title">Proyectos</h3>
+          <p class="buy-card__desc">Desarrollos nuevos y condominios en preventa.</p>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ========== PROPERTIES SECTION ========== -->
-  <section class="section" id="properties" style="display: none; padding-top: 0; padding-bottom: 80px;">
-    <div class="container">
-      <div class="section__header reveal" style="margin-bottom: 28px; text-align: center;">
+  <!-- ========== PROPERTIES LIST ========== -->
+  <section class="properties-section" id="properties" style="display: none; padding-top: var(--space-xl);">
+    <div class="container text-center">
+      <div class="properties__header reveal" style="margin-bottom: var(--space-lg);">
         <h2 class="section__title" id="propertiesTitle">Propiedades Disponibles</h2>
       </div>
 
       <!-- Horizontal Filter Bar -->
       <div class="filters-bar reveal" style="margin-bottom: var(--space-xl);">
-
 
         <!-- Departamento -->
         <div class="filters-bar__group" id="group-departamento">
@@ -115,10 +135,10 @@
           <label for="priceMaxSelect" class="filters-bar__label">Precio Máximo</label>
           <select id="priceMaxSelect" class="filters-bar__select">
             <option value="Infinity">Cualquier precio</option>
-            <option value="1500000">S/ 1.5M</option>
-            <option value="3000000">S/ 3.0M</option>
-            <option value="6000000">S/ 6.0M</option>
-            <option value="10000000">S/ 10.0M</option>
+            <option value="1500">S/ 1,500</option>
+            <option value="3000">S/ 3,000</option>
+            <option value="6000">S/ 6,000</option>
+            <option value="10000">S/ 10,000</option>
           </select>
         </div>
 
@@ -238,7 +258,7 @@
             <span class="navbar__logo-text"><span class="logo-text__capital-c">C</span>iudad<span class="logo-text__special-i"><span class="i-stem"></span><svg class="logo-text__pin" viewBox="0 0 24 24"><defs><linearGradient id="pinGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#60a5fa" /><stop offset="50%" stop-color="#2563eb" /><stop offset="100%" stop-color="#1d4ed8" /></linearGradient></defs><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 10.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" fill="url(#pinGrad)"/></svg></span>a</span>
           </a>
           <p class="footer__brand-desc">
-            La plataforma líder en oferta de inmuebles. Conectamos a compradores y vendedores con la mejor tecnología.
+            La plataforma líder en oferta de inmuebles. Conectamos a arrendatarios y propietarios con la mejor tecnología.
           </p>
         </div>
       </div>
