@@ -1,139 +1,379 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="light" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre Nosotros — Ciudadia</title>
-  <meta name="description" content="Quiénes somos y qué hacemos en Ciudadia, la plataforma inmobiliaria premium líder.">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Nosotros | Ciudadanía - Asesoría Inmobiliaria de Alto Nivel</title>
   
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=24">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    try {
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "primary-fixed": "#d4e4f6",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed": "#251a01",
+              "on-background": "#1b1c1c",
+              "secondary": "#6d5c3a",
+              "inverse-surface": "#303030",
+              "on-tertiary-fixed-variant": "#4b463f",
+              "primary-fixed-dim": "#b8c8da",
+              "surface-container": "#f0eded",
+              "tertiary": "#615b53",
+              "on-tertiary": "#ffffff",
+              "surface-container-low": "#f6f3f2",
+              "secondary-fixed": "#f7e0b5",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f3f0f0",
+              "surface-tint": "#50606f",
+              "surface-container-high": "#eae8e7",
+              "tertiary-fixed": "#ebe1d7",
+              "primary-container": "#667686",
+              "surface-bright": "#fbf9f8",
+              "on-primary-fixed": "#0d1d2a",
+              "surface": "#fbf9f8",
+              "on-tertiary-container": "#fffbff",
+              "on-primary-container": "#fdfcff",
+              "on-tertiary-fixed": "#1f1b15",
+              "secondary-fixed-dim": "#dac49b",
+              "background": "#fbf9f8",
+              "outline": "#74777c",
+              "on-secondary-fixed-variant": "#544525",
+              "on-primary-fixed-variant": "#394857",
+              "surface-dim": "#dcd9d9",
+              "on-error": "#ffffff",
+              "error": "#ba1a1a",
+              "surface-variant": "#e4e2e1",
+              "on-secondary-container": "#71613e",
+              "surface-container-lowest": "#ffffff",
+              "inverse-primary": "#b8c8da",
+              "on-surface": "#1b1c1c",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#7a736b",
+              "primary": "#2d3e50",
+              "secondary-container": "#f4ddb2",
+              "surface-container-highest": "#e4e2e1",
+              "on-primary": "#ffffff",
+              "on-surface-variant": "#43474c",
+              "tertiary-fixed-dim": "#cec5bc",
+              "outline-variant": "#c4c7cc"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            "spacing": {
+              "unit": "8px",
+              "container-max": "1280px",
+              "margin-desktop": "64px",
+              "margin-mobile": "24px",
+              "gutter": "24px"
+            },
+            "fontFamily": {
+              "headline-md": ["EB Garamond"],
+              "body-md": ["'Source Sans 3'"],
+              "label-caps": ["'Source Sans 3'"],
+              "display-lg": ["EB Garamond"],
+              "headline-sm": ["EB Garamond"],
+              "display-lg-mobile": ["EB Garamond"],
+              "body-lg": ["'Source Sans 3'"]
+            },
+            "fontSize": {
+              "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+              "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+              "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+              "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+              "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+              "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}],
+              "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    } catch(_e) {}
+  </script>
+
+  <style>
+    body {
+      background-color: #fbf9f8;
+      color: #1b1c1c;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .keyline-separator {
+      width: 48px;
+      height: 1px;
+      background-color: #2d3e50; /* Slate Blue primary */
+      opacity: 0.4;
+      margin-bottom: 24px;
+    }
+
+    .editorial-link {
+      position: relative;
+      text-decoration: none;
+    }
+
+    .editorial-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .editorial-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Fixed top navigation layout styling */
+    .keyline-bottom {
+      border-bottom: 1px solid rgba(45, 62, 80, 0.2);
+    }
+  </style>
+
+  <!-- Dark Mode Initializer -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('light');
+    }
+  </script>
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/styles.css?v=32">
 </head>
-<body>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
 
-  <!-- ========== NAVBAR ========== -->
-  <nav class="navbar" id="navbar">
-    <div class="container">
-      <a href="index.html" class="navbar__logo">Inicio</a>
-
-      <div class="navbar__links" id="navLinks">
-        <a href="about.html" class="navbar__link active" style="background: rgba(37, 99, 235, 0.08); color: var(--accent-gold);">Nosotros</a>
-        <a href="services.html" class="navbar__link">Servicios</a>
-        <a href="index.html#cta" class="navbar__link">Contacto</a>
-        <a href="index.html#cta" class="navbar__cta" id="navCta">Cotizar</a>
+  <!-- TopNavBar -->
+  <header class="fixed w-full bg-surface/85 backdrop-blur-md keyline-bottom z-50 transition-all duration-300">
+    <nav class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+      <a href="index.html" class="flex items-center">
+        <img src="assets/images/logo.svg" alt="Ciudadía Logo" class="h-14 w-auto"/>
+      </a>
+      
+      <div class="hidden md:flex gap-8 items-center">
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="comprar.html">Comprar</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="alquilar.html">Alquilar</a>
+        <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="vender.html">Vender</a>
+        <a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1" href="about.html">Nosotros</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="services.html">Servicios</a>
       </div>
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="bg-primary text-on-primary px-6 py-2 font-label-caps uppercase tracking-widest text-xs inline-block transition-opacity hover:opacity-90">
+          Contacto
+        </a>
 
-      <button class="navbar__toggle" id="navToggle" aria-label="Menú">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ========== HERO ========== -->
-  <section class="subpage-hero">
-    <div class="container reveal">
-      <h1 class="subpage-hero__title">Sobre Nosotros</h1>
-      <p class="subpage-hero__subtitle">Quiénes somos y qué hacemos en Ciudadia para transformar el sector inmobiliario.</p>
-    </div>
-  </section>
-
-  <!-- ========== CONTENT SECTION ========== -->
-  <section class="subpage-content section">
-    <div class="container">
-      <div class="subpage-grid">
-        <div class="subpage-text reveal">
-          <h2 class="subpage-content__title">¿Quiénes somos?</h2>
-          <p class="subpage-content__paragraph">
-            En <strong>Ciudadia</strong> somos una plataforma tecnológica premium diseñada para conectar a las personas con su espacio ideal de manera simple, rápida y transparente. Fundada bajo la premisa de que encontrar una propiedad no debería ser un proceso estresante, ofrecemos las herramientas digitales más avanzadas para agilizar la compra, venta, alquiler y construcción de inmuebles.
-          </p>
-          <p class="subpage-content__paragraph">
-            Contamos con un portafolio de propiedades rigurosamente seleccionadas que abarcan casas modernas, departamentos funcionales, terrenos estratégicos y locales comerciales idóneos para potenciar cualquier negocio.
-          </p>
-        </div>
-        <div class="subpage-image reveal">
-          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80" alt="Oficina de Ciudadia" class="subpage-img">
-        </div>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-on-surface-variant hover:text-primary p-2 flex items-center" aria-label="Menú">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
       </div>
+    </nav>
 
-      <div class="mission-vision reveal">
-        <div class="mission-card">
-          <div class="mission-card__icon">🎯</div>
-          <h3 class="mission-card__title">Nuestra Misión</h3>
-          <p class="mission-card__text">
-            Facilitar la búsqueda y gestión de inmuebles mediante el uso de tecnología avanzada y un servicio al cliente excepcional, garantizando que cada transacción se realice con absoluta seguridad y transparencia.
-          </p>
-        </div>
-        
-        <div class="mission-card">
-          <div class="mission-card__icon">👁️</div>
-          <h3 class="mission-card__title">Nuestra Visión</h3>
-          <p class="mission-card__text">
-            Ser reconocidos a nivel nacional como la plataforma líder en el mercado inmobiliario por nuestra innovación constante, excelencia operativa y la confianza total que brindamos a compradores, vendedores y constructores.
-          </p>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-surface border-b border-outline-variant/20 px-6 py-6 space-y-4">
+      <a href="comprar.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Comprar</a>
+      <a href="alquilar.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Alquilar</a>
+      <a href="vender.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Vender</a>
+      <a href="about.html" class="block font-body-md text-body-md text-primary font-bold">Nosotros</a>
+      <a href="services.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Servicios</a>
+    </div>
+  </header>
+
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="pt-20 pb-10 md:pt-32 md:pb-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+        <div class="md:col-start-3 md:col-span-8 text-center">
+          <span class="font-label-caps text-label-caps text-primary tracking-widest block mb-6">ESTRUCTURA E INTEGRIDAD</span>
+          <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-12">Tu patrimonio, respaldado por expertos.</h1>
+          <div class="keyline-separator mx-auto"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="footer" id="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <a href="index.html" class="navbar__logo">
-            <span class="navbar__logo-text"><span class="logo-text__capital-c">C</span>iudad<span class="logo-text__special-i"><span class="i-stem"></span><svg class="logo-text__pin" viewBox="0 0 24 24"><defs><linearGradient id="pinGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#60a5fa" /><stop offset="50%" stop-color="#2563eb" /><stop offset="100%" stop-color="#1d4ed8" /></linearGradient></defs><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 10.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" fill="url(#pinGrad)"/></svg></span>a</span>
-          </a>
-          <p class="footer__brand-desc">
-            La plataforma líder en oferta de inmuebles. Conectamos a compradores y vendedores con la mejor tecnología.
-          </p>
-          <div class="footer__socials">
-            <a href="#" class="footer__social" aria-label="Facebook">f</a>
-            <a href="#" class="footer__social" aria-label="Instagram">ig</a>
-            <a href="#" class="footer__social" aria-label="Twitter">𝕏</a>
-            <a href="#" class="footer__social" aria-label="LinkedIn">in</a>
+    <!-- Core Questions - Editorial Layout -->
+    <section class="pt-6 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <div class="space-y-24">
+        <!-- Q1: Quiénes Somos -->
+        <div class="service-card p-8 md:p-12 rounded-[12px]">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter group w-full">
+            <div class="md:col-span-4">
+              <h2 class="font-headline-md text-headline-md text-primary">¿Quiénes somos?</h2>
+            </div>
+            <div class="md:col-span-8">
+              <div class="line-accent"></div>
+              <p class="font-body-lg text-body-lg text-[#11161b] leading-relaxed mb-8">
+                Somos un equipo multidisciplinario de 6 especialistas que trabajamos de forma unida para que tú no tengas que lidiar con diferentes proveedores. Combinamos nuestra experiencia en arquitectura, diseño de interiores, construcción, finanzas y marketing con un respaldo legal sólido, para asegurar que tu proyecto inmobiliario se realice de forma segura, eficiente y exitosa.
+              </p>
+              <p class="font-body-md text-body-md text-[#3b4754]">
+                Entendemos que la excelencia no surge de esfuerzos aislados, sino de la integración precisa de disciplinas que tradicionalmente operan por separado.
+              </p>
+            </div>
           </div>
         </div>
-
-        <div>
-          <h4 class="footer__title">Inmuebles</h4>
-          <a href="index.html#properties" class="footer__link">Casas en venta</a>
-          <a href="index.html#properties" class="footer__link">Departamentos</a>
-          <a href="index.html#properties" class="footer__link">Terrenos</a>
-          <a href="index.html#properties" class="footer__link">Locales comerciales</a>
-          <a href="index.html#properties" class="footer__link">Nuevos desarrollos</a>
+        
+        <!-- Q2: Qué Hacemos -->
+        <div class="service-card p-8 md:p-12 rounded-[12px]">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter group w-full">
+            <div class="md:col-span-4">
+              <h2 class="font-headline-md text-headline-md text-primary">¿Qué hacemos?</h2>
+            </div>
+            <div class="md:col-span-8">
+              <div class="line-accent"></div>
+              <p class="font-body-lg text-body-lg text-[#11161b] leading-relaxed mb-8">
+                Brindamos soluciones completas para tus necesidades inmobiliarias. Ya sea que busques comprar, vender o alquilar, o que desees transformar tu propiedad con una construcción o remodelación, nosotros te acompañamos. Nos encargamos de la gestión legal, técnica y operativa para que recibas un servicio integral y de alta calidad.
+              </p>
+              <div class="grid grid-cols-2 gap-8 border-t border-[#6d5c3a]/25 pt-8">
+                <div>
+                  <span class="font-label-caps text-label-caps text-primary block mb-2">ANÁLISIS</span>
+                  <p class="text-sm text-[#3b4754] font-body-md">Auditoría técnica y debida diligencia legal.</p>
+                </div>
+                <div>
+                  <span class="font-label-caps text-label-caps text-primary block mb-2">PROYECTO</span>
+                  <p class="text-sm text-[#3b4754] font-body-md">Conceptualización y arquitectura de autor.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div>
-          <h4 class="footer__title">Compañía</h4>
-          <a href="about.html" class="footer__link">Sobre nosotros</a>
-          <a href="index.html" class="footer__link">Cómo funciona</a>
-          <a href="index.html" class="footer__link">Blog</a>
-          <a href="index.html" class="footer__link">Prensa</a>
-          <a href="index.html" class="footer__link">Carreras</a>
-        </div>
-
-        <div>
-          <h4 class="footer__title">Soporte</h4>
-          <a href="index.html" class="footer__link">Centro de ayuda</a>
-          <a href="index.html#cta" class="footer__link">Contacto</a>
-          <a href="index.html" class="footer__link">Términos de uso</a>
-          <a href="index.html" class="footer__link">Privacidad</a>
-          <a href="index.html" class="footer__link">Cookies</a>
+        
+        <!-- Q3: Cómo Lo Hacemos -->
+        <div class="service-card p-8 md:p-12 rounded-[12px]">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter group w-full">
+            <div class="md:col-span-4">
+              <h2 class="font-headline-md text-headline-md text-primary">¿Cómo lo hacemos?</h2>
+            </div>
+            <div class="md:col-span-8">
+              <div class="line-accent"></div>
+              <p class="font-body-lg text-body-lg text-[#11161b] leading-relaxed mb-8">
+                Mediante una metodología de integración total y acompañamiento continuo. Optimizamos cada proceso para minimizar riesgos y maximizar el valor del patrimonio de nuestros clientes, asegurando una inversión segura y rentable.
+              </p>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-4">
+                  <span class="w-8 h-[1px] bg-primary mt-3 opacity-40 shrink-0"></span>
+                  <span class="font-body-md text-body-md text-[#3b4754]">Rigurosidad en la gestión de capital y activos.</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="w-8 h-[1px] bg-primary mt-3 opacity-40 shrink-0"></span>
+                  <span class="font-body-md text-body-md text-[#3b4754]">Transparencia absoluta en cada fase operativa.</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="w-8 h-[1px] bg-primary mt-3 opacity-40 shrink-0"></span>
+                  <span class="font-body-md text-body-md text-[#3b4754]">Enfoque centrado en la preservación del valor patrimonial.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="footer__bottom">
-        <p>© 2026 Ciudadia. Todos los derechos reservados.</p>
-        <p>Hecho con ♥ en Perú</p>
+    <!-- CTA Section -->
+    <section class="bg-surface-container-low border border-outline-variant/20 p-12 md:p-24 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden mb-32" id="contact">
+      <div class="flex-1 z-10 text-left">
+        <h3 class="font-display-lg text-3xl md:text-4xl text-primary mb-6">Cuéntanos qué necesitas y empecemos.</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md">
+          Nuestros especialistas están preparados para analizar la viabilidad de su próximo gran proyecto inmobiliario con una visión de 360 grados.
+        </p>
+        <button onclick="alert('Gracias por su interés. Un asesor de Ciudadanía se pondrá en contacto pronto.');" class="bg-primary text-on-primary px-10 py-4 font-label-caps text-label-caps uppercase tracking-widest hover:shadow-lg transition-all">
+          AGENDAR CONSULTA PRIVADA
+        </button>
+      </div>
+      <div class="flex-1 w-full h-80 md:h-96 relative">
+        <div class="absolute inset-0 bg-primary opacity-5 mix-blend-multiply"></div>
+        <img class="w-full h-full object-cover" data-alt="Office meeting blueprint..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw48b-0mJfmoNXJOiIscs3DtsnKxo7spI4DgHE5t3NrA8gRw8l6tn3n6J8AxiBjj4wPk3lmRyhU220VuAnL-P4atrA3IeH9BzaWm6JFO36rewWiGireCbaekhAxcAIPDjB_CHHCqwwDmrXpoS4n3C5TbG79hQdbBSYs4nnVdUVAGP4hEJVw3ZX-T3vmdsNI_-G5V0HQlEwdBMUc4tc8Pc5iNvmrhJ5IaodMXELwRaOUDHJ-wnmJFGV-A"/>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white border-t border-white/10">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+      <!-- Upper Footer Row -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+        <a href="index.html" class="flex items-center">
+          <img src="assets/images/logo.svg" alt="Ciudadia Logo" class="h-12 w-auto brightness-0 invert">
+        </a>
+        <div class="flex flex-wrap justify-center gap-8">
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="about.html">Nosotros</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="services.html">Servicios</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="comprar.html">Comprar</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="alquilar.html">Alquilar</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="vender.html">Vender</a>
+        </div>
+      </div>
+      <!-- Lower Footer Row -->
+      <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body-md text-white/60">© 2026 Ciudadía. Todos los derechos reservados.</p>
+        <div class="flex gap-4">
+          <span class="material-symbols-outlined text-white/60" data-icon="language">language</span>
+          <span class="font-body-md text-white/60">Lima, Perú</span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="js/data.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/app.js"></script>
+  <script>
+    // Mobile navigation drawer toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Scroll header styling
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 20) {
+        header?.classList.add('shadow-sm');
+      } else {
+        header?.classList.remove('shadow-sm');
+      }
+    });
+
+
+
+    // Scroll reveal effect for sections
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-10');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section.group').forEach(section => {
+      section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>

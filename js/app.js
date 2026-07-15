@@ -4,6 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
+  initThemeToggle();
   renderCategories();
   renderProperties();
   initFilters();
@@ -17,6 +18,8 @@ function initNavbar() {
   const navbar = document.getElementById('navbar');
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
+
+  if (!navbar || !toggle || !links) return;
 
   // Scroll effect
   window.addEventListener('scroll', () => {
@@ -441,10 +444,9 @@ function adjustFiltersForCategory(type) {
   }
 }
 
-/* ---------- Buy Page Integration ---------- */
 function initBuyPage() {
-  const buyCardsContainer = document.querySelector('.buy-cards');
-  if (!buyCardsContainer) return;
+  const propertiesSection = document.getElementById('properties');
+  if (!propertiesSection) return;
 
   // Set operation type from body tag
   const pageType = document.body.dataset.page; // 'comprar' or 'alquilar'
@@ -452,10 +454,7 @@ function initBuyPage() {
     Filters.set('operation', pageType);
   }
 
-  const cards = buyCardsContainer.querySelectorAll('.buy-card');
-  const propertiesSection = document.getElementById('properties');
-
-  // Input elements
+  const typeSelect = document.getElementById('typeSelect');
   const departamentoSelect = document.getElementById('departamentoSelect');
   const distritoSelect = document.getElementById('distritoSelect');
   const priceMaxSelect = document.getElementById('priceMaxSelect');
@@ -486,6 +485,15 @@ function initBuyPage() {
   }
 
   // Bind all filters
+  if (typeSelect) {
+    typeSelect.addEventListener('change', () => {
+      const typeVal = typeSelect.value;
+      Filters.set('type', typeVal);
+      adjustFiltersForCategory(typeVal);
+      renderProperties();
+    });
+  }
+
   if (departamentoSelect) {
     departamentoSelect.addEventListener('change', () => {
       const deptVal = departamentoSelect.value;
@@ -517,67 +525,18 @@ function initBuyPage() {
   bindSelectFilter(landAreaSelect, 'landAreaMin', true);
   bindSelectFilter(amenitySelect, 'amenity', false);
 
-  cards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      e.preventDefault();
-      
-      // Remove active class from all cards
-      cards.forEach(c => c.classList.remove('active-card'));
-      // Add active class to clicked card
-      card.classList.add('active-card');
+  // Initialize properties load
+  renderProperties();
+}
 
-      const type = card.dataset.type;
-      
-      // Reset search filters when switching category
-      Filters.reset();
-      Filters.set('type', type);
-      
-      // Adjust filters visibility dynamically based on category
-      adjustFiltersForCategory(type);
-      
-      // Reset all UI elements
-      if (departamentoSelect) departamentoSelect.value = 'todos';
-      updateDistritoDropdown('todos');
-      if (distritoSelect) distritoSelect.value = 'todos';
-      if (priceMaxSelect) priceMaxSelect.value = 'Infinity';
-      if (bedroomsSelect) bedroomsSelect.value = '0';
-      if (bathroomsSelect) bathroomsSelect.value = '0';
-      if (parkingSelect) parkingSelect.value = '0';
-      if (builtAreaSelect) builtAreaSelect.value = '0';
-      if (landAreaSelect) landAreaSelect.value = '0';
-      if (amenitySelect) amenitySelect.value = 'todos';
-      
-      // Show properties section
-      if (propertiesSection) {
-        propertiesSection.style.display = 'block';
-        
-        // Update section title depending on type
-        const titleEl = document.getElementById('propertiesTitle');
-        if (titleEl) {
-          const typeNames = {
-            casa: 'Casas Disponibles',
-            departamento: 'Departamentos Disponibles',
-            local: 'Locales Comerciales Disponibles',
-            terreno: 'Terrenos Disponibles',
-            proyecto: 'Proyectos y Desarrollos'
-          };
-          titleEl.textContent = typeNames[type] || 'Propiedades Disponibles';
-        }
+/* ---------- Theme Toggle ---------- */
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('themeToggle');
+  if (!toggleBtn) return;
 
-        renderProperties();
-        
-        // Scroll smoothly to properties section, taking fixed navbar into account
-        setTimeout(() => {
-          const navbar = document.getElementById('navbar');
-          const navbarHeight = navbar ? navbar.offsetHeight : 60;
-          const targetOffset = propertiesSection.getBoundingClientRect().top + window.scrollY - navbarHeight - 20;
-          window.scrollTo({
-            top: targetOffset,
-            behavior: 'smooth'
-          });
-        }, 100);
-      }
-    });
+  toggleBtn.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
 }
 

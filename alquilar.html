@@ -1,217 +1,375 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="light" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Encuentra las mejores opciones para alquilar casas, departamentos, terrenos y locales comerciales en el Perú con Ciudadia.">
-  <title>Alquilar Propiedades — Ciudadia</title>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Alquiler | Ciudadanía - Asesoría Inmobiliaria de Alto Nivel</title>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script id="tailwind-config">
+    try {
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "secondary-fixed": "#f7e0b5",
+              "tertiary-fixed": "#ebe1d7",
+              "surface-container-highest": "#e4e2e1",
+              "on-surface": "#1b1c1c",
+              "surface-tint": "#50606f",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#615b53",
+              "primary-fixed-dim": "#b8c8da",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#394857",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed-variant": "#4b463f",
+              "tertiary-fixed-dim": "#cec5bc",
+              "on-primary-container": "#fdfcff",
+              "surface-variant": "#e4e2e1",
+              "error-container": "#ffdad6",
+              "on-primary-fixed": "#0d1d2a",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b8c8da",
+              "surface-container-high": "#eae8e7",
+              "surface-container": "#f0eded",
+              "secondary-fixed-dim": "#dac49b",
+              "inverse-on-surface": "#f3f0f0",
+              "outline-variant": "#c4c7cc",
+              "primary-container": "#667686",
+              "surface": "#fbf9f8",
+              "primary-fixed": "#d4e4f6",
+              "surface-dim": "#dcd9d9",
+              "surface-container-low": "#f6f3f2",
+              "on-error": "#ffffff",
+              "secondary-container": "#f4ddb2",
+              "surface-bright": "#fbf9f8",
+              "on-tertiary-fixed": "#1f1b15",
+              "tertiary-container": "#7a736b",
+              "on-secondary-fixed": "#251a01",
+              "background": "#fbf9f8",
+              "secondary": "#6d5c3a",
+              "error": "#ba1a1a",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#303030",
+              "on-tertiary-container": "#fffbff",
+              "on-background": "#1b1c1c",
+              "on-secondary-container": "#71613e",
+              "outline": "#74777c",
+              "on-secondary-fixed-variant": "#544525",
+              "primary": "#2d3e50",
+              "on-surface-variant": "#43474c"
+            },
+            "borderRadius": {
+              "DEFAULT": "0px",
+              "lg": "0px",
+              "xl": "0px",
+              "full": "9999px"
+            },
+            "spacing": {
+              "margin-desktop": "64px",
+              "gutter": "24px",
+              "container-max": "1280px",
+              "unit": "8px",
+              "margin-mobile": "24px"
+            },
+            "fontFamily": {
+              "display-lg-mobile": ["EB Garamond"],
+              "display-lg": ["EB Garamond"],
+              "headline-sm": ["EB Garamond"],
+              "headline-md": ["EB Garamond"],
+              "label-caps": ["Source Sans 3"],
+              "body-md": ["Source Sans 3"],
+              "body-lg": ["Source Sans 3"]
+            },
+            "fontSize": {
+              "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}],
+              "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+              "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+              "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+              "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+              "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+              "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    } catch(_e) {}
+  </script>
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+  <style>
+    body {
+      background-color: #fbf9f8; /* Surface/Linen */
+      color: #1b1c1c; /* On-surface */
+      font-family: 'Source Sans 3', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=27">
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .keyline-bottom {
+      border-bottom: 1px solid rgba(78, 94, 109, 0.2); /* Primary/Slate Blue at 20% */
+    }
+
+    .keyline-all {
+      border: 1px solid rgba(78, 94, 109, 0.2);
+    }
+
+    .section-line {
+      width: 12px;
+      height: 1px;
+      background-color: #2d3e50; /* Primary / Slate Blue */
+      display: inline-block;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .text-field-focus:focus {
+      outline: none;
+      border-bottom-color: #2d3e50;
+    }
+
+    .btn-primary {
+      background-color: #ffffff; /* Default: White */
+      color: #2d3e50;            /* Default: Slate Blue Text */
+      border: 1px solid #2d3e50; /* Slate Blue Border */
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary:hover {
+      background-color: #2d3e50; /* Hover: Slate Blue */
+      color: #ffffff;            /* Hover: White Text */
+    }
+  </style>
+
+  <!-- Custom styles for carousels and modals -->
+  <link rel="stylesheet" href="css/styles.css?v=32">
+
+  <!-- Dark Mode Initializer -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('light');
+    }
+  </script>
 </head>
-<body data-page="alquilar">
+<body class="bg-surface selection:bg-secondary-container overflow-x-hidden" data-page="alquilar">
 
-  <!-- ========== HEADER / NAVBAR ========== -->
-  <nav class="navbar" id="navbar">
-    <div class="container">
-      <a href="index.html" class="navbar__logo">
-        <span class="navbar__logo-text"><span class="logo-text__capital-c">C</span>iudad<span class="logo-text__special-i"><span class="i-stem"></span><svg class="logo-text__pin" viewBox="0 0 24 24"><defs><linearGradient id="pinGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#60a5fa" /><stop offset="50%" stop-color="#2563eb" /><stop offset="100%" stop-color="#1d4ed8" /></linearGradient></defs><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 10.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" fill="url(#pinGrad)"/></svg></span>a</span>
+  <!-- TopNavBar -->
+  <header class="fixed w-full top-0 z-50 bg-surface/85 backdrop-blur-md border-b border-outline-variant/20 transition-all duration-300">
+    <nav class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+      <a href="index.html" class="flex items-center">
+        <img src="assets/images/logo.svg" alt="Ciudadia Logo" class="h-14 w-auto">
       </a>
-
-      <div class="navbar__links" id="navLinks">
-        <a href="comprar.html" class="navbar__link">Comprar</a>
-        <a href="alquilar.html" class="navbar__link active" style="background: rgba(37, 99, 235, 0.08); color: var(--accent-gold);">Alquilar</a>
-        <a href="about.html" class="navbar__link">Nosotros</a>
-        <a href="services.html" class="navbar__link">Servicios</a>
-        <a href="index.html#cta" class="navbar__cta" id="navCta">Cotizar</a>
+      
+      <div class="hidden md:flex gap-8 items-center">
+        <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="comprar.html">Comprar</a>
+        <a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1" href="alquilar.html">Alquilar</a>
+        <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="vender.html">Vender</a>
+        <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="about.html">Nosotros</a>
+        <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="services.html">Servicios</a>
       </div>
 
-      <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ========== BUY SECTION ========== -->
-  <section class="buy-section section">
-    <div class="container">
-      <div class="section__header reveal">
-        <h2 class="section__title">¿Qué deseas alquilar?</h2>
-      </div>
-
-      <div class="buy-cards buy-cards--rent">
-        <a href="#" class="buy-card reveal reveal-delay-1" data-type="casa" style="background-image: url('assets/images/card_casa.png');">
-          <div class="buy-card__overlay"></div>
-          <div class="buy-card__content">
-            <h3 class="buy-card__title">Casas</h3>
-          </div>
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="btn-primary px-6 py-2 font-label-caps uppercase tracking-widest text-xs">
+          Contacto
         </a>
-        <a href="#" class="buy-card reveal reveal-delay-2" data-type="departamento" style="background-image: url('assets/images/card_depto.jpg'); background-position: right center;">
-          <div class="buy-card__overlay"></div>
-          <div class="buy-card__content">
-            <h3 class="buy-card__title">Departamentos</h3>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-on-surface-variant hover:text-primary p-2 flex items-center" aria-label="Menú">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-surface border-b border-outline-variant/20 px-6 py-6 space-y-4">
+      <a href="comprar.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Comprar</a>
+      <a href="alquilar.html" class="block font-body-md text-body-md text-primary font-bold">Alquilar</a>
+      <a href="vender.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Vender</a>
+      <a href="about.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Nosotros</a>
+      <a href="services.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Servicios</a>
+    </div>
+  </header>
+
+  <main class="pt-24">
+    <!-- Hero Section -->
+    <section class="px-margin-desktop pt-10 pb-20 max-w-container-max mx-auto">
+      <div class="grid grid-cols-12 gap-gutter">
+        <div class="col-span-12 md:col-start-2 md:col-span-6 flex flex-col justify-start pt-6">
+          <span class="font-label-caps text-label-caps text-secondary mb-4 uppercase">Gestión Patrimonial</span>
+          <h1 class="font-display-lg text-5xl md:text-6xl text-primary mb-8 leading-tight">Seguridad Jurídica en cada Contrato.</h1>
+          <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-md">
+            Transformamos el alquiler en una inversión pasiva de alta fidelidad. Asesoramiento técnico y legal para propietarios y arrendatarios.
+          </p>
+          <div class="flex gap-4">
+            <a href="#contact" class="btn-primary px-8 py-4 font-label-caps uppercase tracking-widest">Gestionar mi Bien</a>
           </div>
-        </a>
-        <a href="#" class="buy-card reveal reveal-delay-3" data-type="local" style="background-image: url('assets/images/card_local.png');">
-          <div class="buy-card__overlay"></div>
-          <div class="buy-card__content">
-            <h3 class="buy-card__title">Locales Comerciales</h3>
+        </div>
+        <div class="col-span-12 md:col-span-4 relative mt-12 md:mt-0">
+          <div class="w-full h-[600px] bg-cover bg-center grayscale-[20%] border border-outline-variant/20 shadow-sm" data-alt="Penthouse interior with floor-to-ceiling windows..." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZIxrwfgQxdpUJLmfj-ffL_lhKwqKt-q2R5dH6TFc8w3y3FcGnol-O33bEh9ac7JMpg9BYoBSeELa2crP3tGgkkjVKtUWvjL8uBVkkETk-7-fDT0BacRJ-Pcdfm_auOFET6vJXy5MxPsc4hr-nI_cxH4W6tqrs2qMtYItNd3jw6bmCI7iVgfZUwtbylwUawklJ6vn6_XX7SCvwjdzo2fcejcRWOBeX9nd9vqyk190bM0sMLX7cM5v4mw')"></div>
+          <div class="absolute -bottom-8 -left-8 bg-secondary-container p-8 hidden md:block border border-outline-variant/10">
+            <span class="font-display-lg text-3xl text-on-secondary-container">98%</span>
+            <p class="font-label-caps text-label-caps text-on-secondary-container uppercase text-[10px]">Tasa de ocupación</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rental Management (Unified Section) -->
+    <section class="bg-surface-container-low pt-24 pb-32 border-y border-outline-variant/20">
+      <div class="px-margin-desktop max-w-container-max mx-auto">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-20">
+          <span class="font-label-caps text-label-caps text-secondary mb-4 uppercase">Servicios de Gestión</span>
+          <h2 class="font-display-lg text-4xl md:text-5xl text-primary">Gestión Profesional de Alquileres</h2>
+          <div class="w-16 h-[1px] bg-primary mx-auto mt-6"></div>
+        </div>
+
+        <div class="space-y-32">
+          
+          <!-- Para Propietarios -->
+          <div class="grid grid-cols-12 gap-gutter items-center">
+            <!-- Image (Left on Desktop) -->
+            <div class="col-span-12 md:col-span-5 order-2 md:order-1">
+              <div class="w-full h-[500px] bg-cover bg-center border border-outline-variant/20" data-alt="Hands signing a legal real estate document..." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALj1Hp-kUO1gGNkOxlXlFlvScRDrSKuwB4d_OsOzHHIufOYPiphS8fhTvG0rAvtwa9NKvMzNIOkkE36bvLSVxldUyzK-F69vBswhESKI1T1vk03QngsAbQMVE5nQA1iMNb8aCinNkBC9Cciiu0tcbjQLkank5pcAlsl8JF8SGKXkZfGYaD7hs04rWk3Fxywk5xkEoJKZ3xISkhhExEKCAPn6FO_1JWlGPJBF5uTGMbHVjnPxUkYGg6sw')"></div>
+            </div>
+            
+            <!-- Text (Right on Desktop) -->
+            <div class="col-span-12 md:col-start-7 md:col-span-5 order-1 md:order-2 mb-12 md:mb-0">
+              <span class="font-label-caps text-label-caps text-secondary mb-2 uppercase">Para Propietarios</span>
+              <h3 class="font-display-lg text-3xl text-primary mb-4">Rentabilidad sin complicaciones</h3>
+              <p class="font-body-md italic text-on-surface-variant mb-8 border-l-2 border-secondary pl-4">
+                "Protegemos su patrimonio mediante una selección rigurosa de inquilinos y una gestión legal impecable."
+              </p>
+              
+              <ul class="space-y-6">
+                <li class="flex items-start">
+                  <span class="section-line mt-3"></span>
+                  <div>
+                    <h4 class="font-body-md font-semibold text-on-surface">Filtrado de Perfil del Inquilino</h4>
+                    <p class="font-body-md text-on-surface-variant mt-1 text-sm">No solo revisamos ingresos; realizamos una evaluación de antecedentes legales y crediticios para asegurar que el inquilino sea solvente y responsable.</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="section-line mt-3"></span>
+                  <div>
+                    <h4 class="font-body-md font-semibold text-on-surface">Gestión de Contratos con Respaldo Legal</h4>
+                    <p class="font-body-md text-on-surface-variant mt-1 text-sm">Al trabajar con un estudio de abogados, ofrecemos contratos blindados legalmente que protegen al propietario ante cualquier incumplimiento.</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="section-line mt-3"></span>
+                  <div>
+                    <h4 class="font-body-md font-semibold text-on-surface">Supervisión y Reportes</h4>
+                    <p class="font-body-md text-on-surface-variant mt-1 text-sm">Ofrecemos un servicio de "gestión operativa" donde supervisamos el estado del inmueble mediante visitas periódicas, evitando el deterioro y detectando necesidades de mantenimiento preventivo.</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="section-line mt-3"></span>
+                  <div>
+                    <h4 class="font-body-md font-semibold text-on-surface">Cobranza Asegurada</h4>
+                    <p class="font-body-md text-on-surface-variant mt-1 text-sm">Automatizamos la gestión de cobro, eliminando la fricción de tener que perseguir al inquilino cada mes.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Para Inquilinos -->
+          <div class="grid grid-cols-12 gap-gutter items-center">
+            <!-- Text (Left on Desktop) -->
+            <div class="col-span-12 md:col-span-5 mb-12 md:mb-0">
+              <span class="font-label-caps text-label-caps text-secondary mb-2 uppercase">Para Inquilinos</span>
+              <h3 class="font-display-lg text-3xl text-primary mb-4">Seguridad y confianza</h3>
+              <p class="font-body-md italic text-on-surface-variant mb-8 border-l-2 border-secondary pl-4">
+                "Alquile con la garantía de un proceso formal, transparente y con soporte constante durante toda su estadía."
+              </p>
+              
+              <ul class="space-y-6">
+                <li class="flex items-start">
+                  <span class="section-line mt-3"></span>
+                  <div>
+                    <h4 class="font-body-md font-semibold text-on-surface">Verificación de la Propiedad</h4>
+                    <p class="font-body-md text-on-surface-variant mt-1 text-sm">El inquilino se siente tranquilo sabiendo que has verificado que la propiedad no tiene problemas legales ni embargos.</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="section-line mt-3"></span>
+                  <div>
+                    <h4 class="font-body-md font-semibold text-on-surface">Proceso Transparente</h4>
+                    <p class="font-body-md text-on-surface-variant mt-1 text-sm">Ofreces claridad absoluta en los costos iniciales, condiciones del contrato y reglas de convivencia, evitando sorpresas desagradables.</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="section-line mt-3"></span>
+                  <div>
+                    <h4 class="font-body-md font-semibold text-on-surface">Canal de Atención Directo</h4>
+                    <p class="font-body-md text-on-surface-variant mt-1 text-sm">Si algo se rompe o hay un problema con la propiedad, el inquilino tiene un canal profesional contigo, sin tener que lidiar directamente con un propietario que quizás no responde.</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <span class="section-line mt-3"></span>
+                  <div>
+                    <h4 class="font-body-md font-semibold text-on-surface">Asesoría en el Inventario</h4>
+                    <p class="font-body-md text-on-surface-variant mt-1 text-sm">Realizas un acta de entrega detallada y profesional para evitar abusos o reclamos injustos sobre la garantía al momento de devolver el inmueble.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            <!-- Image (Right on Desktop) -->
+            <div class="col-span-12 md:col-start-8 md:col-span-5">
+              <div class="w-full h-[500px] bg-cover bg-center border border-outline-variant/20" data-alt="A minimalist luxury penthouse living room with modern design..." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC4y6JY7PYW5wiGq72salQKcpoPeC9oSGQG1aTEWPsLKXrKOXRwRgceA20GC_tRQq-9XUs6SvJ1EWggMSaq50B5iCAoP8dHPYzTmAdbTExkiwbSUKyghfVgqAkpignVxw-OghOkZ9ya0V82NvD4-fuFBmrcvDf3FvzV0OdihrgOD962zCB0pgwRSvxz_Su4BQ0pB8UNvBvVaFtHJTiLB7P9Dohna_dxe3pHv7jvz0a61OlJ7qrk8WpnPA')"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white border-t border-white/10">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+      <!-- Upper Footer Row -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+        <a href="index.html" class="flex items-center">
+          <img src="assets/images/logo.svg" alt="Ciudadia Logo" class="h-12 w-auto brightness-0 invert">
         </a>
+        <div class="flex flex-wrap justify-center gap-8">
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="about.html">Nosotros</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="services.html">Servicios</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="comprar.html">Comprar</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="alquilar.html">Alquilar</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="vender.html">Vender</a>
+        </div>
+      </div>
+      <!-- Lower Footer Row -->
+      <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body-md text-white/60">© 2026 Ciudadía. Todos los derechos reservados.</p>
+        <div class="flex gap-4">
+          <span class="material-symbols-outlined text-white/60" data-icon="language">language</span>
+          <span class="font-body-md text-white/60">Lima, Perú</span>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- ========== PROPERTIES SECTION ========== -->
-  <section class="section" id="properties" style="display: none; padding-top: 0; padding-bottom: 80px;">
-    <div class="container">
-      <div class="section__header reveal" style="margin-bottom: 28px; text-align: center;">
-        <h2 class="section__title" id="propertiesTitle">Propiedades Disponibles</h2>
-      </div>
-
-      <!-- Horizontal Filter Bar -->
-      <div class="filters-bar reveal" style="margin-bottom: var(--space-xl);">
-
-        <!-- Departamento -->
-        <div class="filters-bar__group" id="group-departamento">
-          <label for="departamentoSelect" class="filters-bar__label">Departamento</label>
-          <select id="departamentoSelect" class="filters-bar__select">
-            <option value="todos">Todos</option>
-            <option value="Lima">Lima</option>
-            <option value="Arequipa">Arequipa</option>
-            <option value="Cusco">Cusco</option>
-            <option value="Piura">Piura</option>
-          </select>
-        </div>
-
-        <!-- Distrito -->
-        <div class="filters-bar__group" id="group-distrito">
-          <label for="distritoSelect" class="filters-bar__label">Distrito</label>
-          <select id="distritoSelect" class="filters-bar__select">
-            <option value="todos">Todos</option>
-          </select>
-        </div>
-
-        <!-- Precio Máximo -->
-        <div class="filters-bar__group" id="group-price">
-          <label for="priceMaxSelect" class="filters-bar__label">Precio Máximo</label>
-          <select id="priceMaxSelect" class="filters-bar__select">
-            <option value="Infinity">Cualquier precio</option>
-            <option value="1500">S/ 1,500</option>
-            <option value="3000">S/ 3,000</option>
-            <option value="6000">S/ 6,000</option>
-            <option value="10000">S/ 10,000</option>
-          </select>
-        </div>
-
-        <!-- Ordenar por -->
-        <div class="filters-bar__group" id="group-sort">
-          <label for="sortSelect" class="filters-bar__label">Ordenar por</label>
-          <select id="sortSelect" class="filters-bar__select">
-            <option value="default">Destacados</option>
-            <option value="price-asc">Precio: menor a mayor</option>
-            <option value="price-desc">Precio: mayor a menor</option>
-            <option value="area-desc">Mayor superficie</option>
-            <option value="newest">Más recientes</option>
-          </select>
-        </div>
-
-        <!-- Habitaciones -->
-        <div class="filters-bar__group" id="group-bedrooms">
-          <label for="bedroomsSelect" class="filters-bar__label">Habitaciones</label>
-          <select id="bedroomsSelect" class="filters-bar__select">
-            <option value="0">Cualquier número</option>
-            <option value="1">1+ hab</option>
-            <option value="2">2+ hab</option>
-            <option value="3">3+ hab</option>
-            <option value="4">4+ hab</option>
-          </select>
-        </div>
-
-        <!-- Baños -->
-        <div class="filters-bar__group" id="group-bathrooms">
-          <label for="bathroomsSelect" class="filters-bar__label">Baños</label>
-          <select id="bathroomsSelect" class="filters-bar__select">
-            <option value="0">Cualquier número</option>
-            <option value="1">1+ baño</option>
-            <option value="2">2+ baños</option>
-            <option value="3">3+ baños</option>
-            <option value="4">4+ baños</option>
-          </select>
-        </div>
-
-        <!-- Cochera -->
-        <div class="filters-bar__group" id="group-parking">
-          <label for="parkingSelect" class="filters-bar__label">Cochera</label>
-          <select id="parkingSelect" class="filters-bar__select">
-            <option value="0">Cualquier número</option>
-            <option value="1">1+ auto</option>
-            <option value="2">2+ autos</option>
-            <option value="3">3+ autos</option>
-          </select>
-        </div>
-
-        <!-- Área Construida -->
-        <div class="filters-bar__group" id="group-builtArea">
-          <label for="builtAreaSelect" class="filters-bar__label">Área Construida</label>
-          <select id="builtAreaSelect" class="filters-bar__select">
-            <option value="0">Cualquier área</option>
-            <option value="50">50+ m²</option>
-            <option value="100">100+ m²</option>
-            <option value="200">200+ m²</option>
-            <option value="300">300+ m²</option>
-          </select>
-        </div>
-
-        <!-- Área Terreno -->
-        <div class="filters-bar__group" id="group-landArea">
-          <label for="landAreaSelect" class="filters-bar__label">Área Terreno</label>
-          <select id="landAreaSelect" class="filters-bar__select">
-            <option value="0">Cualquier área</option>
-            <option value="100">100+ m²</option>
-            <option value="300">300+ m²</option>
-            <option value="500">500+ m²</option>
-            <option value="1000">1000+ m²</option>
-          </select>
-        </div>
-
-        <!-- Amenidades -->
-        <div class="filters-bar__group" id="group-amenities">
-          <label for="amenitySelect" class="filters-bar__label">Amenidades</label>
-          <select id="amenitySelect" class="filters-bar__select">
-            <option value="todos">Todas</option>
-            <option value="Alberca">Alberca</option>
-            <option value="Gimnasio">Gimnasio</option>
-            <option value="Seguridad 24/7">Seguridad 24/7</option>
-            <option value="Jardín">Jardín</option>
-            <option value="Terraza privada">Terraza privada</option>
-            <option value="Roof garden">Roof garden</option>
-            <option value="Balcón">Balcón</option>
-            <option value="Chimenea">Chimenea</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Properties Count -->
-      <div class="filters__count-wrapper reveal" style="margin-bottom: var(--space-md); text-align: left;">
-        <span class="filters__count" id="propertiesCount" style="font-weight: 600; color: var(--text-secondary);">0 inmuebles encontrados</span>
-      </div>
-
-      <!-- Property Cards Grid -->
-      <div class="properties__grid" id="propertiesGrid">
-        <!-- Rendered by JS -->
-      </div>
-    </div>
-  </section>
+  </footer>
 
   <!-- ========== MODAL ========== -->
   <div class="modal-overlay" id="modalOverlay">
@@ -220,28 +378,40 @@
     </div>
   </div>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="footer" id="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <a href="index.html" class="navbar__logo">
-            <span class="navbar__logo-text"><span class="logo-text__capital-c">C</span>iudad<span class="logo-text__special-i"><span class="i-stem"></span><svg class="logo-text__pin" viewBox="0 0 24 24"><defs><linearGradient id="pinGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#60a5fa" /><stop offset="50%" stop-color="#2563eb" /><stop offset="100%" stop-color="#1d4ed8" /></linearGradient></defs><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 10.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" fill="url(#pinGrad)"/></svg></span>a</span>
-          </a>
-          <p class="footer__brand-desc">
-            La plataforma líder en oferta de inmuebles. Conectamos a arrendatarios y propietarios con la mejor tecnología.
-          </p>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p>&copy; 2026 Ciudadia. Todos los derechos reservados.</p>
-      </div>
-    </div>
-  </footer>
-
   <!-- Scripts -->
   <script src="js/data.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/app.js"></script>
+
+  <script>
+    // Mobile navigation drawer toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Scroll header styling
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 20) {
+        header.classList.add('shadow-sm');
+      } else {
+        header.classList.remove('shadow-sm');
+      }
+    });
+
+    // Simple animation on hover for cards
+    document.querySelectorAll('.group').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.borderColor = 'rgba(78, 94, 109, 0.4)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.borderColor = 'rgba(196, 199, 204, 0.2)';
+      });
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Venta | Ciudadanía - Asesoría Inmobiliaria de Alto Nivel</title>
+  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+  <script id="tailwind-config">
+    try {
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "secondary-fixed": "#f7e0b5",
+              "tertiary-fixed": "#ebe1d7",
+              "surface-container-highest": "#e4e2e1",
+              "on-surface": "#1b1c1c",
+              "surface-tint": "#50606f",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#615b53",
+              "primary-fixed-dim": "#b8c8da",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#394857",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed-variant": "#4b463f",
+              "tertiary-fixed-dim": "#cec5bc",
+              "on-primary-container": "#fdfcff",
+              "surface-variant": "#e4e2e1",
+              "error-container": "#ffdad6",
+              "on-primary-fixed": "#0d1d2a",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b8c8da",
+              "surface-container-high": "#eae8e7",
+              "surface-container": "#f0eded",
+              "secondary-fixed-dim": "#dac49b",
+              "inverse-on-surface": "#f3f0f0",
+              "outline-variant": "#c4c7cc",
+              "primary-container": "#667686",
+              "surface": "#fbf9f8",
+              "primary-fixed": "#d4e4f6",
+              "surface-dim": "#dcd9d9",
+              "surface-container-low": "#f6f3f2",
+              "on-error": "#ffffff",
+              "secondary-container": "#f4ddb2",
+              "surface-bright": "#fbf9f8",
+              "on-tertiary-fixed": "#1f1b15",
+              "tertiary-container": "#7a736b",
+              "on-secondary-fixed": "#251a01",
+              "background": "#fbf9f8",
+              "secondary": "#6d5c3a",
+              "error": "#ba1a1a",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#303030",
+              "on-tertiary-container": "#fffbff",
+              "on-background": "#1b1c1c",
+              "on-secondary-container": "#71613e",
+              "outline": "#74777c",
+              "on-secondary-fixed-variant": "#544525",
+              "primary": "#2d3e50",
+              "on-surface-variant": "#43474c"
+            },
+            "borderRadius": {
+              "DEFAULT": "0px",
+              "lg": "0px",
+              "xl": "0px",
+              "full": "9999px"
+            },
+            "spacing": {
+              "margin-desktop": "64px",
+              "gutter": "24px",
+              "container-max": "1280px",
+              "unit": "8px",
+              "margin-mobile": "24px"
+            },
+            "fontFamily": {
+              "display-lg-mobile": ["EB Garamond"],
+              "display-lg": ["EB Garamond"],
+              "headline-sm": ["EB Garamond"],
+              "headline-md": ["EB Garamond"],
+              "label-caps": ["Source Sans 3"],
+              "body-md": ["Source Sans 3"],
+              "body-lg": ["Source Sans 3"]
+            },
+            "fontSize": {
+              "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}],
+              "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+              "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+              "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+              "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+              "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+              "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    } catch(_e) {}
+  </script>
+
+  <style>
+    body {
+      background-color: #fbf9f8; /* Surface color */
+      color: #1b1c1c; /* On-surface */
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .keyline-right { border-right: 1px solid rgba(78, 94, 109, 0.2); }
+    .keyline-bottom { border-bottom: 1px solid rgba(78, 94, 109, 0.2); }
+    .keyline-top { border-top: 1px solid rgba(78, 94, 109, 0.2); }
+    .horizontal-line { width: 12px; height: 1px; background-color: #2d3e50; display: inline-block; margin-right: 8px; vertical-align: middle; }
+    
+    /* Custom editorial focus for inputs */
+    .editorial-input {
+      border: none;
+      border-bottom: 1px solid #c4c7cc;
+      background: transparent;
+      padding: 12px 0;
+      transition: border-color 0.3s ease;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 16px;
+      color: #1b1c1c;
+    }
+
+    .editorial-input:focus {
+      outline: none;
+      border-bottom: 1px solid #2d3e50;
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      background-color: #ffffff; /* Default: White */
+      color: #2d3e50;            /* Default: Slate Blue Text */
+      border: 1px solid #2d3e50; /* Slate Blue Border */
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary:hover {
+      background-color: #2d3e50; /* Hover: Slate Blue */
+      color: #ffffff;            /* Hover: White Text */
+    }
+  </style>
+
+  <!-- Custom styles for carousels and modals -->
+  <link rel="stylesheet" href="css/styles.css?v=32">
+
+  <!-- Dark Mode Initializer -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('light');
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden" data-page="vender">
+
+  <!-- TopNavBar -->
+  <header class="fixed w-full top-0 z-50 bg-surface/85 backdrop-blur-md border-b border-outline-variant/20 transition-all duration-300">
+    <nav class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+      <a href="index.html" class="flex items-center">
+        <img src="assets/images/logo.svg" alt="Ciudadia Logo" class="h-14 w-auto">
+      </a>
+      
+      <div class="hidden md:flex items-center gap-8">
+        <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="comprar.html">Comprar</a>
+        <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="alquilar.html">Alquilar</a>
+        <a class="font-body-md text-primary border-b-2 border-primary pb-1" href="vender.html">Vender</a>
+        <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="about.html">Nosotros</a>
+        <a class="font-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="services.html">Servicios</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="#valuation-form" class="btn-primary px-6 py-2 font-label-caps uppercase tracking-widest text-xs">
+          Valorar
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-on-surface-variant hover:text-primary p-2 flex items-center" aria-label="Menú">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-surface border-b border-outline-variant/20 px-6 py-6 space-y-4">
+      <a href="comprar.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Comprar</a>
+      <a href="alquilar.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Alquilar</a>
+      <a href="vender.html" class="block font-body-md text-body-md text-primary font-bold">Vender</a>
+      <a href="about.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Nosotros</a>
+      <a href="services.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Servicios</a>
+    </div>
+  </header>
+
+  <main class="pt-18">
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-24 md:pt-16 md:pb-32 px-margin-mobile md:px-margin-desktop overflow-hidden bg-surface-container-low">
+      <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+        <div class="md:col-start-1 md:col-span-6 space-y-8 z-10">
+          <span class="font-label-caps text-label-caps text-secondary uppercase bg-secondary-fixed/30 px-3 py-1">Exclusividad en Gestión</span>
+          <h1 class="font-display-lg text-5xl md:text-6xl text-primary leading-tight">Vende con Confianza</h1>
+          <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+            En Ciudadanía, tratamos la liquidación de propiedades como un proceso de asesoramiento de alto nivel. Desde una valoración basada en datos hasta estrategias de marketing personalizadas, garantizamos que su activo alcance su máximo potencial de mercado con absoluta seguridad jurídica.
+          </p>
+          <div class="pt-4">
+            <a class="inline-block bg-primary text-on-primary px-10 py-4 uppercase tracking-[0.2em] text-[12px] font-bold transition-all hover:shadow-lg active:scale-95" href="#valuation-form">
+              Solicitar Valoración
+            </a>
+          </div>
+        </div>
+        <div class="md:col-start-8 md:col-span-5 relative h-[400px] md:h-[600px] mt-12 md:mt-0">
+          <div class="absolute inset-0 z-0 bg-secondary-container/20"></div>
+          <img class="w-full h-full object-cover grayscale-[20%] border border-outline-variant/20" data-alt="A minimalist, high-end architectural photograph of a luxury penthouse interior..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4y6JY7PYW5wiGq72salQKcpoPeC9oSGQG1aTEWPsLKXrKOXRwRgceA20GC_tRQq-9XUs6SvJ1EWggMSaq50B5iCAoP8dHPYzTmAdbTExkiwbSUKyghfVgqAkpignVxw-OghOkZ9ya0V82NvD4-fuFBmrcvDf3FvzV0OdihrgOD962zCB0pgwRSvxz_Su4BQ0pB8UNvBvVaFtHJTiLB7P9Dohna_dxe3pHv7jvz0a61OlJ7qrk8WpnPA"/>
+          <div class="absolute -bottom-8 -left-8 bg-white p-8 border border-outline-variant/20 hidden md:block">
+            <p class="font-display-lg text-3xl text-primary">S/ 4.2M+</p>
+            <p class="font-label-caps text-on-surface-variant">Valor Promedio de Activos Gestionados</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services / Appraisal Bento Grid -->
+    <section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface">
+      <div class="max-w-container-max mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+          <div class="max-w-xl">
+            <h2 class="font-display-lg text-3xl md:text-4xl text-primary mb-4">Valoración y Posicionamiento Estratégico</h2>
+            <p class="font-body-md text-on-surface-variant">Nuestro enfoque de tres pilares garantiza que cada propiedad no solo se liste, sino que se lance estratégicamente al mercado global.</p>
+          </div>
+          <div class="font-label-caps text-primary tracking-widest border-b border-primary/30 pb-2">SERVICIOS / 02</div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <!-- Column 1: Valuation -->
+          <div class="space-y-6 group">
+            <div class="h-1 bg-primary w-full transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100"></div>
+            <span class="material-symbols-outlined text-primary text-4xl">analytics</span>
+            <h3 class="font-display-lg text-2xl text-primary font-semibold">Valoración Precisa</h3>
+            <p class="font-body-md text-on-surface-variant leading-relaxed">
+              Utilizando análisis comparativos de mercado y datos propios, determinamos el precio óptimo que equilibra la rentabilidad con un plazo de transacción eficiente.
+            </p>
+            <ul class="space-y-3 pt-4">
+              <li class="flex items-center"><span class="horizontal-line"></span><span class="font-label-caps">Análisis de Tendencias de Mercado</span></li>
+              <li class="flex items-center"><span class="horizontal-line"></span><span class="font-label-caps">Evaluación de Riesgo</span></li>
+            </ul>
+          </div>
+          <!-- Column 2: Marketing -->
+          <div class="space-y-6 group">
+            <div class="h-1 bg-primary w-full transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100"></div>
+            <span class="material-symbols-outlined text-primary text-4xl">camera_outdoor</span>
+            <h3 class="font-display-lg text-2xl text-primary font-semibold">Marketing Personalizado</h3>
+            <p class="font-body-md text-on-surface-variant leading-relaxed">
+              Cada propiedad recibe una narrativa a medida. Cinematografía de alta producción, fotografía arquitectónica y colocación en redes globales exclusivas.
+            </p>
+            <ul class="space-y-3 pt-4">
+              <li class="flex items-center"><span class="horizontal-line"></span><span class="font-label-caps">Recorridos de Realidad Virtual</span></li>
+              <li class="flex items-center"><span class="horizontal-line"></span><span class="font-label-caps">Alcance Institucional</span></li>
+            </ul>
+          </div>
+          <!-- Column 3: Legal -->
+          <div class="space-y-6 group">
+            <div class="h-1 bg-primary w-full transform origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100"></div>
+            <span class="material-symbols-outlined text-primary text-4xl">gavel</span>
+            <h3 class="font-display-lg text-2xl text-primary font-semibold">Cierre Seguro</h3>
+            <p class="font-body-md text-on-surface-variant leading-relaxed">
+              Gestionamos todas las complejidades legales, desde el due diligence hasta la coordinación notarial, garantizando una transferencia impecable de propiedad y fondos.
+            </p>
+            <ul class="space-y-3 pt-4">
+              <li class="flex items-center"><span class="horizontal-line"></span><span class="font-label-caps">Escudo de Cumplimiento Legal</span></li>
+              <li class="flex items-center"><span class="horizontal-line"></span><span class="font-label-caps">Asesoría Fiscal</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advisory Badge / Mid-page CTA -->
+    <section class="bg-secondary-fixed/10 py-20 border-y border-outline-variant/10">
+      <div class="max-w-3xl mx-auto text-center px-margin-mobile">
+        <span class="font-label-caps text-secondary-fixed-dim bg-secondary/80 px-4 py-2 mb-8 inline-block">ESTADO DE ASESORÍA</span>
+        <blockquote class="font-display-lg text-3xl md:text-4xl text-primary italic leading-tight mb-8">
+          "La integridad en cada transacción no es una promesa, sino nuestra base estructural."
+        </blockquote>
+        <p class="font-body-md text-on-surface-variant">— Consejo Ejecutivo, Ciudadanía</p>
+      </div>
+    </section>
+
+    <!-- Valuation Form Section -->
+    <section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest" id="valuation-form">
+      <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter">
+        <div class="md:col-start-2 md:col-span-4 space-y-8">
+          <h2 class="font-display-lg text-3xl md:text-4xl text-primary">Inicie su <br/>Valoración</h2>
+          <p class="font-body-lg text-on-surface-variant">
+            Nuestros expertos le proporcionarán un informe preliminar de su activo en un plazo de 48 horas. Complete los detalles esenciales de la propiedad a continuación para iniciar nuestro proceso de due diligence.
+          </p>
+          <div class="pt-8 space-y-6">
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-primary">call</span>
+              <div>
+                <p class="font-label-caps text-on-surface-variant uppercase">Línea de Asesoría</p>
+                <p class="font-display-lg text-xl text-primary font-semibold">contacto@ciudadia.pe</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-primary">location_on</span>
+              <div>
+                <p class="font-label-caps text-on-surface-variant uppercase">Oficina Principal</p>
+                <p class="font-body-md text-primary">San Isidro, Lima, Perú</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-start-7 md:col-span-5 bg-white p-8 md:p-12 border border-outline-variant/20 shadow-sm">
+          <form class="space-y-10" onsubmit="event.preventDefault(); alert('Gracias por enviar la información de su activo. Un asesor de Ciudadanía se pondrá en contacto en menos de 48 horas.'); this.reset();">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="flex flex-col">
+                <label class="font-label-caps text-on-surface-variant mb-1 uppercase text-xs font-semibold">Nombre Completo</label>
+                <input class="editorial-input" placeholder="Gabriel Mendoza" type="text" required/>
+              </div>
+              <div class="flex flex-col">
+                <label class="font-label-caps text-on-surface-variant mb-1 uppercase text-xs font-semibold">Correo Electrónico</label>
+                <input class="editorial-input" placeholder="gabriel@correo.com" type="email" required/>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label class="font-label-caps text-on-surface-variant mb-1 uppercase text-xs font-semibold">Ubicación de la Propiedad</label>
+              <input class="editorial-input" placeholder="Ciudad, Distrito o Dirección Completa" type="text" required/>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="flex flex-col">
+                <label class="font-label-caps text-on-surface-variant mb-1 uppercase text-xs font-semibold">Tamaño Estimado (m²)</label>
+                <input class="editorial-input" placeholder="Ej. 240" type="number" required/>
+              </div>
+              <div class="flex flex-col">
+                <label class="font-label-caps text-on-surface-variant mb-1 uppercase text-xs font-semibold">Tipo de Propiedad</label>
+                <select class="editorial-input appearance-none bg-transparent">
+                  <option>Residencial</option>
+                  <option>Comercial</option>
+                  <option>Terreno / Lote</option>
+                  <option>Industrial</option>
+                </select>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label class="font-label-caps text-on-surface-variant mb-1 uppercase text-xs font-semibold">Notas Adicionales</label>
+              <textarea class="editorial-input resize-none" placeholder="Características especiales, relevancia o metas específicas..." rows="3" required></textarea>
+            </div>
+            <button class="w-full bg-primary text-on-primary py-5 uppercase tracking-[0.3em] font-bold text-[14px] hover:bg-primary-container transition-colors" type="submit">
+              Solicitar Análisis de Expertos
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white border-t border-white/10">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+      <!-- Upper Footer Row -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+        <a href="index.html" class="flex items-center">
+          <img src="assets/images/logo.svg" alt="Ciudadia Logo" class="h-12 w-auto brightness-0 invert">
+        </a>
+        <div class="flex flex-wrap justify-center gap-8">
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="about.html">Nosotros</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="services.html">Servicios</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="comprar.html">Comprar</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="alquilar.html">Alquilar</a>
+          <a class="font-body-md text-white/80 hover:text-white transition-colors" href="vender.html">Vender</a>
+        </div>
+      </div>
+      <!-- Lower Footer Row -->
+      <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body-md text-white/60">© 2026 Ciudadía. Todos los derechos reservados.</p>
+        <div class="flex gap-4">
+          <span class="material-symbols-outlined text-white/60" data-icon="language">language</span>
+          <span class="font-body-md text-white/60">Lima, Perú</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== MODAL ========== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modalContent">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // Mobile navigation drawer toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Scroll header styling
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 20) {
+        header.classList.add('shadow-sm');
+      } else {
+        header.classList.remove('shadow-sm');
+      }
+    });
+
+    // Simple micro-interaction for the form button and inputs
+    document.querySelectorAll('.editorial-input').forEach(input => {
+      input.addEventListener('focus', () => {
+        input.parentElement.querySelector('label')?.classList.add('text-primary');
+      });
+      input.addEventListener('blur', () => {
+        input.parentElement.querySelector('label')?.classList.remove('text-primary');
+      });
+    });
+  </script>
+</body>
+</html>

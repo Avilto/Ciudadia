@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- Outlined Circle Icon -->
+  <circle cx="30" cy="30" r="23.5" fill="none" stroke="#2d3e50" stroke-width="3" />
+  
+  <!-- Teardrop Map Pin (EvenOdd Cutout) - Made Larger -->
+  <path d="M30,23 C26.8,18.5 26.8,14.5 30,11.5 C33.2,14.5 33.2,18.5 30,23 Z M30,17.5 C31,17.5 31.8,16.7 31.8,15.7 C31.8,14.7 31,13.9 30,13.9 C29,13.9 28.2,14.7 28.2,15.7 C28.2,16.7 29,17.5 30,17.5 Z" fill="#2d3e50" fill-rule="evenodd" />
+  
+  <!-- Stem of the "i" - Made Thicker and Taller -->
+  <rect x="27.5" y="26" width="5" height="18.5" fill="#2d3e50" />
+  
+  <!-- Serifs - Made Larger -->
+  <rect x="23.5" y="44.5" width="13" height="2.2" fill="#2d3e50" />
+  <polygon points="27.5,26 32.5,26 32.5,28.2 25.5,28.2" fill="#2d3e50" />
+  
+  <!-- Text "Ciudadía" -->
+  <text x="64" y="41" font-family="'EB Garamond', serif" font-size="34" font-weight="500" fill="#2d3e50" letter-spacing="-0.02em">Ciudadía</text>
+</svg>
