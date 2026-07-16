@@ -145,7 +145,7 @@
 
         <!-- Actions -->
         <div class="flex items-center space-x-4">
-          <a href="#cta" class="bg-primary text-on-primary px-8 py-3 font-label-caps text-label-caps uppercase tracking-widest transition-opacity hover:opacity-80">
+          <a href="contacto.html" class="bg-primary text-on-primary px-8 py-3 font-label-caps text-label-caps uppercase tracking-widest transition-opacity hover:opacity-80">
             Contacto
           </a>
 
@@ -398,101 +398,6 @@
     </div>
   </footer>
 
-  <!-- ========== CONTACT MODAL ========== -->
-  <div id="contactModal" class="fixed inset-0 z-[100] hidden bg-primary/45 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-300 opacity-0 scale-95">
-    <div class="bg-surface text-on-surface border border-outline-variant/30 max-w-5xl w-full p-8 md:p-12 shadow-2xl relative max-h-[90vh] overflow-y-auto rounded-sm">
-      <button id="closeContactModal" class="absolute top-4 right-4 text-on-surface-variant hover:text-primary transition-colors cursor-pointer" aria-label="Cerrar modal">
-        <span class="material-symbols-outlined text-2xl">close</span>
-      </button>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter text-left">
-        <!-- Left Column: Info -->
-        <div class="lg:col-span-5 mb-8 lg:mb-0">
-          <h2 class="font-display-lg text-headline-sm md:text-headline-md text-primary mb-6 text-cormorant">Solicite una Asesoría</h2>
-          <p class="font-body-md text-body-md text-on-surface-variant mb-8 text-lato leading-relaxed">
-            Complete el formulario con sus datos de contacto. Un asesor especialista de Ciudadía analizará su caso y se comunicará con usted en menos de 24 horas para definir la mejor estrategia patrimonial.
-          </p>
-          <div class="space-y-6">
-            <div class="flex items-start gap-4">
-              <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'wght' 200;">call</span>
-              <div>
-                <p class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider mb-1">LÍNEA DE ASESORÍA</p>
-                <p class="font-body-md text-body-md text-on-surface font-semibold text-sm">+51 987 654 321 / +51 1 234 5678</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'wght' 200;">mail</span>
-              <div>
-                <p class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider mb-1">CORREO CORPORATIVO</p>
-                <p class="font-body-md text-body-md text-on-surface font-semibold text-sm">contacto@ciudadia.pe</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Right Column: Form -->
-        <div class="lg:col-span-7">
-          <form class="space-y-6" id="contactModalForm" onsubmit="event.preventDefault(); alert('Gracias por su interés. Un asesor de Ciudadanía se pondrá en contacto pronto.'); document.getElementById('closeContactModal').click();">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="space-y-1">
-                <label class="font-label-caps text-[10px] text-label-caps uppercase text-on-surface-variant">Nombre Completo</label>
-                <input class="w-full bg-transparent border-0 border-b border-outline p-0 py-2 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant text-sm" placeholder="Gabriel Mendoza" type="text" required>
-              </div>
-              <div class="space-y-1">
-                <label class="font-label-caps text-[10px] text-label-caps uppercase text-on-surface-variant">Correo Electrónico</label>
-                <input class="w-full bg-transparent border-0 border-b border-outline p-0 py-2 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant text-sm" placeholder="gabriel@correo.com" type="email" required>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="space-y-1">
-                <label class="font-label-caps text-[10px] text-label-caps uppercase text-on-surface-variant">Teléfono de Contacto</label>
-                <input class="w-full bg-transparent border-0 border-b border-outline p-0 py-2 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant text-sm" placeholder="+51 987 654 321" type="tel" required>
-              </div>
-              
-              <div class="space-y-1 relative" id="custom-select-container">
-                <label class="font-label-caps text-[10px] text-label-caps uppercase text-on-surface-variant">Motivo de Consulta</label>
-                
-                <!-- Hidden Real Select -->
-                <select id="realSelect" class="sr-only" required>
-                  <option value="Comprar" selected>Comprar</option>
-                  <option value="Vender">Vender</option>
-                  <option value="Alquilar / Arrendar">Alquilar / Arrendar</option>
-                  <option value="Construir / Modificar Inmueble">Construir / Modificar Inmueble</option>
-                  <option value="Otros">Otros</option>
-                </select>
-
-                <!-- Custom Select Trigger -->
-                <button type="button" id="customSelectTrigger" class="w-full bg-transparent border-0 border-b border-outline p-0 py-2 hover:border-primary/30 transition-colors duration-300 text-left flex justify-between items-center text-on-surface focus:outline-none cursor-pointer text-sm">
-                  <span id="customSelectValue">Comprar</span>
-                  <span class="material-symbols-outlined text-outline transition-transform duration-300" id="customSelectChevron">expand_more</span>
-                </button>
-
-                <!-- Custom Dropdown Menu -->
-                <div id="customSelectMenu" class="absolute left-0 right-0 top-[100%] mt-1 bg-surface border border-outline-variant/30 shadow-2xl rounded-sm z-50 hidden flex-col opacity-0 scale-95 origin-top transition-all duration-300">
-                  <div class="py-1">
-                    <div class="custom-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Comprar">Comprar</div>
-                    <div class="custom-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Vender">Vender</div>
-                    <div class="custom-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Alquilar / Arrendar">Alquilar / Arrendar</div>
-                    <div class="custom-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Construir / Modificar Inmueble">Construir / Modificar Inmueble</div>
-                    <div class="custom-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Otros">Otros</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="space-y-1">
-              <label class="font-label-caps text-[10px] text-label-caps uppercase text-on-surface-variant">Mensaje / Notas</label>
-              <textarea class="w-full bg-transparent border-0 border-b border-outline p-0 py-2 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant resize-none text-sm" placeholder="Cuéntenos brevemente..." rows="3" required></textarea>
-            </div>
-            <button class="w-full bg-primary text-white border border-primary py-4 font-label-caps text-label-caps uppercase tracking-widest hover:bg-primary/90 transition-all duration-300 rounded-sm animate-button" type="submit">
-              Solicitar Asesoría
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Mobile navigation toggle helper script -->
   <script>
@@ -542,114 +447,7 @@
       }
     });
 
-    // Contact Modal Logic
-    const contactModal = document.getElementById('contactModal');
-    const closeContactModal = document.getElementById('closeContactModal');
-    
-    function openModal() {
-      if (contactModal) {
-        contactModal.classList.remove('hidden');
-        setTimeout(() => {
-          contactModal.classList.remove('opacity-0', 'scale-95');
-          contactModal.classList.add('opacity-100', 'scale-100');
-        }, 10);
-        document.body.style.overflow = 'hidden';
-      }
-    }
-    
-    function closeModal() {
-      if (contactModal) {
-        contactModal.classList.remove('opacity-100', 'scale-100');
-        contactModal.classList.add('opacity-0', 'scale-95');
-        setTimeout(() => {
-          contactModal.classList.add('hidden');
-        }, 300);
-        document.body.style.overflow = '';
-      }
-    }
 
-    document.querySelectorAll('a[href*="#contact"], a[href*="#cta"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal();
-      });
-    });
-
-    if (closeContactModal) {
-      closeContactModal.addEventListener('click', closeModal);
-    }
-
-    if (contactModal) {
-      contactModal.addEventListener('click', (e) => {
-        if (e.target === contactModal) {
-          closeModal();
-        }
-      });
-    }
-
-    // Auto-open modal if URL hash is #contact or #cta on load
-    window.addEventListener('load', () => {
-      if (window.location.hash === '#contact' || window.location.hash === '#cta') {
-        history.replaceState(null, null, ' ');
-        openModal();
-      }
-    });
-
-    // Custom Select Dropdown
-    const container = document.getElementById('custom-select-container');
-    if (container) {
-      const trigger = document.getElementById('customSelectTrigger');
-      const menu = document.getElementById('customSelectMenu');
-      const valEl = document.getElementById('customSelectValue');
-      const chevron = document.getElementById('customSelectChevron');
-      const realSelect = document.getElementById('realSelect');
-      const options = container.querySelectorAll('.custom-option');
-
-      function openMenu() {
-        menu.classList.remove('hidden');
-        setTimeout(() => {
-          menu.classList.remove('opacity-0', 'scale-95');
-          menu.classList.add('opacity-100', 'scale-100');
-        }, 10);
-        chevron.classList.add('rotate-180');
-      }
-
-      function closeMenu() {
-        menu.classList.remove('opacity-100', 'scale-100');
-        menu.classList.add('opacity-0', 'scale-95');
-        chevron.classList.remove('rotate-180');
-        setTimeout(() => {
-          menu.classList.add('hidden');
-        }, 200);
-      }
-
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = !menu.classList.contains('hidden');
-        if (isOpen) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-
-      options.forEach(opt => {
-        opt.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const val = opt.getAttribute('data-value');
-          valEl.textContent = val;
-          realSelect.value = val;
-          realSelect.dispatchEvent(new Event('change'));
-          closeMenu();
-        });
-      });
-
-      document.addEventListener('click', () => {
-        if (menu && !menu.classList.contains('hidden')) {
-          closeMenu();
-        }
-      });
-    }
   </script>
 
 </body>
