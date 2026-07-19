@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Colabora con Ciudadia — Únete a nuestra red de aliados y conecta tu marca con clientes de alta calidad.">
+  <title>Colabora con Nosotros - Ciudadia</title>
+  
+  <!-- Font and Icon Imports -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    try {
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "on-primary-fixed": "#0d1d2a",
+              "primary-fixed": "#d4e4f6",
+              "on-secondary-fixed": "#251a01",
+              "tertiary-fixed-dim": "#cec5bc",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#eae8e7",
+              "on-primary": "#ffffff",
+              "secondary-container": "#f4ddb2",
+              "primary-container": "#667686",
+              "surface-dim": "#dcd9d9",
+              "on-tertiary-container": "#fffbff",
+              "on-primary-fixed-variant": "#394857",
+              "inverse-surface": "#303030",
+              "on-secondary": "#ffffff",
+              "surface-container-low": "#f6f3f2",
+              "on-background": "#1b1c1c",
+              "on-secondary-fixed-variant": "#544525",
+              "surface-bright": "#fbf9f8",
+              "surface-container": "#f0eded",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "on-surface-variant": "#43474c",
+              "surface-tint": "#50606f",
+              "surface": "#fbf9f8",
+              "tertiary-container": "#7a736b",
+              "secondary-fixed-dim": "#dac49b",
+              "primary": "#2d3e50",
+              "on-secondary-container": "#71613e",
+              "on-tertiary-fixed": "#1f1b15",
+              "tertiary": "#615b53",
+              "on-error-container": "#93000a",
+              "secondary-fixed": "#f7e0b5",
+              "on-primary-container": "#fdfcff",
+              "background": "#fbf9f8",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#e4e2e1",
+              "primary-fixed-dim": "#b8c8da",
+              "on-tertiary-fixed-variant": "#4b463f",
+              "surface-variant": "#e4e2e1",
+              "on-surface": "#1b1c1c",
+              "inverse-on-surface": "#f3f0f0",
+              "secondary": "#6d5c3a",
+              "inverse-primary": "#b8c8da",
+              "outline-variant": "#c4c7cc",
+              "outline": "#74777c",
+              "tertiary-fixed": "#ebe1d7"
+            },
+            "borderRadius": {
+              "DEFAULT": "0px",
+              "lg": "0px",
+              "xl": "0px",
+              "full": "9999px"
+            },
+            "spacing": {
+              "gutter": "24px",
+              "container-max": "1280px",
+              "unit": "8px",
+              "margin-desktop": "64px",
+              "margin-mobile": "24px"
+            }
+          }
+        }
+      }
+    } catch(_e) {}
+  </script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/styles.css?v=32">
+
+  <style>
+    /* Fixed top navigation layout styling */
+    .keyline-bottom {
+      border-bottom: 1px solid rgba(45, 62, 80, 0.2);
+    }
+  </style>
+
+  <!-- Dark Mode Initializer -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('light');
+    }
+  </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden antialiased">
+
+  <!-- TopNavBar -->
+  <header class="fixed w-full bg-surface/85 backdrop-blur-md keyline-bottom z-50 transition-all duration-300">
+    <nav class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+      <a href="index.html" class="flex items-center">
+        <img src="assets/images/logo.svg" alt="Ciudadia Logo" class="h-14 w-auto"/>
+      </a>
+      
+      <div class="hidden md:flex gap-8 items-center">
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="comprar.html">Comprar</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="alquilar.html">Alquilar</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="vender.html">Vender</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="about.html">Nosotros</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="services.html">Servicios</a>
+        <a class="font-body-md text-body-md text-primary border border-primary/50 px-4 py-1.5 transition-all duration-200 tracking-wide font-medium bg-primary/5" href="colaboradores.html">Colabora con Nosotros</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="contacto.html" class="bg-primary text-on-primary px-6 py-2 font-label-caps uppercase tracking-widest text-xs inline-block transition-opacity hover:opacity-90">
+          Contacto
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-on-surface-variant hover:text-primary p-2 flex items-center" aria-label="Menú">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-surface border-b border-outline-variant/20 px-6 py-6 space-y-4">
+      <a href="comprar.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Comprar</a>
+      <a href="alquilar.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Alquilar</a>
+      <a href="vender.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Vender</a>
+      <a href="about.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Nosotros</a>
+      <a href="services.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Servicios</a>
+      <a href="colaboradores.html" class="block font-body-md text-body-md text-primary font-bold">Colabora con Nosotros</a>
+      <a href="contacto.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Contacto</a>
+    </div>
+  </header>
+
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="py-12 md:py-20 bg-surface-container-low border-b border-outline-variant/10">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
+        <span class="font-label-caps text-label-caps text-secondary tracking-widest block mb-4 uppercase">Únete a nuestra Red de Aliados</span>
+        <h1 class="font-display-lg text-4xl md:text-5xl text-primary max-w-4xl mx-auto leading-tight text-cormorant font-medium mb-10">
+          Conecta tu negocio con quienes construyen su hogar y estilo de vida.
+        </h1>
+        <p class="font-body-md text-lg md:text-xl text-on-surface-variant max-w-3xl mx-auto leading-[1.9] mb-8">
+          Únete a la red de aliados de Ciudadia y lleva tus servicios o productos <br class="hidden md:inline"> a nuestros clientes quienes buscan calidad y la más alta excelencia para sus espacios.
+        </p>
+        <div>
+          <button id="showFormBtn" class="bg-primary text-on-primary px-10 py-5 font-label-caps text-label-caps uppercase tracking-widest hover:opacity-95 hover:-translate-y-0.5 transition-all duration-300 inline-block shadow-lg cursor-pointer">
+            Enviar Solicitud
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Propuesta de Valor (Por qué unirse) -->
+    <section class="py-24 md:py-32 bg-surface">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div class="grid grid-cols-12 gap-gutter items-center">
+          <div class="col-span-12 lg:col-span-6 mb-12 lg:mb-0">
+            <span class="text-secondary font-label-caps text-label-caps uppercase tracking-widest mb-4 block">Una alianza estratégica</span>
+            <h2 class="font-display-lg text-3xl md:text-5xl text-on-surface text-cormorant mb-8 leading-tight">
+              ¿Por qué colaborar con Ciudadia?
+            </h2>
+            <div class="w-16 h-[2px] bg-primary mb-8"></div>
+            <p class="font-body-md text-lg text-on-surface-variant leading-relaxed mb-6">
+              En Ciudadia, no solo operamos en el sector inmobiliario; diseñamos experiencias de vida completas. Contamos con el respaldo de un <strong>equipo de especialistas con amplia trayectoria</strong> en diversas ramas de consultoría de espacios, asesoría legal y estilo de vida.
+            </p>
+            <p class="font-body-md text-lg text-on-surface-variant leading-relaxed mb-8">
+              Al unirte a nuestra red de consultoría, tu negocio tendrá un <strong>canal directo y de confianza</strong> hacia clientes que están planificando, configurando o mejorando sus espacios vitales. Posiciona tu negocio donde se toman las decisiones de alto valor.
+            </p>
+          </div>
+          <div class="col-span-12 lg:col-span-6 lg:col-start-7">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="bg-surface-container-low p-8 border border-outline-variant/35 hover:shadow-xl transition-all duration-300">
+                <span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings: 'wght' 200;">badge</span>
+                <h3 class="font-display-lg text-xl font-semibold mb-2 text-cormorant text-primary">Prestigio Compartido</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">
+                  Asocia tu negocio con un equipo multidisciplinario de probada trayectoria, elevando el estándar de cada propuesta.
+                </p>
+              </div>
+              <div class="bg-surface-container-low p-8 border border-outline-variant/35 hover:shadow-xl transition-all duration-300">
+                <span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings: 'wght' 200;">groups</span>
+                <h3 class="font-display-lg text-xl font-semibold mb-2 text-cormorant text-primary">Clientes Calificados</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">
+                  Acceso directo a propietarios y tomadores de decisiones que buscan activamente mejorar sus espacios.
+                </p>
+              </div>
+              <div class="bg-surface-container-low p-8 border border-outline-variant/35 hover:shadow-xl transition-all duration-300">
+                <span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings: 'wght' 200;">handshake</span>
+                <h3 class="font-display-lg text-xl font-semibold mb-2 text-cormorant text-primary">Sin Intermediarios</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">
+                  Una conexión y alianza directa entre las necesidades de cada negocio y el estilo de vida de nuestros clientes.
+                </p>
+              </div>
+              <div class="bg-surface-container-low p-8 border border-outline-variant/35 hover:shadow-xl transition-all duration-300">
+                <span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings: 'wght' 200;">trending_up</span>
+                <h3 class="font-display-lg text-xl font-semibold mb-2 text-cormorant text-primary">Crecimiento Mutuo</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">
+                  Creamos sinergias que expanden el alcance de tu negocio y potencian el valor de nuestra asesoría.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ¿A quiénes buscamos? (Rubros) -->
+    <section class="py-24 md:py-32 bg-surface-container-low">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
+        <span class="text-secondary font-label-caps text-label-caps uppercase tracking-widest mb-4 block">Perfiles de Interés</span>
+        <h2 class="font-display-lg text-3xl md:text-5xl text-on-surface text-cormorant mb-16">
+          Rubros que buscamos integrar
+        </h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Rubro 1 -->
+          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">chair</span>
+              </div>
+              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Diseño de interiores</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Especialistas en transformación espacial, distribución funcional, selección de paletas de color y desarrollo de conceptos estéticos a medida.
+              </p>
+            </div>
+          </div>
+
+          <!-- Rubro 2 -->
+          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">sensors</span>
+              </div>
+              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Domótica y tecnología</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Conectamos de forma directa la innovación de cada negocio con el entorno de nuestros clientes. Una integración limpia que abarca desde computadoras y electrodomésticos hasta automatización de iluminación, climatización y conectividad avanzada.
+              </p>
+            </div>
+          </div>
+
+          <!-- Rubro 3 -->
+          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">storefront</span>
+              </div>
+              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Mobiliario y decoración</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Una selección de mobiliario, telas y objetos decorativos de buena calidad para complementar y armar cada espacio.
+              </p>
+            </div>
+          </div>
+
+          <!-- Rubro 4 -->
+          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">forest</span>
+              </div>
+              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Paisajismo y exteriores</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Diseñadores de jardines, terrazas y áreas de esparcimiento exterior. Expertos en botánica, iluminación exterior y paisajismo sostenible.
+              </p>
+            </div>
+          </div>
+
+          <!-- Rubro 5 -->
+          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">architecture</span>
+              </div>
+              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Remodelación y arquitectura</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Estudios de arquitectura y constructoras, enfocados en renovaciones estructurales, ampliaciones e integridad técnica de inmuebles.
+              </p>
+            </div>
+          </div>
+
+          <!-- Rubro 6 -->
+          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">spa</span>
+              </div>
+              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Servicios de estilo de vida</h3>
+              <p class="text-on-surface-variant text-sm leading-relaxed">
+                Servicios profesionales y personales orientados a mejorar directamente el bienestar y calidad de vida diaria de las personas (salud, dentistas, psicólogos, asesores de bienestar y consultoría especializada).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario de Registro Simple -->
+    <!-- Modal de Registro (Pop-up) -->
+    <div id="registroModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 md:p-8">
+      <!-- Backdrop -->
+      <div id="modalBackdrop" class="absolute inset-0 bg-on-primary-fixed/60 backdrop-blur-sm transition-opacity duration-300"></div>
+      
+      <!-- Modal Content Card -->
+      <div class="relative bg-surface dark:bg-surface border border-outline-variant/30 w-full max-w-3xl shadow-2xl z-10 flex flex-col max-h-[90vh] rounded-sm">
+        <!-- Close Button -->
+        <button id="closeModalBtn" class="absolute top-4 right-4 text-on-surface-variant hover:text-primary p-2 flex items-center justify-center cursor-pointer transition-colors z-20" aria-label="Cerrar">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+
+        <!-- Scrollable Body -->
+        <div class="p-6 md:p-10 overflow-y-auto">
+          <div class="mb-8 pr-8">
+            <span class="text-secondary font-label-caps text-label-caps uppercase tracking-widest mb-2 block">Formulario de registro</span>
+            <h2 class="font-display-lg text-3xl md:text-4xl text-on-surface text-cormorant font-medium">
+              Inicia tu Solicitud de Alianza
+            </h2>
+            <p class="font-body-md text-on-surface-variant text-sm mt-3 leading-relaxed">
+              Completa el formulario con la información básica de tu negocio. Nuestro equipo evaluará tu perfil y portafolio para garantizar la alineación con los estándares de calidad de Ciudadia.
+            </p>
+            <div class="flex items-center gap-3 text-on-surface-variant mt-4 bg-primary/5 p-3 rounded-sm">
+              <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'wght' 200;">info</span>
+              <span class="text-xs text-on-surface-variant font-medium">Revisión de solicitudes en un plazo de 3 a 5 días hábiles.</span>
+            </div>
+          </div>
+
+          <form id="registroForm" class="space-y-8" onsubmit="event.preventDefault(); alert('Solicitud de alianza enviada con éxito. Revisaremos sus datos y nos pondremos en contacto pronto.'); window.location.reload();">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="space-y-1">
+                <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Nombre del negocio</label>
+                <input class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant" placeholder="Ej. Estudio Deco & Arte" type="text" required>
+              </div>
+              <div class="space-y-1">
+                <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Persona de contacto</label>
+                <input class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant" placeholder="Ej. Laura Valdivia" type="text" required>
+              </div>
+            </div>
+
+            <!-- Tipo de Identificación Selector -->
+            <div class="space-y-3">
+              <label class="font-label-caps text-label-caps uppercase text-on-surface-variant block">Tipo de Identificación</label>
+              <div class="flex flex-wrap gap-8 items-center pt-2">
+                <label class="flex items-center gap-2 cursor-pointer text-on-surface text-sm">
+                  <input type="radio" name="idType" value="ruc" checked class="text-primary focus:ring-primary border-outline/50 bg-transparent w-4 h-4">
+                  Persona Jurídica (Razón Social / RUC)
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer text-on-surface text-sm">
+                  <input type="radio" name="idType" value="dni" class="text-primary focus:ring-primary border-outline/50 bg-transparent w-4 h-4">
+                  Persona Natural (Documento de Identidad)
+                </label>
+              </div>
+            </div>
+
+            <!-- Dynamic Fields for Persona Jurídica (RUC) -->
+            <div id="fieldsRuc" class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+              <div class="space-y-1">
+                <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Razón Social</label>
+                <input id="inputRazonSocial" class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant" placeholder="Ej. Arquitectura & Estilo S.A.C." type="text">
+              </div>
+              <div class="space-y-1">
+                <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Número de RUC</label>
+                <input id="inputRuc" class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant" placeholder="Ej. 20123456789" type="text" pattern="[0-9]{11}" title="El RUC debe tener 11 dígitos">
+              </div>
+            </div>
+
+            <!-- Dynamic Fields for Persona Natural (DNI / CE) -->
+            <div id="fieldsDni" class="hidden space-y-6 pt-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-1 relative" id="custom-doc-select-container">
+                  <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Tipo de Documento</label>
+                  
+                  <!-- Hidden Real Select -->
+                  <select id="realDocSelect" class="sr-only" required>
+                    <option value="DNI" selected>DNI (Documento Nacional de Identidad)</option>
+                    <option value="CE">CE (Carnet de Extranjería)</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                  </select>
+
+                  <!-- Custom Select Trigger -->
+                  <button type="button" id="customDocSelectTrigger" class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:border-primary/30 transition-colors duration-300 text-left flex justify-between items-center text-on-surface focus:outline-none cursor-pointer">
+                    <span id="customDocSelectValue">DNI (Documento Nacional de Identidad)</span>
+                    <span class="material-symbols-outlined text-outline transition-transform duration-300" id="customDocSelectChevron">expand_more</span>
+                  </button>
+
+                  <!-- Custom Dropdown Menu -->
+                  <div id="customDocSelectMenu" class="absolute left-0 right-0 top-[100%] mt-1 bg-surface border border-outline-variant/30 shadow-2xl rounded-sm z-50 hidden flex-col opacity-0 scale-95 origin-top transition-all duration-300">
+                    <div class="py-1">
+                      <div class="custom-doc-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="DNI">DNI (Documento Nacional de Identidad)</div>
+                      <div class="custom-doc-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="CE">CE (Carnet de Extranjería)</div>
+                      <div class="custom-doc-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Pasaporte">Pasaporte</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="space-y-1">
+                  <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Número de Documento</label>
+                  <input id="inputDni" class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant" placeholder="Ej. 45678912" type="text">
+                </div>
+              </div>
+              
+              <!-- File Upload Section (Both sides) -->
+              <div class="space-y-2">
+                <label class="font-label-caps text-label-caps uppercase text-on-surface-variant block">Subir foto del documento (Ambos lados)</label>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <!-- Front Side -->
+                  <div class="border border-dashed border-outline-variant/60 hover:border-primary/50 transition-colors p-6 flex flex-col items-center justify-center text-center cursor-pointer relative" id="uploadFrontBox">
+                    <input type="file" id="fileFront" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-2" id="iconFront">add_a_photo</span>
+                    <span class="text-xs font-semibold text-on-surface-variant block" id="textFront">Lado Frontal</span>
+                    <span class="text-[10px] text-outline mt-1 block" id="infoFront">Formatos: JPG, PNG. Máx 5MB</span>
+                  </div>
+                  <!-- Back Side -->
+                  <div class="border border-dashed border-outline-variant/60 hover:border-primary/50 transition-colors p-6 flex flex-col items-center justify-center text-center cursor-pointer relative" id="uploadBackBox">
+                    <input type="file" id="fileBack" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-2" id="iconBack">add_a_photo</span>
+                    <span class="text-xs font-semibold text-on-surface-variant block" id="textBack">Lado Posterior</span>
+                    <span class="text-[10px] text-outline mt-1 block" id="infoBack">Formatos: JPG, PNG. Máx 5MB</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="space-y-1 relative" id="custom-select-container">
+                <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Rubro Principal</label>
+                
+                <select id="realSelect" class="sr-only" required>
+                  <option value="" disabled selected>Selecciona un rubro</option>
+                  <option value="Diseño de interiores">Diseño de interiores</option>
+                  <option value="Domótica y tecnología para el hogar">Domótica y tecnología para el hogar</option>
+                  <option value="Mobiliario y decoración">Mobiliario y decoración</option>
+                  <option value="Paisajismo y exteriores">Paisajismo y exteriores</option>
+                  <option value="Remodelación y arquitectura">Remodelación y arquitectura</option>
+                  <option value="Servicios de estilo de vida">Servicios de estilo de vida</option>
+                </select>
+
+                <button type="button" id="customSelectTrigger" class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:border-primary/30 transition-colors duration-300 text-left flex justify-between items-center text-on-surface focus:outline-none cursor-pointer">
+                  <span id="customSelectValue" class="text-outline">Selecciona un rubro</span>
+                  <span class="material-symbols-outlined text-outline transition-transform duration-300" id="customSelectChevron">expand_more</span>
+                </button>
+
+                <div id="customSelectMenu" class="absolute left-0 right-0 top-[100%] mt-1 bg-surface border border-outline-variant/30 shadow-2xl rounded-sm z-50 hidden flex-col opacity-0 scale-95 origin-top transition-all duration-300">
+                  <div class="py-1 max-h-60 overflow-y-auto">
+                    <div class="custom-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Diseño de interiores">Diseño de interiores</div>
+                    <div class="custom-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Domótica y tecnología para el hogar">Domótica y tecnología para el hogar</div>
+                    <div class="custom-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Mobiliario y decoración">Mobiliario y decoración</div>
+                    <div class="custom-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Paisajismo y exteriores">Paisajismo y exteriores</div>
+                    <div class="custom-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Remodelación y arquitectura">Remodelación y arquitectura</div>
+                    <div class="custom-option px-6 py-3 text-left hover:bg-primary hover:text-white transition-colors duration-150 cursor-pointer text-on-surface text-sm" data-value="Servicios de estilo de vida">Servicios de estilo de vida</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Instagram, Web o Portafolio</label>
+                <input class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant" placeholder="Ej. instagram.com/mi_marca" type="url" required>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="space-y-1">
+                <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Correo electrónico</label>
+                <input class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant" placeholder="ejemplo@marca.com" type="email" required>
+              </div>
+              <div class="space-y-1">
+                <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Teléfono / WhatsApp</label>
+                <input class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant" placeholder="Ej. +51 999 888 777" type="tel" required>
+              </div>
+            </div>
+
+            <button class="w-full bg-primary text-on-primary py-5 font-label-caps text-label-caps uppercase tracking-widest hover:opacity-90 transition-all duration-300" type="submit">
+              Enviar solicitud
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white border-t border-white/10 transition-all">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+      <!-- Upper Footer Row -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+        <a href="index.html" class="flex items-center">
+          <img src="assets/images/logo.svg" alt="Ciudadia Logo" class="h-12 w-auto brightness-0 invert">
+        </a>
+        <div class="flex flex-wrap justify-center gap-8">
+          <a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="about.html">Nosotros</a>
+          <a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="services.html">Servicios</a>
+          <a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="comprar.html">Comprar</a>
+          <a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="alquilar.html">Alquilar</a>
+          <a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="vender.html">Vender</a>
+          <a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="#registro">Colabora</a>
+        </div>
+      </div>
+      <!-- Lower Footer Row -->
+      <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body-md text-white/60">© 2026 Ciudadia. Todos los derechos reservados.</p>
+        <div class="flex gap-4">
+          <span class="material-symbols-outlined text-white/60" data-icon="language">language</span>
+          <span class="font-body-md text-white/60">Lima, Perú</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile navigation drawer toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Reveal Form Modal when clicking Enviar Solicitud or hash navigation
+    const showFormBtn = document.getElementById('showFormBtn');
+    const modal = document.getElementById('registroModal');
+    const backdrop = document.getElementById('modalBackdrop');
+    const closeBtn = document.getElementById('closeModalBtn');
+
+    function openModal() {
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden'); // Lock background scroll
+      }
+    }
+
+    function closeModal() {
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden'); // Unlock background scroll
+        if (window.location.hash === '#registro') {
+          history.replaceState(null, null, ' ');
+        }
+      }
+    }
+
+    if (showFormBtn) showFormBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Listen to hash change (e.g. navigation links pointing to #registro)
+    window.addEventListener('hashchange', () => {
+      if (window.location.hash === '#registro') {
+        openModal();
+      }
+    });
+
+    // Run on load if URL has hash
+    if (window.location.hash === '#registro') {
+      openModal();
+    }
+
+    // Toggle Identification Fields
+    const rucRadio = document.querySelector('input[value="ruc"]');
+    const dniRadio = document.querySelector('input[value="dni"]');
+    const fieldsRuc = document.getElementById('fieldsRuc');
+    const fieldsDni = document.getElementById('fieldsDni');
+
+    const inputRazonSocial = document.getElementById('inputRazonSocial');
+    const inputRuc = document.getElementById('inputRuc');
+    const inputDni = document.getElementById('inputDni');
+    const fileFront = document.getElementById('fileFront');
+    const fileBack = document.getElementById('fileBack');
+
+    function toggleFields() {
+      if (rucRadio.checked) {
+        fieldsRuc.classList.remove('hidden');
+        fieldsDni.classList.add('hidden');
+        inputRazonSocial.required = true;
+        inputRuc.required = true;
+        inputDni.required = false;
+        fileFront.required = false;
+        fileBack.required = false;
+      } else {
+        fieldsRuc.classList.add('hidden');
+        fieldsDni.classList.remove('hidden');
+        inputRazonSocial.required = false;
+        inputRuc.required = false;
+        inputDni.required = true;
+        fileFront.required = true;
+        fileBack.required = true;
+      }
+    }
+
+    if (rucRadio && dniRadio) {
+      rucRadio.addEventListener('change', toggleFields);
+      dniRadio.addEventListener('change', toggleFields);
+      // Run once at start
+      toggleFields();
+    }
+
+    // Custom display for file uploads
+    function handleFileDisplay(input, textId, iconId, infoId, uploadBoxId, defaultText) {
+      input.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        const textEl = document.getElementById(textId);
+        const iconEl = document.getElementById(iconId);
+        const infoEl = document.getElementById(infoId);
+        const boxEl = document.getElementById(uploadBoxId);
+
+        if (file) {
+          textEl.textContent = file.name;
+          textEl.classList.add('text-primary', 'font-medium');
+          iconEl.textContent = 'check_circle';
+          iconEl.classList.add('text-emerald-500');
+          infoEl.textContent = 'Archivo seleccionado con éxito';
+          boxEl.classList.remove('border-dashed');
+          boxEl.classList.add('border-emerald-500/50');
+        } else {
+          textEl.textContent = defaultText;
+          textEl.classList.remove('text-primary', 'font-medium');
+          iconEl.textContent = 'add_a_photo';
+          iconEl.classList.remove('text-emerald-500');
+          infoEl.textContent = 'Formatos: JPG, PNG. Máx 5MB';
+          boxEl.classList.add('border-dashed');
+          boxEl.classList.remove('border-emerald-500/50');
+        }
+      });
+    }
+
+    if (fileFront) {
+      handleFileDisplay(fileFront, 'textFront', 'iconFront', 'infoFront', 'uploadFrontBox', 'Lado Frontal');
+    }
+    if (fileBack) {
+      handleFileDisplay(fileBack, 'textBack', 'iconBack', 'infoBack', 'uploadBackBox', 'Lado Posterior');
+    }
+
+    // Custom Select Dropdown
+    const container = document.getElementById('custom-select-container');
+    if (container) {
+      const trigger = document.getElementById('customSelectTrigger');
+      const valueSpan = document.getElementById('customSelectValue');
+      const menu = document.getElementById('customSelectMenu');
+      const realSelect = document.getElementById('realSelect');
+      const chevron = document.getElementById('customSelectChevron');
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = menu.classList.contains('hidden');
+        if (isHidden) {
+          menu.classList.remove('hidden');
+          setTimeout(() => {
+            menu.classList.remove('opacity-0', 'scale-95');
+            menu.classList.add('opacity-100', 'scale-100');
+          }, 10);
+          chevron.style.transform = 'rotate(180deg)';
+        } else {
+          closeSelect();
+        }
+      });
+
+      document.querySelectorAll('.custom-option').forEach(option => {
+        option.addEventListener('click', () => {
+          const val = option.getAttribute('data-value');
+          valueSpan.textContent = val;
+          valueSpan.classList.remove('text-outline');
+          realSelect.value = val;
+          closeSelect();
+        });
+      });
+
+      function closeSelect() {
+        menu.classList.remove('opacity-100', 'scale-100');
+        menu.classList.add('opacity-0', 'scale-95');
+        chevron.style.transform = 'rotate(0deg)';
+        setTimeout(() => {
+          menu.classList.add('hidden');
+        }, 300);
+      }
+
+      document.addEventListener('click', () => {
+        if (!menu.classList.contains('hidden')) {
+          closeSelect();
+        }
+      });
+    }
+
+    // Custom Document Select Dropdown
+    const docContainer = document.getElementById('custom-doc-select-container');
+    if (docContainer) {
+      const trigger = document.getElementById('customDocSelectTrigger');
+      const valueSpan = document.getElementById('customDocSelectValue');
+      const menu = document.getElementById('customDocSelectMenu');
+      const realSelect = document.getElementById('realDocSelect');
+      const chevron = document.getElementById('customDocSelectChevron');
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = menu.classList.contains('hidden');
+        if (isHidden) {
+          menu.classList.remove('hidden');
+          setTimeout(() => {
+            menu.classList.remove('opacity-0', 'scale-95');
+            menu.classList.add('opacity-100', 'scale-100');
+          }, 10);
+          chevron.style.transform = 'rotate(180deg)';
+        } else {
+          closeDocSelect();
+        }
+      });
+
+      document.querySelectorAll('.custom-doc-option').forEach(option => {
+        option.addEventListener('click', () => {
+          const val = option.getAttribute('data-value');
+          const fullText = option.textContent;
+          valueSpan.textContent = fullText;
+          realSelect.value = val;
+          closeDocSelect();
+        });
+      });
+
+      function closeDocSelect() {
+        menu.classList.remove('opacity-100', 'scale-100');
+        menu.classList.add('opacity-0', 'scale-95');
+        chevron.style.transform = 'rotate(0deg)';
+        setTimeout(() => {
+          menu.classList.add('hidden');
+        }, 300);
+      }
+
+      document.addEventListener('click', () => {
+        if (!menu.classList.contains('hidden')) {
+          closeDocSelect();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
