@@ -2,7 +2,7 @@
    CIUDADIA — Main Application Logic
    ============================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
+function init() {
   highlightActiveNav();
   initNavbar();
   initThemeToggle();
@@ -12,12 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initModal();
   initBuyPage();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 
 /* ---------- Active Nav Highlight ---------- */
 function highlightActiveNav() {
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const pageName = currentPath === '' ? 'index.html' : currentPath;
+  const cleanPageName = pageName.replace(/\.html$/, '');
 
   const links = document.querySelectorAll('header nav a, header a');
   links.forEach(a => {
@@ -25,16 +32,18 @@ function highlightActiveNav() {
     if (!href) return;
     
     const linkPath = href.split('/').pop();
-    if (linkPath === pageName) {
-      if (linkPath === 'index.html') {
+    const cleanLinkPath = linkPath.replace(/\.html$/, '');
+
+    if (cleanLinkPath === cleanPageName) {
+      if (cleanLinkPath === 'index') {
         return;
       }
-      if (linkPath === 'colaboradores.html') {
+      if (cleanLinkPath === 'colaboradores') {
         a.style.backgroundColor = 'var(--primary)';
         a.style.color = '#ffffff';
         a.style.borderColor = 'var(--primary)';
         a.style.fontWeight = '600';
-      } else if (linkPath === 'contacto.html') {
+      } else if (cleanLinkPath === 'contacto') {
         a.style.backgroundColor = 'var(--primary)';
         a.style.color = '#ffffff';
         a.style.borderColor = 'var(--primary)';
