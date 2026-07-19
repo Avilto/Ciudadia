@@ -3,6 +3,7 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  highlightActiveNav();
   initNavbar();
   initThemeToggle();
   renderCategories();
@@ -12,6 +13,42 @@ document.addEventListener('DOMContentLoaded', () => {
   initModal();
   initBuyPage();
 });
+
+/* ---------- Active Nav Highlight ---------- */
+function highlightActiveNav() {
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const pageName = currentPath === '' ? 'index.html' : currentPath;
+
+  const links = document.querySelectorAll('header nav a, header a');
+  links.forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href) return;
+    
+    const linkPath = href.split('/').pop();
+    if (linkPath === pageName) {
+      if (linkPath === 'index.html') {
+        return;
+      }
+      if (linkPath === 'colaboradores.html') {
+        a.style.backgroundColor = 'var(--primary)';
+        a.style.color = '#ffffff';
+        a.style.borderColor = 'var(--primary)';
+        a.style.fontWeight = '600';
+      } else if (linkPath === 'contacto.html') {
+        a.style.backgroundColor = 'var(--primary)';
+        a.style.color = '#ffffff';
+        a.style.borderColor = 'var(--primary)';
+        a.style.fontWeight = '600';
+        a.style.opacity = '1';
+      } else {
+        a.style.color = 'var(--primary)';
+        a.style.fontWeight = '700';
+        a.style.borderBottom = '2px solid var(--primary)';
+        a.style.paddingBottom = '4px';
+      }
+    }
+  });
+}
 
 /* ---------- Navbar ---------- */
 function initNavbar() {
