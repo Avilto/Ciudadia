@@ -627,3 +627,18 @@ header.shadow-scrolled {
 .service-card:hover .line-accent {
   width: 100%;
 }
+
+/* --- Header Navigation Link Styles & Active Indicator --- */
+header nav a:not([class*="btn-"]):not([class*="bg-"]):not([class*="font-display"]):hover {
+  color: var(--primary, #2d3e50);
+  border-bottom: 2px solid var(--primary, #2d3e50);
+  padding-bottom: 4px;
+}
+
+header nav a.nav-link-active {
+  color: var(--primary, #2d3e50) !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid var(--primary, #2d3e50) !important;
+  padding-bottom: 4px !important;
+}
+

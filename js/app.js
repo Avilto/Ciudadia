@@ -22,38 +22,37 @@ if (document.readyState === 'loading') {
 
 /* ---------- Active Nav Highlight ---------- */
 function highlightActiveNav() {
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  const pageName = currentPath === '' ? 'index.html' : currentPath;
-  const cleanPageName = pageName.replace(/\.html$/, '');
+  const pathSegments = window.location.pathname.split('/').filter(Boolean);
+  const rawPage = pathSegments.length > 0 ? pathSegments[pathSegments.length - 1] : 'index';
+  const currentPage = rawPage.replace(/\.html$/, '') || 'index';
 
-  const links = document.querySelectorAll('header nav a, header a');
+  const links = document.querySelectorAll('header nav a[href], header div a[href], #mobileMenu a[href]');
   links.forEach(a => {
-    const href = a.getAttribute('href');
-    if (!href) return;
-    
-    const linkPath = href.split('/').pop();
-    const cleanLinkPath = linkPath.replace(/\.html$/, '');
+    const rawHref = a.getAttribute('href') || '';
+    if (!rawHref || rawHref.startsWith('#') || rawHref.startsWith('http')) return;
 
-    if (cleanLinkPath === cleanPageName) {
-      if (cleanLinkPath === 'index') {
-        return;
-      }
-      if (cleanLinkPath === 'colaboradores') {
+    const hrefSegments = rawHref.split('?')[0].split('/').filter(Boolean);
+    const linkPage = hrefSegments.length > 0 ? hrefSegments[hrefSegments.length - 1].replace(/\.html$/, '') : 'index';
+
+    if (linkPage === currentPage && linkPage !== 'index') {
+      if (linkPage === 'colaboradores') {
         a.style.backgroundColor = 'var(--primary)';
         a.style.color = '#ffffff';
         a.style.borderColor = 'var(--primary)';
         a.style.fontWeight = '600';
-      } else if (cleanLinkPath === 'contacto') {
-        a.style.backgroundColor = 'var(--primary)';
-        a.style.color = '#ffffff';
-        a.style.borderColor = 'var(--primary)';
-        a.style.fontWeight = '600';
-        a.style.opacity = '1';
+      } else if (linkPage === 'contacto') {
+        if (!a.classList.contains('btn-primary') && !a.classList.contains('bg-primary')) {
+          a.style.color = 'var(--primary)';
+          a.style.fontWeight = '700';
+          a.style.borderBottom = '2px solid var(--primary)';
+          a.style.paddingBottom = '4px';
+        }
       } else {
         a.style.color = 'var(--primary)';
         a.style.fontWeight = '700';
         a.style.borderBottom = '2px solid var(--primary)';
         a.style.paddingBottom = '4px';
+        a.classList.add('nav-link-active');
       }
     }
   });
