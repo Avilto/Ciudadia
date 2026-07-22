@@ -113,7 +113,7 @@
   <header class="fixed w-full bg-surface/85 backdrop-blur-md keyline-bottom z-50 transition-all duration-300">
     <nav class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
       <a href="index.html" class="flex items-center">
-        <img src="assets/images/logo.svg" alt="Ciudadia Logo" class="h-14 w-auto"/>
+        <img src="assets/images/logo.svg?v=2" alt="Ciudadia Logo" class="h-14 w-auto"/>
       </a>
       
       <div class="hidden md:flex gap-8 items-center">
@@ -122,7 +122,7 @@
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="vender.html">Vender</a>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="about.html">Nosotros</a>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="services.html">Servicios</a>
-        <a class="font-body-md text-body-md text-primary border border-primary/50 px-4 py-1.5 transition-all duration-200 tracking-wide font-medium bg-primary/5" href="colaboradores.html">Colabora con Nosotros</a>
+        <!-- <a class="font-body-md text-body-md text-primary border border-primary/50 px-4 py-1.5 transition-all duration-200 tracking-wide font-medium bg-primary/5" href="colaboradores.html">Colabora con Nosotros</a> -->
       </div>
       <div class="flex items-center gap-4">
         <a href="contacto.html" class="bg-primary text-on-primary px-6 py-2 font-label-caps uppercase tracking-widest text-xs inline-block transition-opacity hover:opacity-90">
@@ -143,7 +143,7 @@
       <a href="vender.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Vender</a>
       <a href="about.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Nosotros</a>
       <a href="services.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Servicios</a>
-      <a href="colaboradores.html" class="block font-body-md text-body-md text-primary font-bold">Colabora con Nosotros</a>
+      <!-- <a href="colaboradores.html" class="block font-body-md text-body-md text-primary font-bold">Colabora con Nosotros</a> -->
       <a href="contacto.html" class="block font-body-md text-body-md text-on-surface-variant hover:text-primary">Contacto</a>
     </div>
   </header>
@@ -186,30 +186,42 @@
           </div>
           <div class="col-span-12 lg:col-span-6 lg:col-start-7">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="bg-surface-container-low p-8 border border-outline-variant/35 hover:shadow-xl transition-all duration-300">
-                <span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings: 'wght' 200;">badge</span>
-                <h3 class="font-display-lg text-xl font-semibold mb-2 text-cormorant text-primary">Prestigio Compartido</h3>
+              <div class="service-card p-8 text-left">
+                <div class="w-12 h-12 border border-[#6d5c3a]/40 bg-[#6d5c3a]/5 text-[#6d5c3a] flex items-center justify-center mb-4">
+                  <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'wght' 250;">badge</span>
+                </div>
+                <h3 class="font-display-lg text-xl font-semibold text-cormorant text-primary">Prestigio Compartido</h3>
+                <div class="line-accent"></div>
                 <p class="text-on-surface-variant text-sm leading-relaxed">
                   Asocia tu negocio con un equipo multidisciplinario de probada trayectoria, elevando el estándar de cada propuesta.
                 </p>
               </div>
-              <div class="bg-surface-container-low p-8 border border-outline-variant/35 hover:shadow-xl transition-all duration-300">
-                <span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings: 'wght' 200;">groups</span>
-                <h3 class="font-display-lg text-xl font-semibold mb-2 text-cormorant text-primary">Clientes Calificados</h3>
+              <div class="service-card p-8 text-left">
+                <div class="w-12 h-12 border border-[#6d5c3a]/40 bg-[#6d5c3a]/5 text-[#6d5c3a] flex items-center justify-center mb-4">
+                  <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'wght' 250;">groups</span>
+                </div>
+                <h3 class="font-display-lg text-xl font-semibold text-cormorant text-primary">Clientes Calificados</h3>
+                <div class="line-accent"></div>
                 <p class="text-on-surface-variant text-sm leading-relaxed">
                   Acceso directo a propietarios y tomadores de decisiones que buscan activamente mejorar sus espacios.
                 </p>
               </div>
-              <div class="bg-surface-container-low p-8 border border-outline-variant/35 hover:shadow-xl transition-all duration-300">
-                <span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings: 'wght' 200;">handshake</span>
-                <h3 class="font-display-lg text-xl font-semibold mb-2 text-cormorant text-primary">Sin Intermediarios</h3>
+              <div class="service-card p-8 text-left">
+                <div class="w-12 h-12 border border-[#6d5c3a]/40 bg-[#6d5c3a]/5 text-[#6d5c3a] flex items-center justify-center mb-4">
+                  <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'wght' 250;">handshake</span>
+                </div>
+                <h3 class="font-display-lg text-xl font-semibold text-cormorant text-primary">Sin Intermediarios</h3>
+                <div class="line-accent"></div>
                 <p class="text-on-surface-variant text-sm leading-relaxed">
                   Una conexión y alianza directa entre las necesidades de cada negocio y el estilo de vida de nuestros clientes.
                 </p>
               </div>
-              <div class="bg-surface-container-low p-8 border border-outline-variant/35 hover:shadow-xl transition-all duration-300">
-                <span class="material-symbols-outlined text-primary text-4xl mb-4" style="font-variation-settings: 'wght' 200;">trending_up</span>
-                <h3 class="font-display-lg text-xl font-semibold mb-2 text-cormorant text-primary">Crecimiento Mutuo</h3>
+              <div class="service-card p-8 text-left">
+                <div class="w-12 h-12 border border-[#6d5c3a]/40 bg-[#6d5c3a]/5 text-[#6d5c3a] flex items-center justify-center mb-4">
+                  <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'wght' 250;">trending_up</span>
+                </div>
+                <h3 class="font-display-lg text-xl font-semibold text-cormorant text-primary">Crecimiento Mutuo</h3>
+                <div class="line-accent"></div>
                 <p class="text-on-surface-variant text-sm leading-relaxed">
                   Creamos sinergias que expanden el alcance de tu negocio y potencian el valor de nuestra asesoría.
                 </p>
@@ -230,12 +242,13 @@
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Rubro 1 -->
-          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+          <div class="service-card p-8 text-left flex flex-col justify-between h-full">
             <div>
-              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+              <div class="w-12 h-12 border border-[#6d5c3a]/40 bg-[#6d5c3a]/5 text-[#6d5c3a] flex items-center justify-center mb-6">
                 <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">chair</span>
               </div>
-              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Diseño de interiores</h3>
+              <h3 class="font-display-lg text-2xl text-on-surface text-cormorant font-semibold">Diseño de interiores</h3>
+              <div class="line-accent"></div>
               <p class="text-on-surface-variant text-sm leading-relaxed">
                 Especialistas en transformación espacial, distribución funcional, selección de paletas de color y desarrollo de conceptos estéticos a medida.
               </p>
@@ -243,12 +256,13 @@
           </div>
 
           <!-- Rubro 2 -->
-          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+          <div class="service-card p-8 text-left flex flex-col justify-between h-full">
             <div>
-              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+              <div class="w-12 h-12 border border-[#6d5c3a]/40 bg-[#6d5c3a]/5 text-[#6d5c3a] flex items-center justify-center mb-6">
                 <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">sensors</span>
               </div>
-              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Domótica y tecnología</h3>
+              <h3 class="font-display-lg text-2xl text-on-surface text-cormorant font-semibold">Domótica y tecnología</h3>
+              <div class="line-accent"></div>
               <p class="text-on-surface-variant text-sm leading-relaxed">
                 Conectamos de forma directa la innovación de cada negocio con el entorno de nuestros clientes. Una integración limpia que abarca desde computadoras y electrodomésticos hasta automatización de iluminación, climatización y conectividad avanzada.
               </p>
@@ -256,12 +270,13 @@
           </div>
 
           <!-- Rubro 3 -->
-          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+          <div class="service-card p-8 text-left flex flex-col justify-between h-full">
             <div>
-              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+              <div class="w-12 h-12 border border-[#6d5c3a]/40 bg-[#6d5c3a]/5 text-[#6d5c3a] flex items-center justify-center mb-6">
                 <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">storefront</span>
               </div>
-              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Mobiliario y decoración</h3>
+              <h3 class="font-display-lg text-2xl text-on-surface text-cormorant font-semibold">Mobiliario y decoración</h3>
+              <div class="line-accent"></div>
               <p class="text-on-surface-variant text-sm leading-relaxed">
                 Una selección de mobiliario, telas y objetos decorativos de buena calidad para complementar y armar cada espacio.
               </p>
@@ -269,12 +284,13 @@
           </div>
 
           <!-- Rubro 4 -->
-          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+          <div class="service-card p-8 text-left flex flex-col justify-between h-full">
             <div>
-              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+              <div class="w-12 h-12 border border-[#6d5c3a]/40 bg-[#6d5c3a]/5 text-[#6d5c3a] flex items-center justify-center mb-6">
                 <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">forest</span>
               </div>
-              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Paisajismo y exteriores</h3>
+              <h3 class="font-display-lg text-2xl text-on-surface text-cormorant font-semibold">Paisajismo y exteriores</h3>
+              <div class="line-accent"></div>
               <p class="text-on-surface-variant text-sm leading-relaxed">
                 Diseñadores de jardines, terrazas y áreas de esparcimiento exterior. Expertos en botánica, iluminación exterior y paisajismo sostenible.
               </p>
@@ -282,12 +298,13 @@
           </div>
 
           <!-- Rubro 5 -->
-          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+          <div class="service-card p-8 text-left flex flex-col justify-between h-full">
             <div>
-              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+              <div class="w-12 h-12 border border-[#6d5c3a]/40 bg-[#6d5c3a]/5 text-[#6d5c3a] flex items-center justify-center mb-6">
                 <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">architecture</span>
               </div>
-              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Remodelación y arquitectura</h3>
+              <h3 class="font-display-lg text-2xl text-on-surface text-cormorant font-semibold">Remodelación y arquitectura</h3>
+              <div class="line-accent"></div>
               <p class="text-on-surface-variant text-sm leading-relaxed">
                 Estudios de arquitectura y constructoras, enfocados en renovaciones estructurales, ampliaciones e integridad técnica de inmuebles.
               </p>
@@ -295,12 +312,13 @@
           </div>
 
           <!-- Rubro 6 -->
-          <div class="bg-white dark:bg-surface p-8 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between">
+          <div class="service-card p-8 text-left flex flex-col justify-between h-full">
             <div>
-              <div class="w-12 h-12 bg-primary/5 text-primary flex items-center justify-center mb-6">
+              <div class="w-12 h-12 border border-[#6d5c3a]/40 bg-[#6d5c3a]/5 text-[#6d5c3a] flex items-center justify-center mb-6">
                 <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 250;">spa</span>
               </div>
-              <h3 class="font-display-lg text-2xl text-on-surface mb-3 text-cormorant font-semibold">Servicios de estilo de vida</h3>
+              <h3 class="font-display-lg text-2xl text-on-surface text-cormorant font-semibold">Servicios de estilo de vida</h3>
+              <div class="line-accent"></div>
               <p class="text-on-surface-variant text-sm leading-relaxed">
                 Servicios profesionales y personales orientados a mejorar directamente el bienestar y calidad de vida diaria de las personas (salud, dentistas, psicólogos, asesores de bienestar y consultoría especializada).
               </p>
@@ -497,7 +515,7 @@
       <!-- Upper Footer Row -->
       <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
         <a href="index.html" class="flex items-center">
-          <img src="assets/images/logo.svg" alt="Ciudadia Logo" class="h-12 w-auto brightness-0 invert">
+          <img src="assets/images/logo.svg?v=2" alt="Ciudadia Logo" class="h-12 w-auto brightness-0 invert">
         </a>
         <div class="flex flex-wrap justify-center gap-8">
           <a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="about.html">Nosotros</a>
