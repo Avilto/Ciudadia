@@ -22,11 +22,12 @@ if (document.readyState === 'loading') {
 
 /* ---------- Active Nav Highlight ---------- */
 function highlightActiveNav() {
+  const pageAttr = document.body ? document.body.getAttribute('data-page') : null;
   const pathSegments = window.location.pathname.split('/').filter(Boolean);
   const rawPage = pathSegments.length > 0 ? pathSegments[pathSegments.length - 1] : 'index';
-  const currentPage = rawPage.replace(/\.html$/, '') || 'index';
+  const currentPage = pageAttr || rawPage.replace(/\.html$/, '') || 'index';
 
-  const links = document.querySelectorAll('header nav a[href], header div a[href], #mobileMenu a[href]');
+  const links = document.querySelectorAll('nav a[href], header a[href], #mobileMenu a[href]');
   links.forEach(a => {
     const rawHref = a.getAttribute('href') || '';
     if (!rawHref || rawHref.startsWith('#') || rawHref.startsWith('http')) return;
@@ -34,7 +35,7 @@ function highlightActiveNav() {
     const hrefSegments = rawHref.split('?')[0].split('/').filter(Boolean);
     const linkPage = hrefSegments.length > 0 ? hrefSegments[hrefSegments.length - 1].replace(/\.html$/, '') : 'index';
 
-    if (!a.classList.contains('btn-primary') && !a.classList.contains('bg-primary')) {
+    if (!a.classList.contains('btn-primary') && !a.classList.contains('bg-primary') && !a.querySelector('img')) {
       a.classList.add('nav-item-link');
     }
 

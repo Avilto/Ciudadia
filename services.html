@@ -124,37 +124,38 @@
     }
   </script>
 </head>
-<body class="bg-surface text-on-surface font-body-md antialiased overflow-x-hidden">
+<body class="bg-surface text-on-surface font-body-md antialiased overflow-x-hidden" data-page="services">
 
   <!-- Top Navigation Shell -->
-  <nav class="bg-surface/85 backdrop-blur-md docked full-width top-0 border-b border-outline-variant/20 flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto z-50 sticky">
-    <div class="flex items-center gap-3">
-      <!-- Unified logo -->
-      <a href="/" class="flex items-center">
-        <img src="assets/images/logo.svg?v=2" alt="Ciudadia Logo" class="h-14 w-auto"/>
-      </a>
-    </div>
-    
-    <div class="hidden md:flex items-center gap-8">
-      <a href="comprar" class="nav-item-link">Comprar</a>
-      <a href="alquilar" class="nav-item-link">Alquilar</a>
-      <a href="vender" class="nav-item-link">Vender</a>
-      <a href="about" class="nav-item-link">Nosotros</a>
-      <a href="services" class="nav-item-link">Servicios</a>
-      <!-- <a href="colaboradores" class="font-body-md text-body-md text-primary border border-primary/50 px-4 py-1.5 transition-all duration-200 tracking-wide font-medium bg-primary/5">Colabora con Nosotros</a> -->
-    </div>
+  <header class="fixed w-full top-0 z-50 bg-surface/85 backdrop-blur-md border-b border-outline-variant/20 transition-all duration-300">
+    <nav class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+      <div class="flex items-center gap-3">
+        <!-- Unified logo -->
+        <a href="/" class="flex items-center">
+          <img src="assets/images/logo.svg?v=2" alt="Ciudadia Logo" class="h-14 w-auto"/>
+        </a>
+      </div>
+      
+      <div class="hidden md:flex items-center gap-8">
+        <a href="comprar" class="nav-item-link">Comprar</a>
+        <a href="alquilar" class="nav-item-link">Alquilar</a>
+        <a href="vender" class="nav-item-link">Vender</a>
+        <a href="about" class="nav-item-link">Nosotros</a>
+        <a href="services" class="nav-item-link">Servicios</a>
+      </div>
 
-    <div class="flex items-center gap-4">
-      <button onclick="window.location.href='contacto.html'" class="bg-primary text-on-primary px-6 py-2 font-label-caps text-label-caps uppercase tracking-widest hover:bg-primary-container transition-all active:scale-95">
-        Contacto
-      </button>
+      <div class="flex items-center gap-4">
+        <a href="contacto" class="bg-primary text-on-primary px-6 py-2 font-label-caps uppercase tracking-widest text-xs inline-block transition-opacity hover:opacity-90">
+          Contacto
+        </a>
 
-      <!-- Mobile Menu Toggle Button -->
-      <button id="mobileMenuBtn" class="md:hidden text-on-surface-variant hover:text-primary p-2 flex items-center" aria-label="Menú">
-        <span class="material-symbols-outlined text-3xl">menu</span>
-      </button>
-    </div>
-  </nav>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-on-surface-variant hover:text-primary p-2 flex items-center" aria-label="Menú">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+      </div>
+    </nav>
+  </header>
 
   <!-- Mobile Navigation Drawer -->
   <div id="mobileMenu" class="hidden md:hidden bg-surface border-b border-outline-variant/20 px-6 py-6 space-y-4">
