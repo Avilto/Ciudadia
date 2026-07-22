@@ -629,16 +629,25 @@ header.shadow-scrolled {
 }
 
 /* --- Header Navigation Link Styles & Active Indicator --- */
-header nav a:not([class*="btn-"]):not([class*="bg-"]):not([class*="font-display"]):hover {
-  color: var(--primary, #2d3e50);
-  border-bottom: 2px solid var(--primary, #2d3e50);
+.nav-item-link {
+  position: relative;
+  color: var(--on-surface-variant, #4e5e6d);
+  font-family: var(--font-body, 'Source Sans 3', sans-serif);
+  font-size: 15px;
+  font-weight: 500;
   padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  text-decoration: none;
 }
 
-header nav a.nav-link-active {
-  color: var(--primary, #2d3e50) !important;
+.nav-item-link:hover,
+.nav-item-link.active,
+.nav-item-link.nav-link-active {
+  color: #2d3e50 !important;
   font-weight: 700 !important;
-  border-bottom: 2px solid var(--primary, #2d3e50) !important;
+  border-bottom: 2px solid #2d3e50 !important;
   padding-bottom: 4px !important;
 }
+
 

@@ -127,21 +127,18 @@
   <!-- TopNavBar -->
   <header class="fixed w-full top-0 z-50 bg-surface/85 backdrop-blur-md border-b border-outline-variant/20 transition-all duration-300">
     <nav class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-      <a href="/" class="font-display-lg text-xl md:text-2xl font-semibold text-primary tracking-wider hover:opacity-80 transition-opacity">
-        Inicio
+      <a href="/" class="flex items-center">
+        <img src="assets/images/logo.svg?v=2" alt="Ciudadia Logo" class="h-14 w-auto">
       </a>
       
       <div class="flex items-center space-x-8 md:space-x-12">
         <!-- Menu Links -->
         <div class="hidden md:flex items-center gap-8">
-          <a href="about" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Nosotros</a>
-          <div id="scrollOnlyLinks" class="flex items-center gap-8 opacity-0 max-w-0 -mr-8 overflow-hidden pointer-events-none transition-all duration-500 ease-in-out">
-            <a href="comprar" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Comprar</a>
-            <a href="alquilar" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Alquilar</a>
-            <a href="vender" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Vender</a>
-          </div>
-          <a href="services" class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Servicios</a>
-          <!-- <a href="colaboradores" class="font-body-md text-body-md text-primary border border-primary/50 px-4 py-1.5 transition-all duration-200 tracking-wide font-medium bg-primary/5">Colabora con Nosotros</a> -->
+          <a href="comprar" class="nav-item-link">Comprar</a>
+          <a href="alquilar" class="nav-item-link">Alquilar</a>
+          <a href="vender" class="nav-item-link">Vender</a>
+          <a href="about" class="nav-item-link">Nosotros</a>
+          <a href="services" class="nav-item-link">Servicios</a>
         </div>
 
         <!-- Actions -->

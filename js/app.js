@@ -34,6 +34,10 @@ function highlightActiveNav() {
     const hrefSegments = rawHref.split('?')[0].split('/').filter(Boolean);
     const linkPage = hrefSegments.length > 0 ? hrefSegments[hrefSegments.length - 1].replace(/\.html$/, '') : 'index';
 
+    if (!a.classList.contains('btn-primary') && !a.classList.contains('bg-primary')) {
+      a.classList.add('nav-item-link');
+    }
+
     if (linkPage === currentPage && linkPage !== 'index') {
       if (linkPage === 'colaboradores') {
         a.style.backgroundColor = 'var(--primary)';
@@ -42,17 +46,10 @@ function highlightActiveNav() {
         a.style.fontWeight = '600';
       } else if (linkPage === 'contacto') {
         if (!a.classList.contains('btn-primary') && !a.classList.contains('bg-primary')) {
-          a.style.color = 'var(--primary)';
-          a.style.fontWeight = '700';
-          a.style.borderBottom = '2px solid var(--primary)';
-          a.style.paddingBottom = '4px';
+          a.classList.add('active', 'nav-link-active');
         }
       } else {
-        a.style.color = 'var(--primary)';
-        a.style.fontWeight = '700';
-        a.style.borderBottom = '2px solid var(--primary)';
-        a.style.paddingBottom = '4px';
-        a.classList.add('nav-link-active');
+        a.classList.add('active', 'nav-link-active');
       }
     }
   });
