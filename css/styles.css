@@ -643,7 +643,9 @@ header.shadow-scrolled {
 
 .nav-item-link:hover,
 .nav-item-link.active,
-.nav-item-link.nav-link-active {
+.nav-item-link.nav-link-active,
+a.nav-link-active,
+a.active.nav-item-link {
   color: #2d3e50 !important;
   font-weight: 700 !important;
   border-bottom: 2px solid #2d3e50 !important;

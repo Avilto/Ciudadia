@@ -47,9 +47,17 @@ function highlightActiveNav() {
         a.style.fontWeight = '600';
       } else if (linkPage === 'contacto') {
         if (!a.classList.contains('btn-primary') && !a.classList.contains('bg-primary')) {
+          a.style.color = '#2d3e50';
+          a.style.fontWeight = '700';
+          a.style.borderBottom = '2px solid #2d3e50';
+          a.style.paddingBottom = '4px';
           a.classList.add('active', 'nav-link-active');
         }
       } else {
+        a.style.color = '#2d3e50';
+        a.style.fontWeight = '700';
+        a.style.borderBottom = '2px solid #2d3e50';
+        a.style.paddingBottom = '4px';
         a.classList.add('active', 'nav-link-active');
       }
     }
