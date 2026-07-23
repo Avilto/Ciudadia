@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ciudadia.pe/sitemap.xml
+Sitemap: https://ciudadiaa.com/sitemap.xml
