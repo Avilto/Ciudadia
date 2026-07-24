@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciudadia CRM — Gestor Inmobiliario & Consultoría Integral</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Material Symbols Outlined (Icons) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            // Paleta Estricta requerida
+            baseBg: '#708090',      // Color base / Fondos de sección (Slate Grey)
+            navBg: '#2d3e50',       // Menús principales, Sidebar y Header (Dark Slate Blue)
+            accent: '#6d5c3a',      // Acentos, Botones de acción y Alertas (Muted Gold)
+            accentHover: '#584a2e',
+            accentLight: '#8a754b',
+            cardBg: '#1e2b3a',      // Contenedores elevados de alta legibilidad
+            cardSurface: '#253546'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --color-base: #708090;
+      --color-nav: #2d3e50;
+      --color-accent: #6d5c3a;
+    }
+    
+    body {
+      background-color: #708090;
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+    }
+
+    /* Scrollbar personalizada minimalista */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #2d3e50;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #6d5c3a;
+      border-radius: 4px;
+    }
+
+    /* Animaciones suaves */
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.25s ease-in-out forwards;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Kanban Drag visual placeholder */
+    .kanban-col {
+      min-height: 480px;
+    }
+
+    .badge-status {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.025em;
+    }
+  </style>
+</head>
+<body class="bg-baseBg text-white antialiased flex h-screen overflow-hidden">
+
+  <!-- ==========================================
+       1. NAVEGACIÓN LATERAL (SIDEBAR)
+       Paleta: #2d3e50 (Elementos principales)
+  =========================================== -->
+  <aside class="w-64 bg-navBg flex flex-col justify-between border-r border-slate-700/50 shadow-xl z-20 shrink-0">
+    <div>
+      <!-- LOGO & BRAND ISOTIPO -->
+      <div class="h-16 flex items-center px-6 border-b border-slate-700/60 bg-slate-900/30">
+        <!-- ISOTIPO MINIMALISTA DE PIN DE UBICACIÓN (STRICTLY PIN, NO FIRE) -->
+        <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white shadow-md mr-3">
+          <span class="material-symbols-outlined text-2xl">location_on</span>
+        </div>
+        <div>
+          <h1 class="font-bold text-lg leading-tight tracking-wide text-white">CIUDADIA</h1>
+          <p class="text-xs text-amber-200/70 font-medium">CRM & Consultoría</p>
+        </div>
+      </div>
+
+      <!-- MENÚ DE MÓDULOS -->
+      <nav class="p-4 space-y-1.5">
+        <div class="px-3 pb-2 text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
+          Módulos Principales
+        </div>
+
+        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn active w-full flex items-center px-3.5 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-slate-200 hover:bg-slate-700/50">
+          <span class="material-symbols-outlined mr-3 text-accentLight">dashboard</span>
+          Panel de Control
+        </button>
+
+        <button onclick="switchTab('contactos')" id="nav-contactos" class="nav-btn w-full flex items-center px-3.5 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-slate-200 hover:bg-slate-700/50">
+          <span class="material-symbols-outlined mr-3 text-accentLight">contacts</span>
+          Gestión de Contactos
+          <span class="ml-auto text-xs bg-slate-700 px-2 py-0.5 rounded-full text-amber-300 font-semibold" id="count-contacts-badge">8</span>
+        </button>
+
+        <button onclick="switchTab('inventario')" id="nav-inventario" class="nav-btn w-full flex items-center px-3.5 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-slate-200 hover:bg-slate-700/50">
+          <span class="material-symbols-outlined mr-3 text-accentLight">real_estate_agent</span>
+          Inventario Inmobiliario
+          <span class="ml-auto text-xs bg-slate-700 px-2 py-0.5 rounded-full text-slate-300" id="count-props-badge">6</span>
+        </button>
+
+        <button onclick="switchTab('servicios')" id="nav-servicios" class="nav-btn w-full flex items-center px-3.5 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-slate-200 hover:bg-slate-700/50">
+          <span class="material-symbols-outlined mr-3 text-accentLight">view_kanban</span>
+          Servicios Integrales
+        </button>
+
+        <button onclick="switchTab('documentos')" id="nav-documentos" class="nav-btn w-full flex items-center px-3.5 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-slate-200 hover:bg-slate-700/50">
+          <span class="material-symbols-outlined mr-3 text-accentLight">folder_open</span>
+          Gestión Documental
+        </button>
+
+        <div class="pt-4 px-3 pb-2 text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
+          Sistema & Reglas
+        </div>
+
+        <button onclick="switchTab('automatizaciones')" id="nav-automatizaciones" class="nav-btn w-full flex items-center px-3.5 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-slate-200 hover:bg-slate-700/50">
+          <span class="material-symbols-outlined mr-3 text-amber-400">precision_manufacturing</span>
+          Automatizaciones
+          <span class="ml-auto flex h-2 w-2 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+          </span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- USUARIO / FOOTER SIDEBAR -->
+    <div class="p-4 border-t border-slate-700/60 bg-slate-900/40">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-full bg-accent flex items-center justify-center font-bold text-white text-sm shadow">
+          AD
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-semibold text-white truncate">Asesor Principal</p>
+          <p class="text-xs text-slate-400 truncate">admin@ciudadiaa.com</p>
+        </div>
+        <button onclick="triggerToast('Sesión activa: Ciudadia Lambayeque')" class="text-slate-400 hover:text-white transition">
+          <span class="material-symbols-outlined text-lg">settings</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       2. CONTENIDO PRINCIPAL & HEADER TOP
+  =========================================== -->
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+    
+    <!-- HEADER SUPERIOR TOP BAR (#2d3e50) -->
+    <header class="h-16 bg-navBg border-b border-slate-700/50 flex items-center justify-between px-6 z-10 shrink-0">
+      <!-- BÚSQUEDA GLOBAL -->
+      <div class="flex items-center w-96">
+        <div class="relative w-full">
+          <span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-xl">search</span>
+          <input type="text" id="global-search" onkeyup="handleGlobalSearch()" placeholder="Buscar cliente, propiedad (Chiclayo, Pimentel) o expediente..." class="w-full pl-10 pr-4 py-2 bg-slate-800/80 border border-slate-700 rounded-lg text-sm text-white placeholder-slate-400 focus:outline-none focus:border-accent transition" />
+        </div>
+      </div>
+
+      <!-- BOTONES DE ACCIÓN & NOTIFICACIONES -->
+      <div class="flex items-center space-x-4">
+        <!-- BOTÓN ACCIÓN RÁPIDA (#6d5c3a) -->
+        <button onclick="openModal('modal-nuevo-lead')" class="bg-accent hover:bg-accentHover text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center shadow-md transition transform active:scale-95">
+          <span class="material-symbols-outlined mr-2 text-lg">person_add</span>
+          Nuevo Lead
+        </button>
+
+        <button onclick="openModal('modal-nueva-propiedad')" class="bg-slate-700 hover:bg-slate-600 text-white px-3.5 py-2 rounded-lg text-sm font-medium flex items-center transition">
+          <span class="material-symbols-outlined mr-1.5 text-lg">add_home</span>
+          Nueva Propiedad
+        </button>
+
+        <div class="h-6 w-px bg-slate-700 mx-1"></div>
+
+        <!-- NOTIFICACIONES -->
+        <div class="relative">
+          <button onclick="toggleNotifications()" class="relative p-2 text-slate-300 hover:text-white hover:bg-slate-700/50 rounded-lg transition">
+            <span class="material-symbols-outlined text-xl">notifications</span>
+            <span class="absolute top-1.5 right-1.5 h-2 w-2 bg-amber-500 rounded-full"></span>
+          </button>
+
+          <!-- MENU DROPDOWN NOTIFICACIONES -->
+          <div id="dropdown-notif" class="hidden absolute right-0 mt-2 w-80 bg-cardBg border border-slate-700 rounded-xl shadow-2xl z-50 p-4">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-700">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300">Alertas del Sistema</h4>
+              <span class="text-[10px] bg-accent text-white px-2 py-0.5 rounded-full font-semibold">3 Nuevas</span>
+            </div>
+            <div class="space-y-3 mt-3 text-xs">
+              <div class="p-2.5 bg-slate-800/80 rounded-lg border-l-4 border-amber-500">
+                <p class="font-semibold text-white">🎯 Alerta de Match Automático</p>
+                <p class="text-slate-300 mt-0.5">Propiedad "Depa Las Musas" encaja con cliente Carlos Mendoza (S/ 450,000).</p>
+                <span class="text-[10px] text-slate-400 mt-1 block">Hace 10 min</span>
+              </div>
+              <div class="p-2.5 bg-slate-800/80 rounded-lg border-l-4 border-blue-500">
+                <p class="font-semibold text-white">📅 Recordatorio de Cita (24h)</p>
+                <p class="text-slate-300 mt-0.5">Firma de Minuta en Notaría con Elena Torres mañana a las 10:00 AM.</p>
+                <span class="text-[10px] text-slate-400 mt-1 block">Hace 1 hora</span>
+              </div>
+              <div class="p-2.5 bg-slate-800/80 rounded-lg border-l-4 border-red-500">
+                <p class="font-semibold text-white">⚠️ Alerta de Plazo Legal</p>
+                <p class="text-slate-300 mt-0.5">Vencimiento de certificado de parámetros para Terreno Pimentel en 2 días.</p>
+                <span class="text-[10px] text-slate-400 mt-1 block">Hace 3 horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ÁREA DE CONTENIDO DINÁMICO DE LOS MÓDULOS (#708090) -->
+    <main class="flex-1 overflow-y-auto p-6 bg-baseBg">
+
+      <!-- ==========================================
+           TAB 1: PANEL DE CONTROL (DASHBOARD)
+      =========================================== -->
+      <section id="tab-dashboard" class="tab-content active space-y-6">
+        
+        <!-- HEADER MÓDULO -->
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white tracking-tight">Panel de Control Gerencial</h2>
+            <p class="text-slate-200 text-sm mt-0.5">Visión estratégica de ventas, cartera de propiedades y operaciones en Lambayeque.</p>
+          </div>
+          <div class="flex items-center space-x-2 bg-cardBg p-1.5 rounded-lg border border-slate-700">
+            <span class="text-xs font-semibold px-3 py-1 bg-accent text-white rounded-md">Julio 2026</span>
+            <span class="text-xs text-slate-300 px-3 py-1">Región Lambayeque</span>
+          </div>
+        </div>
+
+        <!-- TARJETAS DE MÉTRICAS / METRICS CARDS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          
+          <!-- METRICA 1 -->
+          <div class="bg-cardBg p-5 rounded-xl border border-slate-700/80 shadow-lg relative overflow-hidden">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Ventas del Mes</p>
+                <h3 class="text-2xl font-extrabold text-white mt-1">S/ 1,280,000</h3>
+                <p class="text-xs text-emerald-400 mt-2 font-medium flex items-center">
+                  <span class="material-symbols-outlined text-sm mr-0.5">trending_up</span>
+                  +18.5% vs mes anterior
+                </p>
+              </div>
+              <div class="p-3 bg-slate-800 rounded-xl text-accent">
+                <span class="material-symbols-outlined text-2xl">payments</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- METRICA 2 -->
+          <div class="bg-cardBg p-5 rounded-xl border border-slate-700/80 shadow-lg relative overflow-hidden">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Propiedades Activas</p>
+                <h3 class="text-2xl font-extrabold text-white mt-1">24 Inmuebles</h3>
+                <p class="text-xs text-slate-300 mt-2 flex items-center">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 mr-1.5"></span>
+                  18 Disponibles | 6 Reservados
+                </p>
+              </div>
+              <div class="p-3 bg-slate-800 rounded-xl text-accentLight">
+                <span class="material-symbols-outlined text-2xl">house</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- METRICA 3 -->
+          <div class="bg-cardBg p-5 rounded-xl border border-slate-700/80 shadow-lg relative overflow-hidden">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Tiempo Promedio Cierre</p>
+                <h3 class="text-2xl font-extrabold text-white mt-1">22 Días</h3>
+                <p class="text-xs text-emerald-400 mt-2 font-medium flex items-center">
+                  <span class="material-symbols-outlined text-sm mr-0.5">speed</span>
+                  -4 días de optimización
+                </p>
+              </div>
+              <div class="p-3 bg-slate-800 rounded-xl text-amber-400">
+                <span class="material-symbols-outlined text-2xl">av_timer</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- METRICA 4 -->
+          <div class="bg-cardBg p-5 rounded-xl border border-slate-700/80 shadow-lg relative overflow-hidden">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Conversión de Leads</p>
+                <h3 class="text-2xl font-extrabold text-white mt-1">34.2 %</h3>
+                <p class="text-xs text-slate-300 mt-2">Leads calificados a visitas</p>
+              </div>
+              <div class="p-3 bg-slate-800 rounded-xl text-indigo-400">
+                <span class="material-symbols-outlined text-2xl">filter_alt</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- GRÁFICOS & RESUMEN -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- GRÁFICO DE RENDIMIENTO COMERCIAL -->
+          <div class="lg:col-span-2 bg-cardBg p-6 rounded-xl border border-slate-700/80 shadow-lg">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="text-base font-bold text-white">Rendimiento Operativo por Zona</h3>
+                <p class="text-xs text-slate-400">Volumen comercial en Lambayeque (Chiclayo, Pimentel, La Victoria)</p>
+              </div>
+              <span class="text-xs font-semibold text-amber-300 bg-slate-800 px-3 py-1 rounded-full border border-slate-700">Actualizado Hoy</span>
+            </div>
+
+            <!-- SIMULACIÓN GRÁFICO SVG BARS -->
+            <div class="space-y-4 pt-2">
+              <div>
+                <div class="flex justify-between text-xs mb-1 font-medium">
+                  <span class="text-slate-200">Chiclayo Centro & Santa Victoria</span>
+                  <span class="text-amber-300 font-bold">S/ 650,000 (51%)</span>
+                </div>
+                <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
+                  <div class="bg-accent h-full rounded-full" style="width: 51%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-1 font-medium">
+                  <span class="text-slate-200">Pimentel (Balneario & Condominios)</span>
+                  <span class="text-amber-300 font-bold">S/ 420,000 (33%)</span>
+                </div>
+                <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
+                  <div class="bg-amber-600 h-full rounded-full" style="width: 33%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-1 font-medium">
+                  <span class="text-slate-200">Lambayeque Ciudad & Terrenos</span>
+                  <span class="text-amber-300 font-bold">S/ 210,000 (16%)</span>
+                </div>
+                <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
+                  <div class="bg-slate-500 h-full rounded-full" style="width: 16%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-700/60 grid grid-cols-3 gap-4 text-center">
+              <div class="p-3 bg-slate-800/50 rounded-lg">
+                <span class="text-xs text-slate-400">Captaciones del mes</span>
+                <p class="text-lg font-bold text-white mt-0.5">+12 Propiedades</p>
+              </div>
+              <div class="p-3 bg-slate-800/50 rounded-lg">
+                <span class="text-xs text-slate-400">Minutas firmadas</span>
+                <p class="text-lg font-bold text-white mt-0.5">5 Documentos</p>
+              </div>
+              <div class="p-3 bg-slate-800/50 rounded-lg">
+                <span class="text-xs text-slate-400">Saneamientos listos</span>
+                <p class="text-lg font-bold text-white mt-0.5">8 Expedientes</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL LATERAL: ACTIVIDAD Y REGLAS DE AUTOMATIZACIÓN -->
+          <div class="bg-cardBg p-6 rounded-xl border border-slate-700/80 shadow-lg space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+              <h3 class="text-base font-bold text-white flex items-center">
+                <span class="material-symbols-outlined text-amber-400 mr-2">bolt</span>
+                Motor de Automatización
+              </h3>
+              <span class="text-[10px] bg-emerald-900/60 text-emerald-300 px-2 py-0.5 rounded border border-emerald-700 font-bold">ACTIVO</span>
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed">
+              El motor automático está monitoreando preferencias de clientes, citas programadas a 24h y vencimientos legales.
+            </p>
+
+            <div class="space-y-3 pt-2">
+              <button onclick="runAutomationEngineManual()" class="w-full py-2.5 bg-accent hover:bg-accentHover text-white rounded-lg text-xs font-bold flex items-center justify-center transition shadow">
+                <span class="material-symbols-outlined mr-2 text-base">play_arrow</span>
+                Ejecutar Escaneo de Automatizaciones
+              </button>
+
+              <button onclick="switchTab('automatizaciones')" class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold flex items-center justify-center transition border border-slate-700">
+                Ver Código & Configuración de Reglas
+              </button>
+            </div>
+
+            <div class="pt-3 border-t border-slate-700">
+              <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Estado del Servidor</h4>
+              <div class="space-y-2 text-xs">
+                <div class="flex justify-between items-center text-slate-300">
+                  <span>Match de Inmuebles:</span>
+                  <span class="text-emerald-400 font-semibold">En tiempo real</span>
+                </div>
+                <div class="flex justify-between items-center text-slate-300">
+                  <span>Alertas por SMS/WhatsApp:</span>
+                  <span class="text-emerald-400 font-semibold">Conectado</span>
+                </div>
+                <div class="flex justify-between items-center text-slate-300">
+                  <span>Base de Datos Supabase:</span>
+                  <span class="text-emerald-400 font-semibold">Sincronizada</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           TAB 2: GESTIÓN DE CONTACTOS (CRM LEADS)
+      =========================================== -->
+      <section id="tab-contactos" class="tab-content space-y-6">
+        
+        <!-- HEADER MÓDULO -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-white tracking-tight">Gestión de Contactos & Leads</h2>
+            <p class="text-slate-200 text-sm mt-0.5">Control completo de clientes compradores, vendedores e inversionistas.</p>
+          </div>
+          <button onclick="openModal('modal-nuevo-lead')" class="bg-accent hover:bg-accentHover text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center shadow-lg transition">
+            <span class="material-symbols-outlined mr-2">person_add</span>
+            Registrar Nuevo Contacto
+          </button>
+        </div>
+
+        <!-- FILTROS & BARRA DE ACCIONES -->
+        <div class="bg-cardBg p-4 rounded-xl border border-slate-700/80 flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center space-x-3 flex-1 min-w-[280px]">
+            <span class="material-symbols-outlined text-slate-400">filter_alt</span>
+            <select id="filter-temperatura" onchange="renderContactsTable()" class="bg-slate-800 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 focus:outline-none focus:border-accent">
+              <option value="todos">Todos los Estados (Frío, Tibio, Caliente)</option>
+              <option value="caliente">🔥 Caliente (Alta Prioridad)</option>
+              <option value="tibio">🟡 Tibio (En Negociación)</option>
+              <option value="frio">❄️ Frío (Prospecto)</option>
+            </select>
+
+            <select id="filter-interes" onchange="renderContactsTable()" class="bg-slate-800 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 focus:outline-none focus:border-accent">
+              <option value="todos">Cualquier Tipo de Inmueble</option>
+              <option value="departamento">Departamentos</option>
+              <option value="casa">Casas Residenciales</option>
+              <option value="terreno">Terrenos / Lotes</option>
+            </select>
+          </div>
+
+          <div class="text-xs text-slate-400">
+            Mostrando <span id="contacts-count-label" class="font-bold text-white">0</span> contactos registrados
+          </div>
+        </div>
+
+        <!-- TABLA DE CONTACTOS (#2d3e50 / #1e2b3a) -->
+        <div class="bg-cardBg rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm text-slate-200">
+              <thead class="bg-navBg text-xs uppercase text-slate-300 font-bold border-b border-slate-700">
+                <tr>
+                  <th class="px-6 py-4">Cliente / Contacto</th>
+                  <th class="px-6 py-4">Interés & Ubicación</th>
+                  <th class="px-6 py-4">Presupuesto Máx.</th>
+                  <th class="px-6 py-4">Estado Embudo</th>
+                  <th class="px-6 py-4">Última Interacción</th>
+                  <th class="px-6 py-4 text-right">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="contacts-table-body" class="divide-y divide-slate-700/60">
+                <!-- Se renderiza dinámicamente con JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           TAB 3: INVENTARIO INMOBILIARIO
+      =========================================== -->
+      <section id="tab-inventario" class="tab-content space-y-6">
+        
+        <!-- HEADER MÓDULO -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-white tracking-tight">Inventario Inmobiliario</h2>
+            <p class="text-slate-200 text-sm mt-0.5">Catálogo de inmuebles captados en Chiclayo, Pimentel y Lambayeque.</p>
+          </div>
+          <button onclick="openModal('modal-nueva-propiedad')" class="bg-accent hover:bg-accentHover text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center shadow-lg transition">
+            <span class="material-symbols-outlined mr-2">add_home</span>
+            Registrar Propiedad
+          </button>
+        </div>
+
+        <!-- FILTROS INVENTARIO -->
+        <div class="bg-cardBg p-4 rounded-xl border border-slate-700/80 flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center space-x-3 flex-1 min-w-[280px]">
+            <select id="filter-prop-estado" onchange="renderPropertiesGrid()" class="bg-slate-800 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 focus:outline-none focus:border-accent">
+              <option value="todos">Todos los Estados</option>
+              <option value="disponible">🟢 Disponible</option>
+              <option value="reservado">🟡 Reservado</option>
+              <option value="vendido">🔴 Vendido</option>
+            </select>
+
+            <select id="filter-prop-tipo" onchange="renderPropertiesGrid()" class="bg-slate-800 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 focus:outline-none focus:border-accent">
+              <option value="todos">Todos los Tipos</option>
+              <option value="departamento">Departamento</option>
+              <option value="casa">Casa</option>
+              <option value="terreno">Terreno</option>
+            </select>
+          </div>
+
+          <div class="text-xs text-slate-400">
+            Filtro activo: <span class="font-bold text-white" id="properties-count-label">0 propiedades</span>
+          </div>
+        </div>
+
+        <!-- GRILLA DE PROPIEDADES -->
+        <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Renderizado dinámico con JS -->
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           TAB 4: SERVICIOS INTEGRALES (KANBAN)
+      =========================================== -->
+      <section id="tab-servicios" class="tab-content space-y-6">
+        
+        <!-- HEADER MÓDULO -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-white tracking-tight">Servicios Integrales (Tablero Kanban)</h2>
+            <p class="text-slate-200 text-sm mt-0.5">Seguimiento en vivo de asesoría legal, revisión de títulos, planos y tasaciones.</p>
+          </div>
+          <button onclick="openModal('modal-nuevo-servicio')" class="bg-accent hover:bg-accentHover text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center shadow-lg transition">
+            <span class="material-symbols-outlined mr-2">add_task</span>
+            Nuevo Expediente de Servicio
+          </button>
+        </div>
+
+        <!-- TABLERO KANBAN KANBAN-COL -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-5 items-start">
+          
+          <!-- COLUMNA 1: RECEPCIÓN / POR REVISAR -->
+          <div class="bg-cardBg rounded-xl p-4 border border-slate-700 shadow-md">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700 mb-3">
+              <h3 class="text-sm font-bold text-white flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-400 mr-2"></span>
+                1. Recepción & Títulos
+              </h3>
+              <span class="text-xs bg-slate-800 text-slate-300 font-bold px-2 py-0.5 rounded-full" id="kanban-count-1">2</span>
+            </div>
+            <div id="kanban-col-1" class="space-y-3 kanban-col">
+              <!-- Cards dinámicas JS -->
+            </div>
+          </div>
+
+          <!-- COLUMNA 2: EN SANEAMIENTO / ARQUITECTURA -->
+          <div class="bg-cardBg rounded-xl p-4 border border-slate-700 shadow-md">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700 mb-3">
+              <h3 class="text-sm font-bold text-white flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400 mr-2"></span>
+                2. En Saneamiento / Diseño
+              </h3>
+              <span class="text-xs bg-slate-800 text-slate-300 font-bold px-2 py-0.5 rounded-full" id="kanban-count-2">2</span>
+            </div>
+            <div id="kanban-col-2" class="space-y-3 kanban-col">
+              <!-- Cards dinámicas JS -->
+            </div>
+          </div>
+
+          <!-- COLUMNA 3: NOTARÍA & FINANCIAMIENTO -->
+          <div class="bg-cardBg rounded-xl p-4 border border-slate-700 shadow-md">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700 mb-3">
+              <h3 class="text-sm font-bold text-white flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-purple-400 mr-2"></span>
+                3. Notaría / Crédito Hipotecario
+              </h3>
+              <span class="text-xs bg-slate-800 text-slate-300 font-bold px-2 py-0.5 rounded-full" id="kanban-count-3">1</span>
+            </div>
+            <div id="kanban-col-3" class="space-y-3 kanban-col">
+              <!-- Cards dinámicas JS -->
+            </div>
+          </div>
+
+          <!-- COLUMNA 4: COMPLETADO & ENTREGADO -->
+          <div class="bg-cardBg rounded-xl p-4 border border-slate-700 shadow-md">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700 mb-3">
+              <h3 class="text-sm font-bold text-white flex items-center">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 mr-2"></span>
+                4. Entregado & Concluido
+              </h3>
+              <span class="text-xs bg-slate-800 text-slate-300 font-bold px-2 py-0.5 rounded-full" id="kanban-count-4">1</span>
+            </div>
+            <div id="kanban-col-4" class="space-y-3 kanban-col">
+              <!-- Cards dinámicas JS -->
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           TAB 5: GESTIÓN DOCUMENTAL
+      =========================================== -->
+      <section id="tab-documentos" class="tab-content space-y-6">
+        
+        <!-- HEADER MÓDULO -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-white tracking-tight">Gestión Documental & Expedientes</h2>
+            <p class="text-slate-200 text-sm mt-0.5">Repositorio centralizado de planos, contratos de compraventa y certificados de SUNARP.</p>
+          </div>
+          <button onclick="triggerToast('Subida de archivos habilitada')" class="bg-accent hover:bg-accentHover text-white px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center shadow-lg transition">
+            <span class="material-symbols-outlined mr-2">upload_file</span>
+            Subir Documento PDF / CAD
+          </button>
+        </div>
+
+        <!-- CARPETAS CATEGORÍA -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div onclick="filterDocsFolder('todos')" class="bg-cardBg p-4 rounded-xl border border-slate-700 hover:border-accent cursor-pointer transition flex items-center space-x-3">
+            <span class="material-symbols-outlined text-3xl text-amber-400">folder</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">Todos los Archivos</h4>
+              <p class="text-xs text-slate-400">6 Documentos</p>
+            </div>
+          </div>
+
+          <div onclick="filterDocsFolder('contrato')" class="bg-cardBg p-4 rounded-xl border border-slate-700 hover:border-accent cursor-pointer transition flex items-center space-x-3">
+            <span class="material-symbols-outlined text-3xl text-blue-400">description</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">Contratos & Minutas</h4>
+              <p class="text-xs text-slate-400">2 Archivos PDF</p>
+            </div>
+          </div>
+
+          <div onclick="filterDocsFolder('plano')" class="bg-cardBg p-4 rounded-xl border border-slate-700 hover:border-accent cursor-pointer transition flex items-center space-x-3">
+            <span class="material-symbols-outlined text-3xl text-emerald-400">architecture</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">Planos & Arquitectura</h4>
+              <p class="text-xs text-slate-400">2 Archivos DWG/PDF</p>
+            </div>
+          </div>
+
+          <div onclick="filterDocsFolder('sunarp')" class="bg-cardBg p-4 rounded-xl border border-slate-700 hover:border-accent cursor-pointer transition flex items-center space-x-3">
+            <span class="material-symbols-outlined text-3xl text-purple-400">verified_user</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">Certificados SUNARP</h4>
+              <p class="text-xs text-slate-400">2 Expedientes</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- LISTA DE ARCHIVOS -->
+        <div class="bg-cardBg rounded-xl border border-slate-700 shadow-xl overflow-hidden">
+          <div class="p-4 bg-navBg border-b border-slate-700 flex justify-between items-center">
+            <h3 class="text-sm font-bold text-white">Explorador de Expedientes</h3>
+            <span class="text-xs text-slate-400">Almacenamiento Seguro Cloud Supabase</span>
+          </div>
+
+          <div class="divide-y divide-slate-700/60" id="docs-list-body">
+            <!-- Renderizado dinámico JS -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           TAB 6: MOTOR DE AUTOMATIZACIONES (CÓDIGO & LOGS)
+      =========================================== -->
+      <section id="tab-automatizaciones" class="tab-content space-y-6">
+        
+        <!-- HEADER -->
+        <div>
+          <h2 class="text-2xl font-bold text-white tracking-tight">Motor de Automatizaciones & Reglas</h2>
+          <p class="text-slate-200 text-sm mt-0.5">Lógica de servicio estructurada para ingreso de leads, sistema de match, alertas de citas a 24h y plazos notariales.</p>
+        </div>
+
+        <!-- CONSOLA DE PRUEBAS DE AUTOMATIZACIÓN EN VIVO -->
+        <div class="bg-cardBg p-6 rounded-xl border border-slate-700 shadow-xl space-y-4">
+          <h3 class="text-base font-bold text-white flex items-center">
+            <span class="material-symbols-outlined text-amber-400 mr-2">science</span>
+            Panel de Simulación de Eventos en Tiempo Real
+          </h3>
+          <p class="text-xs text-slate-300">
+            Haz clic en los botones para disparar las funciones automatizadas y observar el resultado inmediato en el sistema:
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+            <button onclick="AutomationService.simularIngresoLead()" class="bg-slate-800 hover:bg-slate-700 border border-amber-600/60 text-amber-200 p-3 rounded-lg text-xs font-semibold flex flex-col items-center justify-center text-center transition">
+              <span class="material-symbols-outlined text-2xl mb-1 text-amber-400">person_add</span>
+              1. Simular Lead Entrante (WhatsApp/Web)
+            </button>
+
+            <button onclick="AutomationService.ejecutarSistemaMatchManual()" class="bg-slate-800 hover:bg-slate-700 border border-blue-600/60 text-blue-200 p-3 rounded-lg text-xs font-semibold flex flex-col items-center justify-center text-center transition">
+              <span class="material-symbols-outlined text-2xl mb-1 text-blue-400">match_case</span>
+              2. Simular Match de Presupuesto
+            </button>
+
+            <button onclick="AutomationService.verificarRecordatoriosCitas24h()" class="bg-slate-800 hover:bg-slate-700 border border-purple-600/60 text-purple-200 p-3 rounded-lg text-xs font-semibold flex flex-col items-center justify-center text-center transition">
+              <span class="material-symbols-outlined text-2xl mb-1 text-purple-400">alarm</span>
+              3. Simular Alerta Cita 24h
+            </button>
+
+            <button onclick="AutomationService.verificarAlertasPlazosLegales()" class="bg-slate-800 hover:bg-slate-700 border border-red-600/60 text-red-200 p-3 rounded-lg text-xs font-semibold flex flex-col items-center justify-center text-center transition">
+              <span class="material-symbols-outlined text-2xl mb-1 text-red-400">gavel</span>
+              4. Simular Alerta Plazo Notarial
+            </button>
+          </div>
+        </div>
+
+        <!-- LOG CONSOLE -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 font-mono text-xs shadow-2xl">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800 text-slate-400 mb-3">
+            <span class="flex items-center">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 mr-2"></span>
+              Console Automation Logs — ciudadiaa.com/crm
+            </span>
+            <button onclick="clearAutomationLogs()" class="hover:text-white transition">Limpiar Consola</button>
+          </div>
+          <div id="automation-console-logs" class="space-y-1.5 h-48 overflow-y-auto text-emerald-400/90">
+            <p class="text-slate-500">[2026-07-24 18:14:00] Motor de automatizaciones inicializado correctamente.</p>
+            <p class="text-slate-500">[2026-07-24 18:14:01] Escuchando webhooks de captación y reglas de emparejamiento...</p>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- ==========================================
+       MODALES DE INTERFAZ (NUEVO LEAD, PROPIEDAD)
+  =========================================== -->
+  
+  <!-- MODAL: NUEVO LEAD -->
+  <div id="modal-nuevo-lead" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div class="bg-cardBg border border-slate-700 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden p-6 space-y-4">
+      <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+        <h3 class="text-lg font-bold text-white flex items-center">
+          <span class="material-symbols-outlined mr-2 text-accent">person_add</span>
+          Registrar Nuevo Contacto / Lead
+        </h3>
+        <button onclick="closeModal('modal-nuevo-lead')" class="text-slate-400 hover:text-white">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form id="form-nuevo-lead" onsubmit="handleFormNuevoLead(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Nombre Completo</label>
+          <input type="text" id="lead-nombre" required placeholder="Ej: Ricardo Mendoza Ruiz" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:border-accent focus:outline-none" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Teléfono / WhatsApp</label>
+            <input type="text" id="lead-telefono" required placeholder="+51 987 654 321" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:border-accent focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Correo Electrónico</label>
+            <input type="email" id="lead-email" required placeholder="cliente@correo.com" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:border-accent focus:outline-none" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Interés Principal</label>
+            <select id="lead-interes" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:border-accent focus:outline-none">
+              <option value="Departamento">Departamento</option>
+              <option value="Casa Residencial">Casa Residencial</option>
+              <option value="Terreno / Lote">Terreno / Lote</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Presupuesto Máximo (S/)</label>
+            <input type="number" id="lead-presupuesto" required placeholder="Ej: 450000" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:border-accent focus:outline-none" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Estado Inicial en Embudo</label>
+          <select id="lead-temperatura" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white focus:border-accent focus:outline-none">
+            <option value="caliente">🔥 Caliente (Listo para comprar)</option>
+            <option value="tibio" selected>🟡 Tibio (Interesado / Evaluando)</option>
+            <option value="frio">❄️ Frío (Prospecto Inicial)</option>
+          </select>
+        </div>
+
+        <div class="pt-3 flex justify-end space-x-3 border-t border-slate-700">
+          <button type="button" onclick="closeModal('modal-nuevo-lead')" class="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg font-semibold hover:bg-slate-700">Cancelar</button>
+          <button type="submit" class="px-5 py-2 bg-accent hover:bg-accentHover text-white rounded-lg font-semibold shadow">Guardar Lead</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION FLOATING -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+  <!-- ==========================================
+       3. LÓGICA JAVASCRIPT & AUTOMATIZACIONES
+  =========================================== -->
+  <script>
+    /* ===================================================
+       DATOS DE PRUEBA EN ESPAÑOL (CIUDADIA CRM)
+    =================================================== */
+    let contactsData = [
+      { id: 1, nombre: "Carlos Mendoza Ruiz", email: "carlos.mendoza@gmail.com", telefono: "+51 984 123 456", interes: "Departamento en Chiclayo", presupuesto: 450000, temperatura: "caliente", ultimaInteraccion: "Ayer 16:30" },
+      { id: 2, nombre: "Dra. Elena Torres Alba", email: "elena.torres@estudiotorres.pe", telefono: "+51 976 543 210", interes: "Casa en Pimentel", presupuesto: 720000, temperatura: "caliente", ultimaInteraccion: "Hoy 10:15" },
+      { id: 3, nombre: "Ing. Roberto Salazar", email: "rsalazar@constructora.pe", telefono: "+51 965 888 777", interes: "Terreno Industrial", presupuesto: 950000, temperatura: "tibio", ultimaInteraccion: "Hace 2 días" },
+      { id: 4, nombre: "María Fernanda Silva", email: "mfer.silva@outlook.com", telefono: "+51 951 222 333", interes: "Departamento 2 Dorms", presupuesto: 320000, temperatura: "tibio", ultimaInteraccion: "Hace 3 días" },
+      { id: 5, nombre: "Jorge Luis Peralta", email: "jperalta@empresas.com", telefono: "+51 943 111 999", interes: "Local Comercial Centro", presupuesto: 500000, temperatura: "frio", ultimaInteraccion: "Hace 1 semana" },
+      { id: 6, nombre: "Lucía Morales Vega", email: "lmorales@gmail.com", telefono: "+51 998 444 555", interes: "Casa Quinta Chiclayo", presupuesto: 680000, temperatura: "caliente", ultimaInteraccion: "Hace 4 horas" },
+      { id: 7, nombre: "Gonzalo Benavides", email: "gbenavides@inversiones.pe", telefono: "+51 988 777 666", interes: "Lotes en Pimentel", presupuesto: 280000, temperatura: "tibio", ultimaInteraccion: "Hace 5 días" },
+      { id: 8, nombre: "Patricia Alarcón", email: "palarcon@hotmail.com", telefono: "+51 977 333 222", interes: "Departamento con Terraza", presupuesto: 390000, temperatura: "frio", ultimaInteraccion: "Hace 2 semanas" }
+    ];
+
+    let propertiesData = [
+      { id: 101, titulo: "Departamento de Lujo en Santa Victoria", ubicación: "Chiclayo Centro", precio: 430000, m2: 120, dorms: 3, banos: 2, cocheras: 1, estado: "disponible", imagen: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" },
+      { id: 102, titulo: "Moderna Casa Residencial frente al Mar", ubicación: "Pimentel Balneario", precio: 750000, m2: 240, dorms: 4, banos: 3, cocheras: 2, estado: "reservado", imagen: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" },
+      { id: 103, titulo: "Terreno Ubicación Estratégica", ubicación: "Carretera Pimentel - Chiclayo", precio: 290000, m2: 500, dorms: 0, banos: 0, cocheras: 0, estado: "disponible", imagen: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" },
+      { id: 104, titulo: "Flat Amoblado en Las Musas", ubicación: "Chiclayo Centro", precio: 340000, m2: 95, dorms: 2, banos: 2, cocheras: 1, estado: "disponible", imagen: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" },
+      { id: 105, titulo: "Local Comercial en Av. Balta", ubicación: "Chiclayo Comercial", precio: 580000, m2: 180, dorms: 0, banos: 2, cocheras: 1, estado: "vendido", imagen: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" },
+      { id: 106, titulo: "Penthouse Exclusivo con Terraza", ubicación: "La Victoria, Chiclayo", precio: 620000, m2: 210, dorms: 3, banos: 3, cocheras: 2, estado: "disponible", imagen: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" }
+    ];
+
+    let kanbanServicesData = [
+      { id: 201, col: 1, titulo: "Estudio de Títulos & Partida Registral", cliente: "Dra. Elena Torres", servicio: "Revisión Legal", fecha: "26 Jul 2026", responsable: "Abog. R. Castro" },
+      { id: 202, col: 1, titulo: "Tasación Comercial de Terreno", cliente: "Ing. Roberto Salazar", servicio: "Tasación", fecha: "27 Jul 2026", responsable: "Arq. M. Dávila" },
+      { id: 203, col: 2, titulo: "Saneamiento Municipal (PU/HR)", cliente: "Carlos Mendoza", servicio: "Saneamiento", fecha: "25 Jul 2026", responsable: "Lic. J. Pérez" },
+      { id: 204, col: 2, titulo: "Anteproyecto Arquitectónico 3D", cliente: "Lucía Morales", servicio: "Diseño Interior", fecha: "29 Jul 2026", responsable: "Arq. M. Dávila" },
+      { id: 205, col: 3, titulo: "Minuta de Compraventa Notaría", cliente: "María Fernanda Silva", servicio: "Minuta & Firma", fecha: "24 Jul 2026", responsable: "Abog. R. Castro" },
+      { id: 206, col: 4, titulo: "Inscripción en SUNARP Concluida", cliente: "Gonzalo Benavides", servicio: "Inscripción Final", fecha: "20 Jul 2026", responsable: "Ciudadia Legal" }
+    ];
+
+    let docsData = [
+      { id: 301, nombre: "Minuta_Compraventa_Mendoza_Signed.pdf", tipo: "contrato", peso: "2.4 MB", fecha: "22/07/2026", cliente: "Carlos Mendoza" },
+      { id: 302, nombre: "Copia_Literal_Partida_110293.pdf", tipo: "sunarp", peso: "1.1 MB", fecha: "20/07/2026", cliente: "Elena Torres" },
+      { id: 303, nombre: "Plano_Arquitectonico_Distribucion_v2.dwg", tipo: "plano", peso: "8.5 MB", fecha: "19/07/2026", cliente: "Lucía Morales" },
+      { id: 304, nombre: "Certificado_Parametros_Urbanisticos_Pimentel.pdf", tipo: "sunarp", peso: "1.8 MB", fecha: "18/07/2026", cliente: "Roberto Salazar" },
+      { id: 305, nombre: "Tasacion_Comercial_Oficial_Ciudadia.pdf", tipo: "contrato", peso: "3.2 MB", fecha: "15/07/2026", cliente: "Jorge Luis Peralta" },
+      { id: 306, nombre: "Plano_Estructuras_Y_Cimentacion.pdf", tipo: "plano", peso: "4.7 MB", fecha: "10/07/2026", cliente: "Gonzalo Benavides" }
+    ];
+
+    /* ===================================================
+       3.1 NAVEGACIÓN Y CAMBIO DE TABS
+    =================================================== */
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(el => {
+        el.classList.remove('bg-slate-700/80', 'border-l-4', 'border-accent', 'text-white');
+      });
+
+      const targetTab = document.getElementById('tab-' + tabId);
+      const targetNav = document.getElementById('nav-' + tabId);
+
+      if (targetTab && targetNav) {
+        targetTab.classList.add('active');
+        targetNav.classList.add('bg-slate-700/80', 'border-l-4', 'border-accent', 'text-white');
+      }
+
+      // Re-renderizar si es necesario
+      if (tabId === 'contactos') renderContactsTable();
+      if (tabId === 'inventario') renderPropertiesGrid();
+      if (tabId === 'servicios') renderKanbanBoard();
+      if (tabId === 'documentos') renderDocsList();
+    }
+
+    /* ===================================================
+       3.2 RENDERIZADO DE TABLAS Y CARDS
+    =================================================== */
+    
+    // RENDER CONTACTOS
+    function renderContactsTable() {
+      const tbody = document.getElementById('contacts-table-body');
+      const tempFilter = document.getElementById('filter-temperatura').value;
+      tbody.innerHTML = '';
+
+      let filtered = contactsData.filter(c => {
+        if (tempFilter !== 'todos' && c.temperatura !== tempFilter) return false;
+        return true;
+      });
+
+      document.getElementById('contacts-count-label').innerText = filtered.length;
+
+      filtered.forEach(c => {
+        let badgeColor = c.temperatura === 'caliente' ? 'bg-red-900/60 text-red-300 border-red-700' :
+                        c.temperatura === 'tibio' ? 'bg-amber-900/60 text-amber-300 border-amber-700' :
+                        'bg-blue-900/60 text-blue-300 border-blue-700';
+
+        let badgeText = c.temperatura === 'caliente' ? '🔥 Caliente' :
+                        c.temperatura === 'tibio' ? '🟡 Tibio' : '❄️ Frío';
+
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-800/50 transition border-b border-slate-700/40";
+        tr.innerHTML = `
+          <td class="px-6 py-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center font-bold text-accentLight text-xs">
+                ${c.nombre.substring(0,2).toUpperCase()}
+              </div>
+              <div>
+                <p class="font-bold text-white">${c.nombre}</p>
+                <p class="text-xs text-slate-400">${c.email} | ${c.telefono}</p>
+              </div>
+            </div>
+          </td>
+          <td class="px-6 py-4 text-xs">
+            <span class="font-semibold text-slate-200">${c.interes}</span>
+          </td>
+          <td class="px-6 py-4 font-bold text-amber-300 text-xs">
+            S/ ${c.presupuesto.toLocaleString('es-PE')}
+          </td>
+          <td class="px-6 py-4">
+            <span class="badge-status border ${badgeColor}">${badgeText}</span>
+          </td>
+          <td class="px-6 py-4 text-xs text-slate-400">
+            ${c.ultimaInteraccion}
+          </td>
+          <td class="px-6 py-4 text-right space-x-2">
+            <button onclick="AutomationService.ejecutarMatchIndividual(${c.id})" class="text-xs bg-slate-700 hover:bg-accent text-white px-2.5 py-1.5 rounded transition inline-flex items-center" title="Ejecutar Match con Inmuebles">
+              <span class="material-symbols-outlined text-sm mr-1">match_case</span> Match
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // RENDER PROPIEDADES
+    function renderPropertiesGrid() {
+      const container = document.getElementById('properties-grid');
+      const estadoFilter = document.getElementById('filter-prop-estado').value;
+      container.innerHTML = '';
+
+      let filtered = propertiesData.filter(p => {
+        if (estadoFilter !== 'todos' && p.estado !== estadoFilter) return false;
+        return true;
+      });
+
+      document.getElementById('properties-count-label').innerText = `${filtered.length} inmuebles`;
+
+      filtered.forEach(p => {
+        let badgeBg = p.estado === 'disponible' ? 'bg-emerald-600 text-white' :
+                      p.estado === 'reservado' ? 'bg-amber-600 text-white' : 'bg-red-700 text-white';
+
+        const card = document.createElement('div');
+        card.className = "bg-cardBg rounded-xl border border-slate-700/80 overflow-hidden shadow-lg hover:border-accent transition group flex flex-col justify-between";
+        card.innerHTML = `
+          <div>
+            <div class="relative h-44 overflow-hidden bg-slate-800">
+              <img src="${p.imagen}" alt="${p.titulo}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-3 right-3 text-[10px] font-bold uppercase px-2.5 py-1 rounded-full shadow ${badgeBg}">
+                ${p.estado}
+              </span>
+              <span class="absolute bottom-3 left-3 bg-slate-950/80 backdrop-blur-md text-amber-300 font-extrabold text-sm px-3 py-1 rounded-lg">
+                S/ ${p.precio.toLocaleString('es-PE')}
+              </span>
+            </div>
+            
+            <div class="p-4 space-y-2">
+              <h3 class="font-bold text-white text-base group-hover:text-amber-300 transition">${p.titulo}</h3>
+              <p class="text-xs text-slate-400 flex items-center">
+                <span class="material-symbols-outlined text-sm mr-1 text-accentLight">location_on</span>
+                ${p.ubicación}
+              </p>
+              
+              <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-700/60 text-center text-xs text-slate-300">
+                <div class="p-1.5 bg-slate-800/60 rounded">📐 ${p.m2} m²</div>
+                <div class="p-1.5 bg-slate-800/60 rounded">🛏️ ${p.dorms} Dorm</div>
+                <div class="p-1.5 bg-slate-800/60 rounded">🚗 ${p.cocheras} Cochera</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 pt-0">
+            <button onclick="AutomationService.ejecutarMatchInmueble(${p.id})" class="w-full py-2 bg-slate-800 hover:bg-accent text-white rounded-lg text-xs font-semibold flex items-center justify-center transition">
+              <span class="material-symbols-outlined text-sm mr-1">hub</span>
+              Emparejar con Clientes
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // RENDER KANBAN
+    function renderKanbanBoard() {
+      for (let i = 1; i <= 4; i++) {
+        const col = document.getElementById(`kanban-col-${i}`);
+        col.innerHTML = '';
+        let items = kanbanServicesData.filter(k => k.col === i);
+        document.getElementById(`kanban-count-${i}`).innerText = items.length;
+
+        items.forEach(k => {
+          const card = document.createElement('div');
+          card.className = "bg-slate-800/90 p-3.5 rounded-lg border border-slate-700/80 shadow space-y-2 hover:border-slate-500 transition cursor-pointer";
+          card.innerHTML = `
+            <div class="flex justify-between items-start">
+              <span class="text-[10px] font-bold text-amber-300 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">${k.servicio}</span>
+              <span class="text-[10px] text-slate-400">${k.fecha}</span>
+            </div>
+            <h4 class="text-xs font-bold text-white leading-snug">${k.titulo}</h4>
+            <p class="text-[11px] text-slate-300 flex items-center">
+              <span class="material-symbols-outlined text-xs mr-1 text-slate-400">person</span>
+              Cliente: ${k.cliente}
+            </p>
+            <div class="pt-2 border-t border-slate-700/50 flex justify-between items-center text-[10px] text-slate-400">
+              <span>Resp: ${k.responsable}</span>
+              <span class="text-emerald-400 font-semibold">Al día</span>
+            </div>
+          `;
+          col.appendChild(card);
+        });
+      }
+    }
+
+    // RENDER DOCUMENTOS
+    function renderDocsList(filter = 'todos') {
+      const container = document.getElementById('docs-list-body');
+      container.innerHTML = '';
+
+      let filtered = docsData.filter(d => filter === 'todos' || d.tipo === filter);
+
+      filtered.forEach(d => {
+        let iconName = d.tipo === 'contrato' ? 'description' : d.tipo === 'plano' ? 'architecture' : 'verified_user';
+        let iconColor = d.tipo === 'contrato' ? 'text-blue-400' : d.tipo === 'plano' ? 'text-emerald-400' : 'text-purple-400';
+
+        const row = document.createElement('div');
+        row.className = "p-4 flex items-center justify-between hover:bg-slate-800/40 transition";
+        row.innerHTML = `
+          <div class="flex items-center space-x-3">
+            <span class="material-symbols-outlined text-2xl ${iconColor}">${iconName}</span>
+            <div>
+              <p class="text-xs font-bold text-white">${d.nombre}</p>
+              <p class="text-[10px] text-slate-400">Cliente: ${d.cliente} | Peso: ${d.peso}</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3 text-xs">
+            <span class="text-slate-400">${d.fecha}</span>
+            <button onclick="triggerToast('Descargando expediente seguro: ${d.nombre}')" class="p-1.5 text-slate-300 hover:text-white bg-slate-800 rounded">
+              <span class="material-symbols-outlined text-sm">download</span>
+            </button>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function filterDocsFolder(folder) {
+      renderDocsList(folder);
+      triggerToast(`Filtro de documentos: ${folder.toUpperCase()}`);
+    }
+
+    /* ===================================================
+       3.3 LÓGICA ESTRUCTURADA DE AUTOMATIZACIONES
+       (Eventos, Hooks y Servicios de Automatización)
+    =================================================== */
+
+    const AutomationService = {
+      
+      /**
+       * 1. INGRESO Y ASIGNACIÓN AUTOMÁTICA DE LEADS
+       * @param {Object} leadData - Datos del cliente entrante desde Web/WhatsApp
+       */
+      ingresarYAsignarLead: function(leadData) {
+        // Asignación automática round-robin de asesores en Lambayeque
+        const asesores = ["Agente Principal", "Abog. R. Castro", "Arq. M. Dávila"];
+        const asesorAsignado = asesores[Math.floor(Math.random() * asesores.length)];
+
+        const nuevoLead = {
+          id: Date.now(),
+          nombre: leadData.nombre,
+          email: leadData.email,
+          telefono: leadData.telefono,
+          interes: leadData.interes,
+          presupuesto: Number(leadData.presupuesto),
+          temperatura: leadData.temperatura || "tibio",
+          ultimaInteraccion: "Recién ingresado (Auto)",
+          asesorAsignado: asesorAsignado
+        };
+
+        contactsData.unshift(nuevoLead);
+        
+        // Log en consola
+        this.logConsole(`[LEAD AUTO-ASSIGNED] Lead "${nuevoLead.nombre}" asignado automáticamente a: ${asesorAsignado}`);
+
+        // Disparar correo automático de bienvenida
+        this.enviarCorreoBienvenida(nuevoLead);
+
+        // Disparar prueba de match
+        this.ejecutarMatchIndividual(nuevoLead.id);
+
+        renderContactsTable();
+        document.getElementById('count-contacts-badge').innerText = contactsData.length;
+      },
+
+      /**
+       * 2. ENVÍO DE CORREOS AUTOMÁTICOS DE BIENVENIDA
+       * @param {Object} lead 
+       */
+      enviarCorreoBienvenida: function(lead) {
+        this.logConsole(`[EMAIL SERVICE] Correo de bienvenida enviado a: ${lead.email} ("Gracias por contactar a Ciudadia Asesoría Inmobiliaria")`);
+        triggerToast(`✉️ Email de Bienvenida enviado a ${lead.nombre}`);
+      },
+
+      /**
+       * 3. SISTEMA DE MATCH AUTOMÁTICO
+       * Alertas cuando una propiedad nueva coincida con el presupuesto de un cliente
+       * @param {Object} propiedad 
+       */
+      ejecutarSistemaMatchInmueble: function(propiedad) {
+        const matches = contactsData.filter(c => c.presupuesto >= propiedad.precio);
+        this.logConsole(`[MATCH ENGINE] Inmueble #${propiedad.id} ("${propiedad.titulo}" S/ ${propiedad.precio.toLocaleString('es-PE')}) emparejado con ${matches.length} clientes.`);
+        
+        if (matches.length > 0) {
+          triggerToast(`🎯 ¡MATCH ENCONTRADO! ${matches.length} clientes coinciden con la propiedad ${propiedad.titulo}`);
+        } else {
+          triggerToast(`Sin coincidencias exactas de presupuesto para esta propiedad.`);
+        }
+      },
+
+      ejecutarMatchIndividual: function(contactId) {
+        const cliente = contactsData.find(c => c.id === contactId);
+        if (!cliente) return;
+
+        const coincidencias = propertiesData.filter(p => p.precio <= cliente.presupuesto);
+        this.logConsole(`[MATCH INDIVIDUAL] Cliente "${cliente.nombre}" (Presupuesto: S/ ${cliente.presupuesto.toLocaleString('es-PE')}) coincide con ${coincidencias.length} inmuebles en inventario.`);
+        triggerToast(`🎯 Match para ${cliente.nombre}: ${coincidencias.length} propiedades encontradas dentro de presupuesto`);
+      },
+
+      /**
+       * 4. RECORDATORIOS DE CITAS 24 HORAS ANTES
+       */
+      verificarRecordatoriosCitas24h: function() {
+        this.logConsole(`[CRON 24H] Escaneando citas programadas para las próximas 24 horas...`);
+        this.logConsole(`[CRON 24H] Notificación push enviada a Dra. Elena Torres: "Recordatorio: Cita de Firma Notarial mañana 10:00 AM"`);
+        triggerToast(`⏰ 1 Recordatorio enviado a clientes con cita programada en 24h`);
+      },
+
+      /**
+       * 5. ALERTAS DE FECHAS LÍMITE PARA ENTREGAS Y PLAZOS LEGALES
+       */
+      verificarAlertasPlazosLegales: function() {
+        this.logConsole(`[LEGAL WATCHDOG] Escaneando plazos de saneamiento en SUNARP y municipalidades...`);
+        this.logConsole(`[ALERT] Certificado de Parámetros Urbanísticos para Terreno Pimentel vence en 48 horas.`);
+        triggerToast(`⚠️ Alerta Legal: Plazo de saneamiento próximo a vencer para Expediente Pimentel`);
+      },
+
+      // Helpers de simulación
+      simularIngresoLead: function() {
+        this.ingresarYAsignarLead({
+          nombre: "Sra. Carmen Villalobos",
+          email: "carmen.villalobos@gmail.com",
+          telefono: "+51 988 123 999",
+          interes: "Departamento en Chiclayo",
+          presupuesto: "460000",
+          temperatura: "caliente"
+        });
+      },
+
+      ejecutarSistemaMatchManual: function() {
+        this.ejecutarSistemaMatchInmueble(propertiesData[0]);
+      },
+
+      logConsole: function(msg) {
+        const consoleEl = document.getElementById('automation-console-logs');
+        if (consoleEl) {
+          const timestamp = new Date().toLocaleTimeString();
+          const p = document.createElement('p');
+          p.className = "text-emerald-300";
+          p.innerText = `[${timestamp}] ${msg}`;
+          consoleEl.appendChild(p);
+          consoleEl.scrollTop = consoleEl.scrollHeight;
+        }
+      }
+    };
+
+    function runAutomationEngineManual() {
+      AutomationService.verificarRecordatoriosCitas24h();
+      setTimeout(() => AutomationService.verificarAlertasPlazosLegales(), 600);
+    }
+
+    function clearAutomationLogs() {
+      const consoleEl = document.getElementById('automation-console-logs');
+      if (consoleEl) consoleEl.innerHTML = '<p class="text-slate-500">[Consola de automatizaciones reiniciada]</p>';
+    }
+
+    /* ===================================================
+       3.4 UTILS & MODALS
+    =================================================== */
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    function handleFormNuevoLead(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('lead-nombre').value;
+      const email = document.getElementById('lead-email').value;
+      const telefono = document.getElementById('lead-telefono').value;
+      const interes = document.getElementById('lead-interes').value;
+      const presupuesto = document.getElementById('lead-presupuesto').value;
+      const temperatura = document.getElementById('lead-temperatura').value;
+
+      AutomationService.ingresarYAsignarLead({
+        nombre, email, telefono, interes, presupuesto, temperatura
+      });
+
+      closeModal('modal-nuevo-lead');
+      e.target.reset();
+    }
+
+    function toggleNotifications() {
+      const drop = document.getElementById('dropdown-notif');
+      drop.classList.toggle('hidden');
+    }
+
+    function triggerToast(message) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = "pointer-events-auto bg-slate-900 border-l-4 border-amber-500 text-white px-4 py-3 rounded-lg shadow-2xl text-xs font-semibold flex items-center space-x-2 animate-bounce";
+      toast.innerHTML = `
+        <span class="material-symbols-outlined text-amber-400 text-base">info</span>
+        <span>${message}</span>
+      `;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 3500);
+    }
+
+    function handleGlobalSearch() {
+      const q = document.getElementById('global-search').value.toLowerCase();
+      if (q.length > 2) {
+        triggerToast(`Buscando en sistema: "${q}"...`);
+      }
+    }
+
+    /* INICIALIZACIÓN AL CARGAR */
+    window.addEventListener('DOMContentLoaded', () => {
+      renderContactsTable();
+      renderPropertiesGrid();
+      renderKanbanBoard();
+      renderDocsList();
+    });
+  </script>
+</body>
+</html>
