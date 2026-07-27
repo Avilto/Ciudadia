@@ -236,9 +236,12 @@
       <div class="flex items-center space-x-8 md:space-x-12">
         <!-- Menu Links -->
         <div class="hidden md:flex items-center gap-8">
-          <a href="comprar" class="nav-item-link">Comprar</a>
-          <a href="alquilar" class="nav-item-link">Alquilar</a>
-          <a href="vender" class="nav-item-link">Vender</a>
+          <!-- Links dinámicos que aparecen al hacer scroll hacia abajo -->
+          <div id="scrollOnlyLinks" class="flex items-center gap-8 opacity-0 max-w-0 pointer-events-none overflow-hidden transition-all duration-500 ease-out transform -translate-x-4">
+            <a href="comprar" class="nav-item-link whitespace-nowrap">Comprar</a>
+            <a href="alquilar" class="nav-item-link whitespace-nowrap">Alquilar</a>
+            <a href="vender" class="nav-item-link whitespace-nowrap">Vender</a>
+          </div>
           <a href="about" class="nav-item-link">Nosotros</a>
           <a href="services" class="nav-item-link">Servicios</a>
         </div>
@@ -529,26 +532,38 @@
       observer.observe(el);
     });
 
-    // Scroll header styling and scroll-only menu links
+    // Scroll header styling and dynamic scroll-only menu links (Comprar, Alquilar, Vender)
     const scrollOnlyLinks = document.getElementById('scrollOnlyLinks');
-    window.addEventListener('scroll', () => {
+    const mobileScrollLinks = document.getElementById('mobileScrollLinks');
+
+    function updateNavOnScroll() {
       const header = document.querySelector('header');
-      if (window.scrollY > 120) {
-        header.classList.add('shadow-sm');
+      const isScrolled = window.scrollY > 200;
+
+      if (isScrolled) {
+        header?.classList.add('shadow-md');
         if (scrollOnlyLinks) {
-          scrollOnlyLinks.classList.remove('opacity-0', 'max-w-0', '-mr-8', 'pointer-events-none');
-          scrollOnlyLinks.classList.add('opacity-100', 'max-w-[400px]', 'mr-0', 'pointer-events-auto');
+          scrollOnlyLinks.classList.remove('opacity-0', 'max-w-0', 'pointer-events-none', '-translate-x-4');
+          scrollOnlyLinks.classList.add('opacity-100', 'max-w-[400px]', 'pointer-events-auto', 'translate-x-0');
+        }
+        if (mobileScrollLinks) {
+          mobileScrollLinks.classList.remove('hidden');
         }
       } else {
-        header.classList.remove('shadow-sm');
+        header?.classList.remove('shadow-md');
         if (scrollOnlyLinks) {
-          scrollOnlyLinks.classList.remove('opacity-100', 'max-w-[400px]', 'mr-0', 'pointer-events-auto');
-          scrollOnlyLinks.classList.add('opacity-0', 'max-w-0', '-mr-8', 'pointer-events-none');
+          scrollOnlyLinks.classList.remove('opacity-100', 'max-w-[400px]', 'pointer-events-auto', 'translate-x-0');
+          scrollOnlyLinks.classList.add('opacity-0', 'max-w-0', 'pointer-events-none', '-translate-x-4');
+        }
+        if (mobileScrollLinks) {
+          mobileScrollLinks.classList.add('hidden');
         }
       }
-    });
+    }
 
-
+    window.addEventListener('scroll', updateNavOnScroll, { passive: true });
+    document.addEventListener('DOMContentLoaded', updateNavOnScroll);
+    updateNavOnScroll();
   </script>
 
 </body>
