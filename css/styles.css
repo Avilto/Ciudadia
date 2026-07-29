@@ -628,6 +628,38 @@ header.shadow-scrolled {
   width: 100%;
 }
 
+/* --- Top-Left Brand / Home Navigation --- */
+.nav-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.nav-brand-text {
+  font-family: 'EB Garamond', serif;
+  font-size: 30px;
+  font-weight: 500;
+  color: #2d3e50;
+  letter-spacing: -0.02em;
+  padding-bottom: 2px;
+  border-bottom: 2.5px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.nav-brand-text:hover {
+  color: #111c26;
+}
+
+.nav-brand-text.active,
+.nav-brand-text.nav-link-active,
+.nav-brand-link.active .nav-brand-text {
+  color: #111c26 !important;
+  font-weight: 700 !important;
+  border-bottom: 2.5px solid #6d5c3a !important;
+  padding-bottom: 2px !important;
+}
+
 /* --- Header Navigation Link Styles & Active Indicator --- */
 .nav-item-link {
   position: relative;
@@ -636,9 +668,14 @@ header.shadow-scrolled {
   font-size: 15px;
   font-weight: 500;
   padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
+  border-bottom: 2.5px solid transparent;
   transition: all 0.2s ease;
   text-decoration: none;
+}
+
+.nav-item-link:hover {
+  color: #2d3e50;
+  border-bottom-color: rgba(109, 92, 58, 0.4);
 }
 
 .nav-item-link:hover,
@@ -646,9 +683,9 @@ header.shadow-scrolled {
 .nav-item-link.nav-link-active,
 a.nav-link-active,
 a.active.nav-item-link {
-  color: #2d3e50 !important;
+  color: #111c26 !important;
   font-weight: 700 !important;
-  border-bottom: 2px solid #2d3e50 !important;
+  border-bottom: 2.5px solid #6d5c3a !important;
   padding-bottom: 4px !important;
 }
 
