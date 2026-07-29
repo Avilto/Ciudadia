@@ -312,42 +312,273 @@
       </div>
     </section>
 
-    <!-- Step-by-Step Guide -->
-    <section class="pt-24 pb-32 bg-surface-container-low border-b border-outline-variant/20">
-      <div class="px-margin-desktop max-w-container-max mx-auto">
-        <div class="text-center mb-16">
-          <span class="font-label-caps text-secondary mb-4 block">Metodología</span>
-          <h2 class="font-display-lg text-headline-md md:text-display-lg-mobile text-primary">Su Trayectoria de Compra</h2>
+    <!-- Cuadro Comparativo: La Experiencia de Compra -->
+    <section class="py-24 bg-surface-container-low border-b border-outline-variant/20">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+          <span class="font-label-caps text-secondary mb-4 block uppercase tracking-widest">Metodología Comparativa</span>
+          <h2 class="font-display-lg text-3xl md:text-5xl text-primary text-cormorant mb-6 font-medium">La Experiencia del Cliente</h2>
+          <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Descubra la diferencia entre el proceso inmobiliario tradicional e incierto y el acompañamiento integral de alta dirección que ofrece Ciudadia en cada fase de su inversión.
+          </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
-          <!-- Step 1 -->
-          <div class="group">
-            <div class="text-primary font-display-lg text-4xl mb-6 opacity-30 group-hover:opacity-100 transition-opacity">01</div>
-            <h4 class="font-display-lg text-lg mb-4 font-semibold">Definición de tu Proyecto</h4>
-            <div class="step-line"></div>
-            <p class="font-body-md text-on-surface-variant">Entendemos exactamente qué buscas, desde tus preferencias de diseño y estilo, hasta la ubicación ideal para tu inversión o vivienda.</p>
+
+        <!-- Table Header for Desktop -->
+        <div class="hidden lg:grid grid-cols-12 gap-8 mb-6 px-6 font-label-caps text-label-caps uppercase tracking-wider text-xs font-semibold text-primary/70">
+          <div class="col-span-3">Fase del Proceso</div>
+          <div class="col-span-4 text-slate-600">Proceso Tradicional (Sin Ciudadia)</div>
+          <div class="col-span-5 text-primary font-bold">Experiencia Exclusiva (Con Ciudadia)</div>
+        </div>
+
+        <!-- Cards / Rows Container -->
+        <div class="space-y-6">
+          
+          <!-- Fase 1: Planificación -->
+          <div class="bg-white rounded-xl border border-outline-variant/30 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-outline-variant/20">
+              <!-- Phase Label -->
+              <div class="lg:col-span-3 p-6 md:p-8 bg-surface-container-low/50 flex flex-col justify-between">
+                <div>
+                  <span class="text-xs font-bold text-secondary tracking-widest uppercase block mb-1">Fase 01</span>
+                  <h3 class="font-display-lg text-xl md:text-2xl text-primary text-cormorant font-semibold">Planificación</h3>
+                </div>
+                <div class="mt-4">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
+                    <span class="material-symbols-outlined text-sm">account_balance_wallet</span>
+                    Asesoría Financiera Integral
+                  </span>
+                </div>
+              </div>
+
+              <!-- Sin Ciudadia -->
+              <div class="lg:col-span-4 p-6 md:p-8 bg-slate-50/60 flex flex-col justify-start">
+                <div class="flex items-center gap-2 text-slate-500 font-label-caps text-xs uppercase tracking-wider font-semibold mb-3">
+                  <span class="material-symbols-outlined text-slate-400 text-base">warning</span>
+                  Sin Ciudadia (Desafío)
+                </div>
+                <p class="font-body-md text-sm text-slate-600 leading-relaxed">
+                  El comprador ha identificado propiedades potenciales, pero necesita estructurar su presupuesto. Se enfrenta solo a los bancos y busca sin orientación qué entidad ofrece el mejor crédito hipotecario o las menores tasas del mercado.
+                </p>
+              </div>
+
+              <!-- Con Ciudadia -->
+              <div class="lg:col-span-5 p-6 md:p-8 bg-primary/5 flex flex-col justify-start relative border-l-4 border-l-secondary">
+                <div class="flex items-center gap-2 text-primary font-label-caps text-xs uppercase tracking-wider font-bold mb-3">
+                  <span class="material-symbols-outlined text-secondary text-base">verified</span>
+                  Con Ciudadia (Experiencia)
+                </div>
+                <p class="font-body-md text-sm text-primary font-medium leading-relaxed">
+                  Un equipo de consultores financieros evalúa su perfil y diseña una estrategia de apalancamiento a medida. Siente la tranquilidad de resguardar su patrimonio con un análisis de viabilidad riguroso que maximiza su capital antes de firmar cualquier compromiso.
+                </p>
+              </div>
+            </div>
           </div>
-          <!-- Step 2 -->
-          <div class="group">
-            <div class="text-primary font-display-lg text-4xl mb-6 opacity-30 group-hover:opacity-100 transition-opacity">02</div>
-            <h4 class="font-display-lg text-lg mb-4 font-semibold">Selección de Oportunidades</h4>
-            <div class="step-line"></div>
-            <p class="font-body-md text-on-surface-variant">Rastreamos el mercado inmobiliario para encontrar propiedades únicas, filtradas bajo tus criterios exactos.</p>
+
+          <!-- Fase 2: Descubrimiento -->
+          <div class="bg-white rounded-xl border border-outline-variant/30 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-outline-variant/20">
+              <!-- Phase Label -->
+              <div class="lg:col-span-3 p-6 md:p-8 bg-surface-container-low/50 flex flex-col justify-between">
+                <div>
+                  <span class="text-xs font-bold text-secondary tracking-widest uppercase block mb-1">Fase 02</span>
+                  <h3 class="font-display-lg text-xl md:text-2xl text-primary text-cormorant font-semibold">Descubrimiento</h3>
+                </div>
+                <div class="mt-4">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
+                    <span class="material-symbols-outlined text-sm">location_on</span>
+                    La Búsqueda Estratégica
+                  </span>
+                </div>
+              </div>
+
+              <!-- Sin Ciudadia -->
+              <div class="lg:col-span-4 p-6 md:p-8 bg-slate-50/60 flex flex-col justify-start">
+                <div class="flex items-center gap-2 text-slate-500 font-label-caps text-xs uppercase tracking-wider font-semibold mb-3">
+                  <span class="material-symbols-outlined text-slate-400 text-base">help</span>
+                  Sin Ciudadia (Desafío)
+                </div>
+                <p class="font-body-md text-sm text-slate-600 leading-relaxed">
+                  El comprador decide invertir o cambiar de residencia y busca opciones al azar en el mercado, recibiendo listas genéricas que no se ajustan a su estilo de vida ni a sus metas patrimoniales.
+                </p>
+              </div>
+
+              <!-- Con Ciudadia -->
+              <div class="lg:col-span-5 p-6 md:p-8 bg-primary/5 flex flex-col justify-start relative border-l-4 border-l-secondary">
+                <div class="flex items-center gap-2 text-primary font-label-caps text-xs uppercase tracking-wider font-bold mb-3">
+                  <span class="material-symbols-outlined text-secondary text-base">verified</span>
+                  Con Ciudadia (Experiencia)
+                </div>
+                <p class="font-body-md text-sm text-primary font-medium leading-relaxed">
+                  En lugar de mostrar propiedades al azar, recibe nuestro servicio de Inteligencia de Ubicación. Un equipo especializado analiza su perfil y le presenta opciones en zonas estratégicas evaluando colegios, servicios y proyecciones de plusvalía.
+                </p>
+              </div>
+            </div>
           </div>
-          <!-- Step 3 -->
-          <div class="group">
-            <div class="text-primary font-display-lg text-4xl mb-6 opacity-30 group-hover:opacity-100 transition-opacity">03</div>
-            <h4 class="font-display-lg text-lg mb-4 font-semibold">Revisión y Seguridad</h4>
-            <div class="step-line"></div>
-            <p class="font-body-md text-on-surface-variant">Analizamos a fondo los documentos legales y el estado físico de la propiedad antes de que tomes cualquier decisión, para que compres con total tranquilidad.</p>
+
+          <!-- Fase 3: Decisión -->
+          <div class="bg-white rounded-xl border border-outline-variant/30 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-outline-variant/20">
+              <!-- Phase Label -->
+              <div class="lg:col-span-3 p-6 md:p-8 bg-surface-container-low/50 flex flex-col justify-between">
+                <div>
+                  <span class="text-xs font-bold text-secondary tracking-widest uppercase block mb-1">Fase 03</span>
+                  <h3 class="font-display-lg text-xl md:text-2xl text-primary text-cormorant font-semibold">Decisión</h3>
+                </div>
+                <div class="mt-4">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
+                    <span class="material-symbols-outlined text-sm">gavel</span>
+                    Seguridad y Cierre
+                  </span>
+                </div>
+              </div>
+
+              <!-- Sin Ciudadia -->
+              <div class="lg:col-span-4 p-6 md:p-8 bg-slate-50/60 flex flex-col justify-start">
+                <div class="flex items-center gap-2 text-slate-500 font-label-caps text-xs uppercase tracking-wider font-semibold mb-3">
+                  <span class="material-symbols-outlined text-slate-400 text-base">gavel</span>
+                  Sin Ciudadia (Desafío)
+                </div>
+                <p class="font-body-md text-sm text-slate-600 leading-relaxed">
+                  Incertidumbre al momento de negociar el precio final, temor frente a vacíos contractuales o trámites legales complejos sin un abogado inmobiliario de respaldo.
+                </p>
+              </div>
+
+              <!-- Con Ciudadia -->
+              <div class="lg:col-span-5 p-6 md:p-8 bg-primary/5 flex flex-col justify-start relative border-l-4 border-l-secondary">
+                <div class="flex items-center gap-2 text-primary font-label-caps text-xs uppercase tracking-wider font-bold mb-3">
+                  <span class="material-symbols-outlined text-secondary text-base">verified</span>
+                  Con Ciudadia (Experiencia)
+                </div>
+                <p class="font-body-md text-sm text-primary font-medium leading-relaxed">
+                  Tranquilidad total gracias a la Negociación Estratégica y el soporte legal riguroso. Un equipo experto defiende sus intereses financieros y gestiona todo el saneamiento legal para un cierre transparente y seguro.
+                </p>
+              </div>
+            </div>
           </div>
-          <!-- Step 4 -->
-          <div class="group">
-            <div class="text-primary font-display-lg text-4xl mb-6 opacity-30 group-hover:opacity-100 transition-opacity">04</div>
-            <h4 class="font-display-lg text-lg mb-4 font-semibold">Cierre y Entrega</h4>
-            <div class="step-line"></div>
-            <p class="font-body-md text-on-surface-variant">Nos encargamos de todos los trámites notariales, pago de impuestos y papeleo necesario hasta que recibas las llaves de tu nueva propiedad.</p>
+
+          <!-- Fase 4: Transición -->
+          <div class="bg-white rounded-xl border border-outline-variant/30 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-outline-variant/20">
+              <!-- Phase Label -->
+              <div class="lg:col-span-3 p-6 md:p-8 bg-surface-container-low/50 flex flex-col justify-between">
+                <div>
+                  <span class="text-xs font-bold text-secondary tracking-widest uppercase block mb-1">Fase 04</span>
+                  <h3 class="font-display-lg text-xl md:text-2xl text-primary text-cormorant font-semibold">Transición</h3>
+                </div>
+                <div class="mt-4">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
+                    <span class="material-symbols-outlined text-sm">cleaning_services</span>
+                    Preparación del Inmueble
+                  </span>
+                </div>
+              </div>
+
+              <!-- Sin Ciudadia -->
+              <div class="lg:col-span-4 p-6 md:p-8 bg-slate-50/60 flex flex-col justify-start">
+                <div class="flex items-center gap-2 text-slate-500 font-label-caps text-xs uppercase tracking-wider font-semibold mb-3">
+                  <span class="material-symbols-outlined text-slate-400 text-base">sentiment_dissatisfied</span>
+                  Sin Ciudadia (Desafío)
+                </div>
+                <p class="font-body-md text-sm text-slate-600 leading-relaxed">
+                  Tras firmar, el comprador enfrenta el agobia de recibir el inmueble en mal estado o sucio, teniendo que asumir trabajos de mantenimiento y limpieza por cuenta propia.
+                </p>
+              </div>
+
+              <!-- Con Ciudadia -->
+              <div class="lg:col-span-5 p-6 md:p-8 bg-primary/5 flex flex-col justify-start relative border-l-4 border-l-secondary">
+                <div class="flex items-center gap-2 text-primary font-label-caps text-xs uppercase tracking-wider font-bold mb-3">
+                  <span class="material-symbols-outlined text-secondary text-base">verified</span>
+                  Con Ciudadia (Valor Agregado)
+                </div>
+                <p class="font-body-md text-sm text-primary font-medium leading-relaxed">
+                  Servicio de Limpieza Profunda. Antes de que pise su nuevo hogar, Ciudadia gestiona una limpieza integral y profesional, garantizando que la propiedad se entregue en condiciones impecables lista para habitar.
+                </p>
+              </div>
+            </div>
           </div>
+
+          <!-- Fase 5: Instalación -->
+          <div class="bg-white rounded-xl border border-outline-variant/30 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-outline-variant/20">
+              <!-- Phase Label -->
+              <div class="lg:col-span-3 p-6 md:p-8 bg-surface-container-low/50 flex flex-col justify-between">
+                <div>
+                  <span class="text-xs font-bold text-secondary tracking-widest uppercase block mb-1">Fase 05</span>
+                  <h3 class="font-display-lg text-xl md:text-2xl text-primary text-cormorant font-semibold">Instalación</h3>
+                </div>
+                <div class="mt-4">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
+                    <span class="material-symbols-outlined text-sm">local_shipping</span>
+                    Traslado Sin Estrés
+                  </span>
+                </div>
+              </div>
+
+              <!-- Sin Ciudadia -->
+              <div class="lg:col-span-4 p-6 md:p-8 bg-slate-50/60 flex flex-col justify-start">
+                <div class="flex items-center gap-2 text-slate-500 font-label-caps text-xs uppercase tracking-wider font-semibold mb-3">
+                  <span class="material-symbols-outlined text-slate-400 text-base">schedule</span>
+                  Sin Ciudadia (Desafío)
+                </div>
+                <p class="font-body-md text-sm text-slate-600 leading-relaxed">
+                  Mover muebles, objetos de valor e insumos de forma caótica, arriesgando daños en sus pertenecias y sufriendo el desgaste físico de una reubicación.
+                </p>
+              </div>
+
+              <!-- Con Ciudadia -->
+              <div class="lg:col-span-5 p-6 md:p-8 bg-primary/5 flex flex-col justify-start relative border-l-4 border-l-secondary">
+                <div class="flex items-center gap-2 text-primary font-label-caps text-xs uppercase tracking-wider font-bold mb-3">
+                  <span class="material-symbols-outlined text-secondary text-base">verified</span>
+                  Con Ciudadia (Servicio de Mudanza)
+                </div>
+                <p class="font-body-md text-sm text-primary font-medium leading-relaxed">
+                  Confía su patrimonio a un servicio de mudanza coordinado directamente por su consultor de confianza. Todo se realiza con orden, pulcritud y cuidado, cerrando el ciclo de compra sin agotamiento.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fase 6: Disfrute -->
+          <div class="bg-white rounded-xl border border-outline-variant/30 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-outline-variant/20">
+              <!-- Phase Label -->
+              <div class="lg:col-span-3 p-6 md:p-8 bg-surface-container-low/50 flex flex-col justify-between">
+                <div>
+                  <span class="text-xs font-bold text-secondary tracking-widest uppercase block mb-1">Fase 06</span>
+                  <h3 class="font-display-lg text-xl md:text-2xl text-primary text-cormorant font-semibold">Disfrute</h3>
+                </div>
+                <div class="mt-4">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">
+                    <span class="material-symbols-outlined text-sm">handshake</span>
+                    Fidelización y Respaldo
+                  </span>
+                </div>
+              </div>
+
+              <!-- Sin Ciudadia -->
+              <div class="lg:col-span-4 p-6 md:p-8 bg-slate-50/60 flex flex-col justify-start">
+                <div class="flex items-center gap-2 text-slate-500 font-label-caps text-xs uppercase tracking-wider font-semibold mb-3">
+                  <span class="material-symbols-outlined text-slate-400 text-base">person_off</span>
+                  Sin Ciudadia (Desafío)
+                </div>
+                <p class="font-body-md text-sm text-slate-600 leading-relaxed">
+                  Relación puramente comercial donde la inmobiliaria entrega las llaves y desaparece, dejando al comprador sin asesoría ni soporte ante futuros proyectos.
+                </p>
+              </div>
+
+              <!-- Con Ciudadia -->
+              <div class="lg:col-span-5 p-6 md:p-8 bg-primary/5 flex flex-col justify-start relative border-l-4 border-l-secondary">
+                <div class="flex items-center gap-2 text-primary font-label-caps text-xs uppercase tracking-wider font-bold mb-3">
+                  <span class="material-symbols-outlined text-secondary text-base">verified</span>
+                  Con Ciudadia (Resultado Final)
+                </div>
+                <p class="font-body-md text-sm text-primary font-medium leading-relaxed">
+                  Se instala con máxima satisfacción percibiendo a Ciudadia no solo como la firma que concretó su inmueble, sino como un aliado patrimonial que lo acompaña de principio a fin y en sus futuras inversiones.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
