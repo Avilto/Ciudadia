@@ -411,8 +411,8 @@
                   <input class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant" placeholder="Gabriel Mendoza" type="text" required>
                 </div>
                 <div class="space-y-1">
-                  <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Correo Electrónico</label>
-                  <input class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant" placeholder="gabriel@correo.com" type="email" required>
+                  <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Correo Electrónico (Opcional)</label>
+                  <input class="w-full bg-transparent border-0 border-b border-outline p-0 py-3 hover:border-primary/50 focus:ring-0 focus:border-primary transition-colors duration-300 text-on-surface placeholder:text-outline-variant" placeholder="gabriel@correo.com (opcional)" type="email">
                 </div>
               </div>
 
@@ -426,7 +426,7 @@
                   <label class="font-label-caps text-label-caps uppercase text-on-surface-variant">Motivo de Consulta</label>
                   
                   <!-- Hidden Real Select -->
-                  <select id="realSelect" class="sr-only" required>
+                  <select id="realSelect" class="sr-only">
                     <option value="Comprar" selected>Comprar</option>
                     <option value="Vender">Vender</option>
                     <option value="Alquilar / Arrendar">Alquilar / Arrendar</option>
@@ -496,7 +496,7 @@
   </footer>
 
 
-  <!-- Mobile navigation toggle helper script -->
+  <!-- Mobile navigation toggle & Custom Select Dropdown helper script -->
   <script>
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -505,6 +505,59 @@
         mobileMenu.classList.toggle('hidden');
       });
     }
+
+    // Custom Select Dropdown
+    document.addEventListener('DOMContentLoaded', () => {
+      const trigger = document.getElementById('customSelectTrigger');
+      const menu = document.getElementById('customSelectMenu');
+      const valueSpan = document.getElementById('customSelectValue');
+      const chevron = document.getElementById('customSelectChevron');
+      const realSelect = document.getElementById('realSelect');
+      const options = document.querySelectorAll('.custom-option');
+
+      if (trigger && menu) {
+        function toggleDropdown(show) {
+          const isHidden = menu.classList.contains('hidden');
+          const open = show !== undefined ? show : isHidden;
+          if (open) {
+            menu.classList.remove('hidden');
+            setTimeout(() => {
+              menu.classList.remove('opacity-0', 'scale-95');
+              menu.classList.add('opacity-100', 'scale-100');
+            }, 10);
+            if (chevron) chevron.style.transform = 'rotate(180deg)';
+          } else {
+            menu.classList.remove('opacity-100', 'scale-100');
+            menu.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+              menu.classList.add('hidden');
+            }, 150);
+            if (chevron) chevron.style.transform = 'rotate(0deg)';
+          }
+        }
+
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleDropdown();
+        });
+
+        options.forEach(opt => {
+          opt.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const val = opt.getAttribute('data-value');
+            if (valueSpan) valueSpan.textContent = val;
+            if (realSelect) realSelect.value = val;
+            toggleDropdown(false);
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!trigger.contains(e.target) && !menu.contains(e.target)) {
+            toggleDropdown(false);
+          }
+        });
+      }
+    });
 
     // Scroll reveal observer
     const observerOptions = {
@@ -525,7 +578,7 @@
       observer.observe(el);
     });
 
-    // Scroll header styling and dynamic scroll-only menu links (Comprar, Alquilar, Vender)
+    // Scroll header styling and dynamic scroll-only menu links
     const scrollOnlyLinks = document.getElementById('scrollOnlyLinks');
     const mobileScrollLinks = document.getElementById('mobileScrollLinks');
 
