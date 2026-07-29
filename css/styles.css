@@ -630,39 +630,36 @@ header.shadow-scrolled {
 
 /* --- Top-Left Brand / Home Navigation --- */
 .nav-brand-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
 }
 
 .nav-brand-text {
-  font-family: 'EB Garamond', serif;
-  font-size: 32px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 22px;
   font-weight: 600;
   color: #2d3e50;
-  letter-spacing: -0.02em;
-  padding-bottom: 4px;
+  letter-spacing: -0.01em;
+  padding-bottom: 3px;
+  border-bottom: 2.5px solid transparent;
   display: inline-block;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 .nav-brand-text:hover {
-  color: #0d1d2a;
+  color: #1b2a38;
 }
 
 .nav-brand-text.active,
 .nav-brand-text.nav-link-active,
 .nav-brand-link.active .nav-brand-text,
 a.active .nav-brand-text {
-  color: #0d1d2a !important;
+  color: #1b2a38 !important;
   font-weight: 800 !important;
-  text-decoration: underline !important;
-  text-underline-offset: 8px !important;
-  text-decoration-thickness: 3.5px !important;
-  text-decoration-color: #2d3e50 !important;
-  border-bottom: 3.5px solid #2d3e50 !important;
-  padding-bottom: 4px !important;
+  border-bottom: 2.5px solid #1b2a38 !important;
+  padding-bottom: 3px !important;
+  text-decoration: none !important;
 }
 
 /* --- Header Navigation Link Styles & Active Indicator --- */
